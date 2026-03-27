@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Divya Darshan Spiritual Merchandise Store - Authentic, quality-certified spiritual products including brass idols, rudraksha, pooja items, incense, and more delivered to your door." />
+  <title>Spiritual Store — Divya Darshan</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕉</text></svg>" />
+</head>
+<body>
+
+<!-- =================== NAVBAR =================== -->
+<header class="navbar" role="banner">
+  <div class="container">
+    <div class="navbar-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="navbar-logo" aria-label="Divya Darshan Home">
+        <div class="logo-icon" aria-hidden="true">🕉</div>
+        <div class="logo-text">
+          Divya Darshan
+          <span>Spiritual Ecosystem</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="navbar-menu" role="navigation" aria-label="Main navigation">
+
+        <div class="nav-item">
+          <a href="astrotalks.html" class="nav-link">
+            ✨ Astrology <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🔭</span> Vedic Astrology
+            </a>
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🃏</span> Tarot Reading
+            </a>
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🔢</span> Numerology
+            </a>
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">✋</span> Palmistry
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="store.html" class="nav-link active" aria-current="page">
+            🛒 Shop <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🪔</span> Brass Idols
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📿</span> Rudraksha
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🌸</span> Pooja Items
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">💎</span> Spiritual Jewelry
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="meditation.html" class="nav-link">
+            📚 Courses <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🧘</span> Yoga &amp; Meditation
+            </a>
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📖</span> Vedic Studies
+            </a>
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🕉</span> Spirituality
+            </a>
+          </div>
+        </div>
+
+        <a href="content.html" class="nav-link">🎵 Content</a>
+        <a href="tourism.html" class="nav-link">✈️ Tours</a>
+
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="nav-search" role="search">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          type="search"
+          class="search-input"
+          placeholder="Search products..."
+          aria-label="Search products"
+        />
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="navbar-actions">
+        <button id="theme-toggle" class="nav-action-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+          🌙
+        </button>
+
+        <button class="nav-action-btn" aria-label="Wishlist" title="Wishlist" onclick="showToast('❤️ View your wishlist')">
+          🤍
+        </button>
+
+        <button class="nav-action-btn" aria-label="Shopping cart" title="Shopping Cart" onclick="showToast('🛒 Your cart has ' + cartCount + ' item(s)')">
+          🛒
+          <span id="cart-badge" class="badge" style="display:none">0</span>
+        </button>
+
+        <a href="#" class="btn btn-primary btn-sm">Sign In</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-header">
+    <div class="navbar-logo">
+      <div class="logo-icon">🕉</div>
+      <div class="logo-text">Divya Darshan</div>
+    </div>
+    <button id="mobile-nav-close" class="nav-action-btn" aria-label="Close menu" style="font-size:22px">✕</button>
+  </div>
+  <a href="astrotalks.html">✨ Astrology</a>
+  <a href="store.html" class="active">🛒 Shop</a>
+  <a href="meditation.html">📚 Courses</a>
+  <a href="content.html">🎵 Content Library</a>
+  <a href="tourism.html">✈️ Devotional Tours</a>
+  <div style="padding-top:16px">
+    <a href="#" class="btn btn-primary" style="display:inline-flex; width:100%; justify-content:center;">Sign In</a>
+  </div>
+</nav>
+
+<!-- Toast Container -->
+<div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+<!-- =================== PAGE HERO =================== -->
+<section class="page-hero" aria-labelledby="store-hero-heading">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Store</span>
+        </nav>
+        <h1 id="store-hero-heading">🛒 Spiritual Merchandise Store</h1>
+        <p>Authentic, quality-certified spiritual products delivered to your door</p>
+      </div>
+      <div class="page-hero-stats" aria-label="Store statistics" style="display:flex;gap:32px;flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <strong style="font-size:24px;font-family:var(--font-serif);color:var(--color-primary-gold);">1,000+</strong>
+          <div style="font-size:13px;color:var(--color-text-light);margin-top:2px;">Products Listed</div>
+        </div>
+        <div style="text-align:center;">
+          <strong style="font-size:24px;font-family:var(--font-serif);color:var(--color-primary-gold);">100%</strong>
+          <div style="font-size:13px;color:var(--color-text-light);margin-top:2px;">Authenticity Certified</div>
+        </div>
+        <div style="text-align:center;">
+          <strong style="font-size:24px;font-family:var(--font-serif);color:var(--color-primary-gold);">Free</strong>
+          <div style="font-size:13px;color:var(--color-text-light);margin-top:2px;">Shipping Over ₹999</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== MAIN STORE CONTENT =================== -->
+<main class="section" id="store-main">
+  <div class="container">
+
+    <!-- ---- CATEGORY PILLS ---- -->
+    <div class="category-pills" role="list" aria-label="Product categories">
+      <button class="category-pill active" role="listitem" data-category="all" onclick="handleCategoryPill(this, 'all')">
+        🕉 All Products
+      </button>
+      <button class="category-pill" role="listitem" data-category="brass-idols" onclick="handleCategoryPill(this, 'brass-idols')">
+        🪔 Brass Idols
+      </button>
+      <button class="category-pill" role="listitem" data-category="pooja-items" onclick="handleCategoryPill(this, 'pooja-items')">
+        🌸 Pooja Items
+      </button>
+      <button class="category-pill" role="listitem" data-category="rudraksha" onclick="handleCategoryPill(this, 'rudraksha')">
+        📿 Rudraksha
+      </button>
+      <button class="category-pill" role="listitem" data-category="incense" onclick="handleCategoryPill(this, 'incense')">
+        🕯️ Incense &amp; Dhoop
+      </button>
+      <button class="category-pill" role="listitem" data-category="spiritual-clothing" onclick="handleCategoryPill(this, 'spiritual-clothing')">
+        👘 Spiritual Clothing
+      </button>
+      <button class="category-pill" role="listitem" data-category="copper-items" onclick="handleCategoryPill(this, 'copper-items')">
+        🔔 Copper Items
+      </button>
+      <button class="category-pill" role="listitem" data-category="spiritual-jewelry" onclick="handleCategoryPill(this, 'spiritual-jewelry')">
+        💎 Spiritual Jewelry
+      </button>
+    </div>
+
+    <!-- ---- FILTER LAYOUT ---- -->
+    <div class="filter-layout">
+
+      <!-- ---- FILTER SIDEBAR ---- -->
+      <aside class="filter-sidebar" aria-label="Product filters">
+        <div class="filter-sidebar-header">
+          <h3>🔧 Filters</h3>
+          <button class="filter-clear" onclick="clearAllFilters()" aria-label="Clear all filters">Clear All</button>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-group" id="fg-category">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-category')" aria-expanded="true">
+            Category <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="category" value="brass-idols" />
+              Brass Idols
+              <span class="option-count">42</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="category" value="pooja-items" />
+              Pooja Items
+              <span class="option-count">38</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="category" value="rudraksha" />
+              Rudraksha
+              <span class="option-count">25</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="category" value="incense" />
+              Incense &amp; Dhoop
+              <span class="option-count">19</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="category" value="spiritual-clothing" />
+              Spiritual Clothing
+              <span class="option-count">31</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="category" value="copper-items" />
+              Copper Items
+              <span class="option-count">17</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="category" value="spiritual-jewelry" />
+              Spiritual Jewelry
+              <span class="option-count">28</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-group" id="fg-price">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-price')" aria-expanded="true">
+            Price Range <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <div class="range-slider-container">
+              <input
+                type="range"
+                class="range-slider"
+                id="price-range"
+                min="0"
+                max="50000"
+                value="30000"
+                step="500"
+                aria-label="Maximum price filter"
+                oninput="updatePriceLabel(this.value)"
+              />
+              <div class="range-labels">
+                <span>₹0</span>
+                <span id="price-range-label">₹30,000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rating Filter -->
+        <div class="filter-group" id="fg-rating">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-rating')" aria-expanded="true">
+            Rating <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="radio" name="rating" value="4" />
+              ⭐⭐⭐⭐ 4+ Stars
+              <span class="option-count">89</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="rating" value="3" />
+              ⭐⭐⭐ 3+ Stars
+              <span class="option-count">130</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="rating" value="2" />
+              ⭐⭐ 2+ Stars
+              <span class="option-count">144</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Material Filter -->
+        <div class="filter-group" id="fg-material">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-material')" aria-expanded="true">
+            Material <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="material" value="brass" />
+              Brass
+              <span class="option-count">42</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="material" value="copper" />
+              Copper
+              <span class="option-count">17</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="material" value="crystal" />
+              Crystal
+              <span class="option-count">12</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="material" value="silver" />
+              Silver
+              <span class="option-count">9</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="material" value="gold" />
+              Gold
+              <span class="option-count">5</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="material" value="wood" />
+              Wood
+              <span class="option-count">22</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="material" value="fabric" />
+              Fabric
+              <span class="option-count">31</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Availability Filter -->
+        <div class="filter-group" id="fg-availability">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-availability')" aria-expanded="true">
+            Availability <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="availability" value="in-stock" checked />
+              In Stock
+              <span class="option-count">121</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="availability" value="limited" />
+              Limited
+              <span class="option-count">18</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="availability" value="pre-order" />
+              Pre-order
+              <span class="option-count">9</span>
+            </label>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ---- PRODUCTS CONTENT ---- -->
+      <div class="products-content">
+
+        <!-- Results Toolbar -->
+        <div class="results-toolbar" role="toolbar" aria-label="Filter results">
+          <p class="results-count">
+            Showing <strong>12</strong> of <strong>148 products</strong>
+          </p>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <label for="sort-select" style="font-size:14px;color:var(--color-text-light);">Sort by:</label>
+            <select id="sort-select" class="sort-select" aria-label="Sort products" onchange="handleSort(this.value)">
+              <option value="trending">Trending</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Rating</option>
+              <option value="newest">Newest</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="store-products-grid" id="products-grid" role="list" aria-label="Spiritual products">
+
+          <!-- Product 1: Brass Ganesha Idol -->
+          <article class="product-card fade-up" role="listitem" data-category="brass-idols">
+            <div class="product-image" aria-hidden="true">
+              🙏
+              <span class="product-badge">-23%</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add Brass Ganesha Idol 6 inch to wishlist"
+                onclick="handleWishlist(this, 'Brass Ganesha Idol 6&quot;')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: Brass Ganesha Idol 6&quot;')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Brass Idols</div>
+              <h3 class="product-name">Brass Ganesha Idol 6"</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.9</span>
+                <span class="review-count">(312 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹999</span>
+                <span class="price-original">₹1,299</span>
+                <span class="price-discount">-23%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('Brass Ganesha Idol 6&quot;', 999)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 2: Lakshmi Idol -->
+          <article class="product-card fade-up" role="listitem" data-category="brass-idols">
+            <div class="product-image" aria-hidden="true">
+              💛
+              <span class="product-badge">-25%</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add Brass Lakshmi Idol to wishlist"
+                onclick="handleWishlist(this, 'Brass Lakshmi Idol')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: Brass Lakshmi Idol')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Brass Idols</div>
+              <h3 class="product-name">Brass Lakshmi Idol</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.8</span>
+                <span class="review-count">(245 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹1,499</span>
+                <span class="price-original">₹1,999</span>
+                <span class="price-discount">-25%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('Brass Lakshmi Idol', 1499)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 3: Shiva Lingam -->
+          <article class="product-card fade-up" role="listitem" data-category="brass-idols">
+            <div class="product-image" aria-hidden="true">
+              🕉
+              <span class="product-badge">-22%</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add Brass Shiva Lingam to wishlist"
+                onclick="handleWishlist(this, 'Brass Shiva Lingam')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: Brass Shiva Lingam')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Brass Idols</div>
+              <h3 class="product-name">Brass Shiva Lingam</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.7</span>
+                <span class="review-count">(178 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹699</span>
+                <span class="price-original">₹899</span>
+                <span class="price-discount">-22%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('Brass Shiva Lingam', 699)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 4: Puja Thali Set -->
+          <article class="product-card fade-up" role="listitem" data-category="pooja-items">
+            <div class="product-image" aria-hidden="true">
+              🌸
+              <span class="product-badge">-23%</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add Complete Puja Thali Set to wishlist"
+                onclick="handleWishlist(this, 'Complete Puja Thali Set')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: Complete Puja Thali Set')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Pooja Items</div>
+              <h3 class="product-name">Complete Puja Thali Set</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.8</span>
+                <span class="review-count">(204 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹849</span>
+                <span class="price-original">₹1,099</span>
+                <span class="price-discount">-23%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('Complete Puja Thali Set', 849)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 5: Brass Diya -->
+          <article class="product-card fade-up" role="listitem" data-category="pooja-items">
+            <div class="product-image" aria-hidden="true">
+              🪔
+              <span class="product-badge">-25%</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add Brass Diya Set of 6 to wishlist"
+                onclick="handleWishlist(this, 'Brass Diya Set of 6')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: Brass Diya Set of 6')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Pooja Items</div>
+              <h3 class="product-name">Brass Diya Set of 6</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.6</span>
+                <span class="review-count">(152 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹299</span>
+                <span class="price-original">₹399</span>
+                <span class="price-discount">-25%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('Brass Diya Set of 6', 299)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 6: Agarbatti Stand -->
+          <article class="product-card fade-up" role="listitem" data-category="pooja-items">
+            <div class="product-image" aria-hidden="true">
+              🔔
+              <span class="product-badge new">NEW</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add Agarbatti Incense Stand to wishlist"
+                onclick="handleWishlist(this, 'Agarbatti Incense Stand')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: Agarbatti Incense Stand')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Pooja Items</div>
+              <h3 class="product-name">Agarbatti Incense Stand</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.4</span>
+                <span class="review-count">(87 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹199</span>
+                <span class="price-original">₹249</span>
+                <span class="price-discount">-20%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('Agarbatti Incense Stand', 199)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 7: 5-Mukhi Rudraksha Mala -->
+          <article class="product-card fade-up" role="listitem" data-category="rudraksha">
+            <div class="product-image" aria-hidden="true">
+              📿
+              <span class="product-badge">-33%</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add 5 Mukhi Rudraksha Mala to wishlist"
+                onclick="handleWishlist(this, '5-Mukhi Rudraksha Mala')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: 5-Mukhi Rudraksha Mala')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Rudraksha</div>
+              <h3 class="product-name">5-Mukhi Rudraksha Mala</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.9</span>
+                <span class="review-count">(398 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹799</span>
+                <span class="price-original">₹1,199</span>
+                <span class="price-discount">-33%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('5-Mukhi Rudraksha Mala', 799)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 8: 11-Mukhi Rudraksha Single -->
+          <article class="product-card fade-up" role="listitem" data-category="rudraksha">
+            <div class="product-image" aria-hidden="true">
+              📿
+              <span class="product-badge">-25%</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add 11-Mukhi Rudraksha Single to wishlist"
+                onclick="handleWishlist(this, '11-Mukhi Rudraksha Single')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: 11-Mukhi Rudraksha Single')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Rudraksha</div>
+              <h3 class="product-name">11-Mukhi Rudraksha Single</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.8</span>
+                <span class="review-count">(213 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹599</span>
+                <span class="price-original">₹799</span>
+                <span class="price-discount">-25%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('11-Mukhi Rudraksha Single', 599)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 9: Sandalwood Incense Bundle -->
+          <article class="product-card fade-up" role="listitem" data-category="incense">
+            <div class="product-image" aria-hidden="true">
+              🕯️
+              <span class="product-badge">-25%</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add Sandalwood Incense Bundle to wishlist"
+                onclick="handleWishlist(this, 'Sandalwood Incense Bundle')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: Sandalwood Incense Bundle')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Incense &amp; Dhoop</div>
+              <h3 class="product-name">Sandalwood Incense Bundle</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.7</span>
+                <span class="review-count">(167 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹299</span>
+                <span class="price-original">₹399</span>
+                <span class="price-discount">-25%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('Sandalwood Incense Bundle', 299)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 10: Mogra Dhoop Sticks -->
+          <article class="product-card fade-up" role="listitem" data-category="incense">
+            <div class="product-image" aria-hidden="true">
+              🕯️
+              <span class="product-badge">-25%</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add Mogra Dhoop Sticks to wishlist"
+                onclick="handleWishlist(this, 'Mogra Dhoop Sticks')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: Mogra Dhoop Sticks')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Incense &amp; Dhoop</div>
+              <h3 class="product-name">Mogra Dhoop Sticks</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.5</span>
+                <span class="review-count">(94 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹149</span>
+                <span class="price-original">₹199</span>
+                <span class="price-discount">-25%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('Mogra Dhoop Sticks', 149)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 11: Meditation Kurta -->
+          <article class="product-card fade-up" role="listitem" data-category="spiritual-clothing">
+            <div class="product-image" aria-hidden="true">
+              👘
+              <span class="product-badge">-31%</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add Cotton Meditation Kurta to wishlist"
+                onclick="handleWishlist(this, 'Cotton Meditation Kurta')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: Cotton Meditation Kurta')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Spiritual Clothing</div>
+              <h3 class="product-name">Cotton Meditation Kurta</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.6</span>
+                <span class="review-count">(143 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹899</span>
+                <span class="price-original">₹1,299</span>
+                <span class="price-discount">-31%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('Cotton Meditation Kurta', 899)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 12: White Dhoti Set -->
+          <article class="product-card fade-up" role="listitem" data-category="spiritual-clothing">
+            <div class="product-image" aria-hidden="true">
+              👘
+              <span class="product-badge">-25%</span>
+              <button
+                class="product-wishlist"
+                aria-label="Add White Dhoti Set to wishlist"
+                onclick="handleWishlist(this, 'White Dhoti Set')"
+              >🤍</button>
+              <div class="product-overlay">
+                <button class="btn btn-primary btn-sm" onclick="showToast('👁️ Quick View: White Dhoti Set')">Quick View</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Spiritual Clothing</div>
+              <h3 class="product-name">White Dhoti Set</h3>
+              <div class="product-rating">
+                <span>⭐⭐⭐⭐</span>
+                <span style="font-weight:700;">4.4</span>
+                <span class="review-count">(98 reviews)</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">₹599</span>
+                <span class="price-original">₹799</span>
+                <span class="price-discount">-25%</span>
+              </div>
+              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('White Dhoti Set', 599)">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </article>
+
+        </div><!-- /#products-grid -->
+
+        <!-- Bonus Product 13: Tulsi Mala (Spiritual Jewelry - shown as 13th, page 2 preview) -->
+        <!-- Note: Tulsi Mala is part of the full 148 product catalog, visible on next pages -->
+
+        <!-- ---- PAGINATION ---- -->
+        <nav class="pagination" aria-label="Products pagination">
+          <button class="page-btn" aria-label="Previous page" onclick="showToast('⬅️ Previous page')" disabled style="opacity:0.4;cursor:not-allowed;">‹</button>
+          <button class="page-btn active" aria-label="Page 1, current" aria-current="page">1</button>
+          <button class="page-btn" aria-label="Page 2" onclick="showToast('📄 Loading page 2...')">2</button>
+          <button class="page-btn" aria-label="Page 3" onclick="showToast('📄 Loading page 3...')">3</button>
+          <button class="page-btn" aria-label="Page 4" onclick="showToast('📄 Loading page 4...')">4</button>
+          <span style="padding:0 4px;color:var(--color-text-light);font-size:14px;" aria-hidden="true">…</span>
+          <button class="page-btn" aria-label="Page 13" onclick="showToast('📄 Loading page 13...')">13</button>
+          <button class="page-btn" aria-label="Next page" onclick="showToast('➡️ Loading page 2...')">›</button>
+        </nav>
+
+      </div><!-- /.products-content -->
+
+    </div><!-- /.filter-layout -->
+
+  </div><!-- /.container -->
+</main>
+
+<!-- =================== FOOTER =================== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <div class="logo-text">🕉 Divya Darshan</div>
+        <p>
+          India's complete spiritual ecosystem — connecting you with expert astrologers,
+          authentic products, transformational courses, sacred content, and divine tours.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook">📘</a>
+          <a href="#" class="social-link" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+          <a href="#" class="social-link" aria-label="YouTube">📺</a>
+          <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+
+      <!-- Platform Links -->
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="astrotalks.html">✨ Astrology</a></li>
+          <li><a href="store.html">🛒 Spiritual Shop</a></li>
+          <li><a href="meditation.html">📚 Online Courses</a></li>
+          <li><a href="content.html">🎵 Content Library</a></li>
+          <li><a href="tourism.html">✈️ Devotional Tours</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Become an Astrologer</a></li>
+          <li><a href="#">Become a Seller</a></li>
+          <li><a href="#">Blog &amp; Articles</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Kit</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Links -->
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Divya Darshan. All rights reserved. 🕉 Made with ❤️ in India</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =================== JAVASCRIPT =================== -->
+<script src="js/main.js"></script>
+
+<script>
+  /* =========================================================
+     STORE PAGE — INLINE INTERACTION HANDLERS
+     All global utilities (showToast, cartCount, etc.) come
+     from js/main.js. This script adds store-specific logic.
+  ========================================================= */
+
+  /* ---- Category Pill Selection ---- */
+  function handleCategoryPill(clickedPill, category) {
+    // Deactivate all pills
+    document.querySelectorAll('.category-pill').forEach(function(pill) {
+      pill.classList.remove('active');
+      pill.removeAttribute('aria-pressed');
+    });
+
+    // Activate clicked pill
+    clickedPill.classList.add('active');
+    clickedPill.setAttribute('aria-pressed', 'true');
+
+    // Filter products by category
+    var products = document.querySelectorAll('#products-grid .product-card');
+    var visibleCount = 0;
+
+    products.forEach(function(card) {
+      if (category === 'all' || card.dataset.category === category) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Update results count
+    var label = clickedPill.textContent.trim();
+    document.querySelector('.results-count').innerHTML =
+      'Showing <strong>' + visibleCount + '</strong> of <strong>' + visibleCount + ' products</strong> in ' + label;
+
+    showToast('🔍 Filtered: ' + label + ' (' + visibleCount + ' items)');
+  }
+
+  /* ---- Filter Group Toggle (collapse/expand) ---- */
+  function toggleFilterGroup(groupId) {
+    var group = document.getElementById(groupId);
+    if (!group) return;
+    group.classList.toggle('collapsed');
+    var titleEl = group.querySelector('.filter-group-title');
+    var isExpanded = !group.classList.contains('collapsed');
+    if (titleEl) {
+      titleEl.setAttribute('aria-expanded', String(isExpanded));
+    }
+  }
+
+  /* ---- Clear All Filters ---- */
+  function clearAllFilters() {
+    // Uncheck all checkboxes and radios
+    document.querySelectorAll('.filter-sidebar input[type="checkbox"]').forEach(function(cb) {
+      cb.checked = false;
+    });
+    document.querySelectorAll('.filter-sidebar input[type="radio"]').forEach(function(rb) {
+      rb.checked = false;
+    });
+
+    // Reset price range
+    var priceRange = document.getElementById('price-range');
+    if (priceRange) {
+      priceRange.value = 30000;
+      updatePriceLabel(30000);
+    }
+
+    // Show all products
+    document.querySelectorAll('#products-grid .product-card').forEach(function(card) {
+      card.style.display = '';
+    });
+
+    // Reset category pills to "All"
+    document.querySelectorAll('.category-pill').forEach(function(pill) {
+      pill.classList.remove('active');
+    });
+    var allPill = document.querySelector('.category-pill[data-category="all"]');
+    if (allPill) allPill.classList.add('active');
+
+    // Reset results count
+    document.querySelector('.results-count').innerHTML =
+      'Showing <strong>12</strong> of <strong>148 products</strong>';
+
+    showToast('🔄 All filters cleared');
+  }
+
+  /* ---- Price Range Label Update ---- */
+  function updatePriceLabel(value) {
+    var labelEl = document.getElementById('price-range-label');
+    if (labelEl) {
+      labelEl.textContent = '₹' + Number(value).toLocaleString('en-IN');
+    }
+    // Update gradient fill
+    var slider = document.getElementById('price-range');
+    if (slider) {
+      var pct = (value / 50000) * 100;
+      slider.style.background =
+        'linear-gradient(to right, #FF9933 0%, #FF9933 ' + pct + '%, rgba(184,134,11,0.2) ' + pct + '%)';
+    }
+  }
+
+  /* ---- Sort Handler ---- */
+  function handleSort(value) {
+    var labels = {
+      'trending': 'Trending',
+      'price-low': 'Price: Low to High',
+      'price-high': 'Price: High to Low',
+      'rating': 'Rating',
+      'newest': 'Newest'
+    };
+    showToast('↕️ Sorted by: ' + (labels[value] || value));
+  }
+
+  /* ---- Wishlist Handler (store-level wrapper) ---- */
+  function handleWishlist(btn, productName) {
+    var isWishlisted = btn.getAttribute('data-wishlisted') === 'true';
+    if (isWishlisted) {
+      btn.textContent = '🤍';
+      btn.setAttribute('data-wishlisted', 'false');
+      btn.setAttribute('aria-label', 'Add ' + productName + ' to wishlist');
+      showToast('💔 Removed from wishlist: ' + productName);
+    } else {
+      btn.textContent = '❤️';
+      btn.setAttribute('data-wishlisted', 'true');
+      btn.setAttribute('aria-label', 'Remove ' + productName + ' from wishlist');
+      showToast('❤️ Added to wishlist: ' + productName);
+    }
+  }
+
+  /* ---- Add to Cart Handler (store-level wrapper) ---- */
+  function handleAddToCart(productName, price) {
+    // Delegate to global handler if available (defined in main.js)
+    if (typeof cartCount !== 'undefined') {
+      cartCount++;
+      var badge = document.getElementById('cart-badge');
+      if (badge) {
+        badge.textContent = cartCount;
+        badge.style.display = 'inline-flex';
+      }
+    }
+    showToast('🛒 Added to cart: ' + productName + ' — ₹' + Number(price).toLocaleString('en-IN'));
+  }
+
+  /* ---- Init: set initial price range gradient ---- */
+  document.addEventListener('DOMContentLoaded', function() {
+    updatePriceLabel(30000);
+  });
+</script>
+
+</body>
+</html>

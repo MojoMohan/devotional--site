@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Divya Darshan - Your complete spiritual ecosystem. Astrology consultations, spiritual products, online courses, devotional content and sacred tours." />
+  <title>Divya Darshan - Your Spiritual Ecosystem</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕉</text></svg>" />
+</head>
+<body>
+
+<!-- =================== NAVBAR =================== -->
+<header class="navbar" role="banner">
+  <div class="container">
+    <div class="navbar-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="navbar-logo" aria-label="Divya Darshan Home">
+        <div class="logo-icon" aria-hidden="true">🕉</div>
+        <div class="logo-text">
+          Divya Darshan
+          <span>Spiritual Ecosystem</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="navbar-menu" role="navigation" aria-label="Main navigation">
+
+        <div class="nav-item">
+          <a href="#astrotalks" class="nav-link">
+            Astrotalks Platform <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="#astrotalks" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🔭</span> Astrology Consultation
+            </a>
+            <a href="#astrotalks" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📹</span> Video & Audio Calls
+            </a>
+          
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#store" class="nav-link">
+            Spiritual Merchandise Store <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="#store" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🪔</span> Brass Idols
+            </a>
+            <a href="#store" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📿</span> Rudraksha
+            </a>
+            <a href="#store" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🕯️</span> Incense & Rituals
+            </a>
+            <a href="#store" class="dropdown-item" role="menuitem">
+              <span class="item-icon">💎</span> Jewelry & Copper
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#meditation" class="nav-link">
+            Meditation/Yoga<span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="#meditation" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🆓</span> Free Courses
+            </a>
+            <a href="#meditation" class="dropdown-item" role="menuitem">
+              <span class="item-icon">💰</span> Paid Courses
+            </a>
+            <a href="#meditation" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🎥</span> Live & Recorded
+            </a>
+          </div>
+        </div>
+
+        <a href="#content" class="nav-link">Books & Podcasts</a>
+        <a href="#tours" class="nav-link">Devotional Tourism</a>
+
+      </nav>
+
+      <!-- Search Bar 
+      <div class="nav-search" role="search">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          type="search"
+          class="search-input"
+          placeholder="Search astrologers, products..."
+          aria-label="Search"
+        />
+      </div> -->
+
+      <!-- Action Buttons -->
+      <div class="navbar-actions">
+        <button id="theme-toggle" class="nav-action-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+          🌙
+        </button>
+
+      
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-header">
+    <div class="navbar-logo">
+      <div class="logo-icon">🕉</div>
+      <div class="logo-text">Divya Darshan</div>
+    </div>
+    <button id="mobile-nav-close" class="nav-action-btn" aria-label="Close menu" style="font-size:22px">✕</button>
+  </div>
+  <a href="#astrotalks">Astrotalks Platform</a>
+  <a href="#store">Spiritual Merchandise Store</a>
+  <a href="#meditation">Meditation / Yoga</a>
+  <a href="#content">Devotional Books & Audio Podcasts</a>
+  <a href="#tourism">Devotional Tourism</a>
+  <!--<div style="padding-top:16px">
+    <a href="#" class="btn btn-primary" style="display:inline-flex; width:100%; justify-content:center;">Sign In</a>
+  </div>-->
+</nav>
+
+<!-- Toast Container -->
+<div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+<!-- =================== MARQUEE =================== -->
+<div class="marquee-banner" aria-hidden="true">
+  <div class="marquee-track">
+    <!-- Duplicate for seamless loop -->
+    <span class="marquee-item">✨ 500+ Expert Astrologers Online Now</span>
+    <span class="marquee-sep">◆</span>
+    <span class="marquee-item">🕉 First Session Free for New Users</span>
+    <span class="marquee-sep">◆</span>
+    <span class="marquee-item">🛒 Astrology Consultation</span>
+    <span class="marquee-sep">◆</span>
+    <span class="marquee-item">📚 New Meditation Courses Added Weekly</span>
+    <span class="marquee-sep">◆</span>
+    <span class="marquee-item">✈️ Varanasi Tour Packages Starting ₹15,000</span>
+    <span class="marquee-sep">◆</span>
+    <span class="marquee-item">🎵 10,000+ Devotional Tracks Available</span>
+    <span class="marquee-sep">◆</span>
+    <!-- Duplicate set -->
+    <span class="marquee-item">✨ 500+ Expert Astrologers Online Now</span>
+    <span class="marquee-sep">◆</span>
+    <span class="marquee-item">🕉 First Session Free for New Users</span>
+    <span class="marquee-sep">◆</span>
+    <span class="marquee-item">🛒 Astrology Consultation</span>
+    <span class="marquee-sep">◆</span>
+    <span class="marquee-item">📚 New Meditation Courses Added Weekly</span>
+    <span class="marquee-sep">◆</span>
+    <span class="marquee-item">✈️ Varanasi Tour Packages Starting ₹15,000</span>
+    <span class="marquee-sep">◆</span>
+    <span class="marquee-item">🎵 10,000+ Devotional Tracks Available</span>
+    <span class="marquee-sep">◆</span>
+  </div>
+</div>
+
+<!-- =================== HERO =================== -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="container">
+    <div class="hero-inner">
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>🌟</span> India's #1 Spiritual Platform
+        </div>
+
+        <h1 id="hero-heading">
+          Find Your <span class="highlight">Spiritual Path</span><br>
+          &amp; Inner Peace
+        </h1>
+
+        <p>
+          Connect with expert astrologers, discover sacred products, enroll in
+          transformational courses, and embark on soul-nourishing pilgrimages —
+          all in one divine destination.
+        </p>
+
+        <div class="hero-search" role="search">
+          <span aria-hidden="true">🔍</span>
+          <input
+            type="search"
+            class="search-input"
+            placeholder="Search astrologers, products, courses, tours..."
+            aria-label="Search the platform"
+          />
+          <button class="btn btn-primary" onclick="showToast('🔍 Searching...')">
+            Explore
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>50K+</strong>
+            <span>Happy Users</span>
+          </div>
+          <div class="hero-stat">
+            <strong>500+</strong>
+            <span>Astrologers</span>
+          </div>
+          <div class="hero-stat">
+            <strong>1,000+</strong>
+            <span>Products</span>
+          </div>
+          <div class="hero-stat">
+            <strong>4.8★</strong>
+            <span>App Rating</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-image-container">
+          <div class="hero-main-card">
+            <div class="hero-illustration">🕉</div>
+          </div>
+
+          <div class="hero-floating-card">
+            <span class="card-icon">⭐</span>
+            <div class="card-text">
+              <strong>Sharma Jyotishi</strong>
+              <span>4.9★ · Vedic Astrology</span>
+            </div>
+          </div>
+
+          <div class="hero-floating-card">
+            <span class="card-icon">🛒</span>
+            <div class="card-text">
+              <strong>Brass Ganesha Idol</strong>
+              <span>Just Delivered!</span>
+            </div>
+          </div>
+
+          <div class="hero-floating-card">
+            <span class="card-icon">🧘</span>
+            <div class="card-text">
+              <strong>Meditation Course</strong>
+              <span>1,240 Students</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 
+      <div class="product-card fade-up" data-category="clothing">
+        <div class="product-image">
+          🧘
+          <div class="product-badge">Limited</div>
+          <button
+            class="product-wishlist"
+            data-id="prod5"
+            onclick="handleWishlist(this, 'prod5', 'Saffron Silk Meditation Set')"
+            aria-label="Add to wishlist"
+          >💟</button>
+          <div class="product-overlay">
+            <button class="btn btn-primary btn-sm" onclick="handleAddToCart('Saffron Silk Meditation Set', 3499, '🧘')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Spiritual Clothing</div>
+          <div class="product-name">Handwoven Saffron Meditation Set</div>
+          <div class="product-rating">
+            <span class="stars">★★★★☆</span>
+            <span class="rating-value">4.7</span>
+            <span class="review-count">(162 reviews)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">₹3,499</span>
+            <span class="price-original">₹4,399</span>
+            <span class="price-discount">-20%</span>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="handleAddToCart('Saffron Silk Meditation Set', 3499, '🧘')">
+            🛍️ Add to Cart
+          </button>
+        </div>
+      </div>-->
+
+      <!--Product 6 
+      <div class="product-card fade-up" data-category="copper">
+        <div class="product-image">
+          🥣
+          <div class="product-badge">Crafted</div>
+          <button
+            class="product-wishlist"
+            data-id="prod6"
+            onclick="handleWishlist(this, 'prod6', 'Copper Kalash Set')"
+            aria-label="Add to wishlist"
+          >💟</button>
+          <div class="product-overlay">
+            <button class="btn btn-primary btn-sm" onclick="handleAddToCart('Copper Kalash & Thali Set', 1899, '🥣')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Copper Items</div>
+          <div class="product-name">Copper Kalash & Thali Set</div>
+          <div class="product-rating">
+            <span class="stars">★★★★☆</span>
+            <span class="rating-value">4.6</span>
+            <span class="review-count">(143 reviews)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">₹1,899</span>
+            <span class="price-original">₹2,299</span>
+            <span class="price-discount">-17%</span>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="handleAddToCart('Copper Kalash & Thali Set', 1899, '🥣')">
+            🌟 Add to Cart
+          </button>
+        </div>
+      </div> -->
+
+      <!-- Product 7 
+      <div class="product-card fade-up" data-category="jewelry">
+        <div class="product-image">
+          💎
+          <div class="product-badge">Premium</div>
+          <button
+            class="product-wishlist"
+            data-id="prod7"
+            onclick="handleWishlist(this, 'prod7', 'Harmony Gemstone Mala')"
+            aria-label="Add to wishlist"
+          >💟</button>
+          <div class="product-overlay">
+            <button class="btn btn-primary btn-sm" onclick="handleAddToCart('Harmony Gemstone Mala', 4499, '💎')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Spiritual Jewelry</div>
+          <div class="product-name">Harmony Gemstone Mala</div>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-value">4.9</span>
+            <span class="review-count">(205 reviews)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">₹4,499</span>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="handleAddToCart('Harmony Gemstone Mala', 4499, '💎')">
+            💝 Add to Cart
+          </button>
+        </div>
+      </div> -->
+
+      <!-- Course 4 
+      <div class="course-card fade-up" data-type="live">
+        <div class="course-thumbnail live">
+          🧘‍♀️
+          <div class="course-level">Live</div>
+          <div class="course-play-btn">⌛</div>
+        </div>
+        <div class="course-info">
+          <div class="course-category">Live Classes</div>
+          <div class="course-title">Sunrise Pranayama & Yoga Lab</div>
+          <div class="course-instructor">
+            <div class="instructor-avatar">SR</div>
+            <span>Shakti Ramesh</span>
+          </div>
+          <div class="course-meta">
+            <span>⏱ 2 hours</span>
+            <span>🗓️ 5 live sessions</span>
+            <span class="stars">★★★★☆</span>
+            <span>4.8</span>
+          </div>
+          <div class="course-footer">
+            <span class="price-current">₹499 / session</span>
+            <span class="course-students">👥 320 live seats</span>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:12px;" onclick="handleEnrollCourse('Sunrise Pranayama & Yoga Lab')">
+            Join Live
+          </button>
+        </div>
+      </div>-->
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== PLATFORM MODULES =================== -->
+<section class="section bg-alt" id="modules" aria-labelledby="modules-heading">
+  <div class="container">
+    <div class="section-header">
+      <h2 id="modules-heading">Everything for Your Spiritual Journey</h2>
+      <p>Explore our five core modules — each crafted to nurture your spiritual growth and well-being</p>
+    </div>
+
+    <div class="modules-grid">
+
+      <a href="#astrotalks" class="module-card fade-up">
+        <div class="module-card-content">
+          <div class="module-icon">🔭</div>
+          <h3>Astrology Consultations</h3>
+          <p>Connect live with 500+ expert astrologers via chat, audio, or video. Pay per minute with full session history.</p>
+          <span class="module-link">Consult Now →</span>
+        </div>
+      </a>
+
+      <a href="#store" class="module-card fade-up">
+        <div class="module-card-content">
+          <div class="module-icon">🪔</div>
+          <h3>Spiritual Products</h3>
+          <p>Authentic brass idols, rudraksha, pooja items, incense, and spiritual jewelry — curated and certified.</p>
+          <span class="module-link">Shop Now →</span>
+        </div>
+      </a>
+
+      <a href="#meditation" class="module-card fade-up">
+        <div class="module-card-content">
+          <div class="module-icon">📚</div>
+          <h3>Online Courses</h3>
+          <p>Learn yoga, meditation, Vedic studies, and more from certified instructors. Get certificates on completion.</p>
+          <span class="module-link">Enroll Free →</span>
+        </div>
+      </a>
+
+      <a href="#content" class="module-card fade-up">
+        <div class="module-card-content">
+          <div class="module-icon">🎵</div>
+          <h3>Content Library</h3>
+          <p>Stream 10,000+ devotional chants, guided meditations, ebooks, and podcasts in multiple languages.</p>
+          <span class="module-link">Listen Now →</span>
+        </div>
+      </a>
+
+      <a href="#tourism" class="module-card fade-up">
+        <div class="module-card-content">
+          <div class="module-icon">✈️</div>
+          <h3>Devotional Tours</h3>
+          <p>Curated spiritual tour packages — Varanasi, Tirupati, Kedarnath, and more with flexible EMI options.</p>
+          <span class="module-link">Explore Tours →</span>
+        </div>
+      </a>
+
+      <a href="#" class="module-card fade-up">
+        <div class="module-card-content">
+          <div class="module-icon">👤</div>
+          <h3>My Spiritual Hub</h3>
+          <p>Manage your wallet, sessions, orders, course progress, and bookings all in one personalized dashboard.</p>
+          <span class="module-link">Go to Dashboard →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== STATS BANNER =================== -->
+<div class="stats-section" aria-label="Platform statistics">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-up">
+        <strong>50,000+</strong>
+        <span>Users</span>
+      </div>
+      <div class="stat-item fade-up">
+        <strong>500+</strong>
+        <span>Expert Astrologers</span>
+      </div>
+      <div class="stat-item fade-up">
+        <strong>₹5 Cr+</strong>
+        <span>Transactions Processed</span>
+      </div>
+      <div class="stat-item fade-up">
+        <strong>4.8★</strong>
+        <span>Average Rating</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== ASTROTALKS PLATFORM =================== -->
+<section class="section" id="astrotalks" aria-labelledby="astrotalks-heading">
+  <div class="container">
+    <div class="section-actions">
+      <div>
+        <h2 id="astrotalks-heading">Astrotalks Platform</h2>
+        <p style="color: var(--color-text-light); margin-top: 4px; font-size: 15px;">
+          Book astrology consultations, switch to video/audio calls anytime, and let our chatbot connect you with an agent when you need personalized guidance.
+        </p>
+      </div>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <span class="badge" style="display:inline-flex; padding:4px 10px; font-size:12px;">Pay per minute</span>
+        <a href="#" class="btn btn-secondary">View All Astrologers →</a>
+      </div>
+    </div>
+
+    <div class="astrotalk-features">
+  
+      <article onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });" style="cursor: pointer;">
+        <div class="feature-icon">🗓️</div>
+        <h3>Book Astrology Consultations</h3>
+        <p>Choose from live Vedic, Tarot, numerology and palmistry sessions with transparent per-minute billing.</p>
+      </article>
+      <article onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });" style="cursor: pointer;">
+        <div class="feature-icon">🎥</div>
+        <h3>Video & Audio Calls</h3>
+        <p>Switch between chat, audio, or video mid-session without losing context or session history.</p>
+      </article>
+      <article onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });" style="cursor: pointer;">
+        <div class="feature-icon">🤖</div>
+        <h3>Chatbot</h3>
+        <p>Our AI concierge answers FAQs instantly and escalates to a human astrologer when you request deeper insight.</p>
+      </article>
+    </div>
+
+    <div class="astrologers-grid">
+
+      <div class="astrologer-card fade-up">
+        <div class="astrologer-avatar">
+          🧙
+          <div class="astrologer-status" title="Online"></div>
+        </div>
+        <h4>Pandit Sharma Ji</h4>
+        <div class="astrologer-specialization">Vedic Astrology</div>
+        <div class="astrologer-meta">
+          <span class="exp">⏱ 12 yrs exp</span>
+          <span>🗣 Hindi, English</span>
+        </div>
+        <div class="astrologer-meta" style="margin-bottom: 8px;">
+          <span class="stars">★★★★★</span>
+          <span class="rating-value">4.9</span>
+          <span style="color: var(--color-text-light)">(284 reviews)</span>
+        </div>
+        <div class="astrologer-price">₹600 <span>/minute</span></div>
+        <div class="astrologer-actions">
+          <button class="btn btn-secondary btn-sm" onclick="handleBookSession('Pandit Sharma Ji')">💬 Chat</button>
+          <button class="btn btn-primary btn-sm" onclick="handleBookSession('Pandit Sharma Ji')">📞 Call</button>
+        </div>
+      </div>
+
+      <div class="astrologer-card fade-up">
+        <div class="astrologer-avatar">
+          🌙
+          <div class="astrologer-status" title="Online"></div>
+        </div>
+        <h4>Devi Meera Ji</h4>
+        <div class="astrologer-specialization">Tarot Reading</div>
+        <div class="astrologer-meta">
+          <span class="exp">⏱ 8 yrs exp</span>
+          <span>🗣 Hindi, Tamil</span>
+        </div>
+        <div class="astrologer-meta" style="margin-bottom: 8px;">
+          <span class="stars">★★★★★</span>
+          <span class="rating-value">4.8</span>
+          <span style="color: var(--color-text-light)">(192 reviews)</span>
+        </div>
+        <div class="astrologer-price">₹450 <span>/minute</span></div>
+        <div class="astrologer-actions">
+          <button class="btn btn-secondary btn-sm" onclick="handleBookSession('Devi Meera Ji')">💬 Chat</button>
+          <button class="btn btn-primary btn-sm" onclick="handleBookSession('Devi Meera Ji')">📞 Call</button>
+        </div>
+      </div>
+
+      <div class="astrologer-card fade-up">
+        <div class="astrologer-avatar">
+          ⭐
+          <div class="astrologer-status" title="Online"></div>
+        </div>
+        <h4>Guru Raghav Das</h4>
+        <div class="astrologer-specialization">Numerology</div>
+        <div class="astrologer-meta">
+          <span class="exp">⏱ 15 yrs exp</span>
+          <span>🗣 English, Bengali</span>
+        </div>
+        <div class="astrologer-meta" style="margin-bottom: 8px;">
+          <span class="stars">★★★★★</span>
+          <span class="rating-value">4.9</span>
+          <span style="color: var(--color-text-light)">(341 reviews)</span>
+        </div>
+        <div class="astrologer-price">₹800 <span>/minute</span></div>
+        <div class="astrologer-actions">
+          <button class="btn btn-secondary btn-sm" onclick="handleBookSession('Guru Raghav Das')">💬 Chat</button>
+          <button class="btn btn-primary btn-sm" onclick="handleBookSession('Guru Raghav Das')">📞 Call</button>
+        </div>
+      </div>
+
+      <div class="astrologer-card fade-up">
+        <div class="astrologer-avatar">
+          🌸
+          <div class="astrologer-status offline" title="Busy"></div>
+        </div>
+        <h4>Aacharya Priya</h4>
+        <div class="astrologer-specialization">Palmistry</div>
+        <div class="astrologer-meta">
+          <span class="exp">⏱ 6 yrs exp</span>
+          <span>🗣 Hindi, Marathi</span>
+        </div>
+        <div class="astrologer-meta" style="margin-bottom: 8px;">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-value">4.5</span>
+          <span style="color: var(--color-text-light)">(127 reviews)</span>
+        </div>
+        <div class="astrologer-price">₹350 <span>/minute</span></div>
+        <div class="astrologer-actions">
+          <button class="btn btn-secondary btn-sm" onclick="handleBookSession('Aacharya Priya')">💬 Chat</button>
+          <button class="btn btn-primary btn-sm" onclick="handleBookSession('Aacharya Priya')">📅 Book</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== SPIRITUAL MERCHANDISE STORE =================== -->
+<section class="section bg-alt" id="store" aria-labelledby="products-heading">
+  <div class="container">
+    <div class="section-actions">
+      <div>
+        <h2 id="products-heading">Spiritual Merchandise Store</h2>
+        <p style="color: var(--color-text-light); margin-top: 4px; font-size: 15px;">
+          Shop brass idols, pooja essentials, rudraksha, incense, spiritual clothing, copperware, and jewelry that honors your devotion.
+        </p>
+      </div>
+      <a href="#" class="btn btn-secondary">Explore All Merchandise →</a>
+    </div>
+
+    <div class="store-categories" role="tablist" aria-label="Product categories">
+      <button type="button" class="category-chip active" data-category="all">All</button>
+      <button type="button" class="category-chip" data-category="brass">Brass Idols</button>
+      <button type="button" class="category-chip" data-category="rudraksha">Rudraksha</button>
+      <button type="button" class="category-chip" data-category="pooja">Pooja Items</button>
+      <button type="button" class="category-chip" data-category="incense">Incense</button>
+      <button type="button" class="category-chip" data-category="clothing">Spiritual Clothing</button>
+      <button type="button" class="category-chip" data-category="copper">Copper Items</button>
+      <button type="button" class="category-chip" data-category="jewelry">Spiritual Jewelry</button>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- Product 1 -->
+      <div class="product-card fade-up" data-category="brass">
+        <div class="product-image">
+          🙏
+          <div class="product-badge">-23% OFF</div>
+          <button
+            class="product-wishlist"
+            data-id="prod1"
+            onclick="handleWishlist(this, 'prod1', 'Brass Ganesha Idol')"
+            aria-label="Add to wishlist"
+          >🤍</button>
+          <div class="product-overlay">
+            <button class="btn btn-primary btn-sm" onclick="handleAddToCart('Brass Ganesha Idol', 999, '🙏')">Enquiry Now</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Brass Idols</div>
+          <div class="product-name">Brass Ganesha Idol (6")</div>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-value">4.6</span>
+            <span class="review-count">(84 reviews)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">₹999</span>
+            <span class="price-original">₹1,299</span>
+            <span class="price-discount">-23%</span>
+          </div>
+            <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });">
+            🛒 Enquiry Now
+            </button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card fade-up" data-category="rudraksha">
+        <div class="product-image">
+          📿
+          <div class="product-badge">-33% OFF</div>
+          <button
+            class="product-wishlist"
+            data-id="prod2"
+            onclick="handleWishlist(this, 'prod2', '5-Mukhi Rudraksha')"
+            aria-label="Add to wishlist"
+          >🤍</button>
+          <div class="product-overlay">
+            <button class="btn btn-primary btn-sm" onclick="handleAddToCart('5-Mukhi Rudraksha', 799, '📿')">Enquiry Now</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Rudraksha</div>
+          <div class="product-name">5-Mukhi Rudraksha Mala</div>
+          <div class="product-rating">
+            <span class="stars">★★★★☆</span>
+            <span class="rating-value">4.3</span>
+            <span class="review-count">(56 reviews)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">₹799</span>
+            <span class="price-original">₹1,199</span>
+            <span class="price-discount">-33%</span>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });"> 
+             🛒 Enquiry Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card fade-up" data-category="incense">
+        <div class="product-image">
+          🕯️
+          <div class="product-badge new">NEW</div>
+          <button
+            class="product-wishlist"
+            data-id="prod3"
+            onclick="handleWishlist(this, 'prod3', 'Sandalwood Incense')"
+            aria-label="Add to wishlist"
+          >🤍</button>
+          <div class="product-overlay">
+            <button class="btn btn-primary btn-sm" onclick="handleAddToCart('Sandalwood Incense', 299, '🕯️')">Enquiry Now</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Incense & Dhoop</div>
+          <div class="product-name">Sandalwood Incense (100 Sticks)</div>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-value">4.8</span>
+            <span class="review-count">(212 reviews)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">₹299</span>
+            <span class="price-original">₹399</span>
+            <span class="price-discount">-25%</span>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });">
+            🛒 Enquiry Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card fade-up" data-category="pooja">
+        <div class="product-image">
+          🔔
+          <div class="product-badge">-20% OFF</div>
+          <button
+            class="product-wishlist"
+            data-id="prod4"
+            onclick="handleWishlist(this, 'prod4', 'Pooja Bell Set')"
+            aria-label="Add to wishlist"
+          >🤍</button>
+          <div class="product-overlay">
+            <button class="btn btn-primary btn-sm" onclick="handleAddToCart('Pooja Bell Set', 599, '🔔')">Enquiry Now</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Pooja Items</div>
+          <div class="product-name">Brass Pooja Bell Set</div>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-value">4.7</span>
+            <span class="review-count">(98 reviews)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">₹599</span>
+            <span class="price-original">₹749</span>
+            <span class="price-discount">-20%</span>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });">
+            🛒 Enquiry Now
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== MEDITATION / YOGA PLATFORM =================== -->
+<section class="section" id="meditation" aria-labelledby="courses-heading">
+  <div class="container">
+    <div class="section-actions">
+      <div>
+        <h2 id="courses-heading">Meditation / Yoga Platform</h2>
+        <p style="color: var(--color-text-light); margin-top: 4px; font-size: 15px;">
+          Free and paid courses, live classes, and recorded programs guided by certified instructors, yogis, and sages.
+        </p>
+      </div>
+      <a href="#" class="btn btn-secondary">Browse Curriculum →</a>
+    </div>
+
+    <div class="course-tabs" role="tablist" aria-label="Course types">
+      <button type="button" class="course-tab active" data-filter="all">All</button>
+      <button type="button" class="course-tab" data-filter="free">Free Courses</button>
+      <button type="button" class="course-tab" data-filter="paid">Paid Courses</button>
+      <button type="button" class="course-tab" data-filter="live">Live Classes</button>
+      <button type="button" class="course-tab" data-filter="recorded">Recorded Programs</button>
+    </div>
+
+    <div class="courses-grid">
+
+      <!-- Course 1 -->
+      <div class="course-card fade-up" data-type="free">
+        <div class="course-thumbnail">
+          🧘
+          <div class="course-level">Beginner</div>
+          <div class="course-play-btn">▶</div>
+        </div>
+        <div class="course-info">
+          <div class="course-category">Meditation</div>
+          <div class="course-title">Complete Mindfulness Meditation Mastery</div>
+          <div class="course-instructor">
+            <div class="instructor-avatar">SK</div>
+            <span>Swami Krishnananda</span>
+          </div>
+          <div class="course-meta">
+            <span>⏱ 12 hours</span>
+            <span>📖 48 lessons</span>
+            <span class="stars">★★★★★</span>
+            <span>4.9</span>
+          </div>
+          <div class="course-footer">
+            <span class="course-price-free">FREE</span>
+            <span class="course-students">👥 2,450 students</span>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:12px;" onclick="handleEnrollCourse('Complete Mindfulness Meditation Mastery')">
+            Enroll Free
+          </button>
+        </div>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="course-card fade-up" data-type="paid">
+        <div class="course-thumbnail green">
+          🌿
+          <div class="course-level">Intermediate</div>
+          <div class="course-play-btn">▶</div>
+        </div>
+        <div class="course-info">
+          <div class="course-category">Yoga</div>
+          <div class="course-title">Advanced Hatha Yoga — Body, Mind & Soul</div>
+          <div class="course-instructor">
+            <div class="instructor-avatar">YP</div>
+            <span>Yoga Priya Devi</span>
+          </div>
+          <div class="course-meta">
+            <span>⏱ 18 hours</span>
+            <span>📖 72 lessons</span>
+            <span class="stars">★★★★★</span>
+            <span>4.8</span>
+          </div>
+          <div class="course-footer">
+            <span class="price-current">₹1,999</span>
+            <span class="course-students">👥 1,820 students</span>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:12px;" onclick="handleEnrollCourse('Advanced Hatha Yoga')">
+            Enroll Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="course-card fade-up" data-type="recorded">
+        <div class="course-thumbnail saffron">
+          📜
+          <div class="course-level">All Levels</div>
+          <div class="course-play-btn">▶</div>
+        </div>
+        <div class="course-info">
+          <div class="course-category">Vedic Studies</div>
+          <div class="course-title">Introduction to Vedic Astrology & Jyotish</div>
+          <div class="course-instructor">
+            <div class="instructor-avatar">RS</div>
+            <span>Rishi Suryansh</span>
+          </div>
+          <div class="course-meta">
+            <span>⏱ 24 hours</span>
+            <span>📖 96 lessons</span>
+            <span class="stars">★★★★★</span>
+            <span>4.9</span>
+          </div>
+          <div class="course-footer">
+            <span class="price-current">₹2,999</span>
+            <span class="course-students">👥 3,100 students</span>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:12px;" onclick="handleEnrollCourse('Introduction to Vedic Astrology')">
+            Enroll Now
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== CONTENT LIBRARY =================== -->
+<section class="section bg-alt" id="content" aria-labelledby="content-heading">
+  <div class="container">
+    <div class="section-header">
+      <h2 id="content-heading">Spiritual Content Library</h2>
+      <p>Stream, download, and build playlists from our vast collection of sacred content</p>
+    </div>
+
+    <div class="content-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+
+      <div class="content-card fade-up" onclick="showToast('🎵 Opening Devotional Chants...')">
+        <span class="content-icon">🎶</span>
+        <h4>Devotional Chants</h4>
+        <p>Sanskrit mantras, bhajans, and kirtan from revered traditions across India</p>
+        <span class="content-count">3,200+ Tracks</span>
+      </div>
+
+      <div class="content-card fade-up" onclick="showToast('📿 Opening Mantras & Shlokas...')">
+        <span class="content-icon">📿</span>
+        <h4>Mantras & Shlokas</h4>
+        <p>Panchakshari, Gayatri, and sacred verses for chanting rituals.</p>
+        <span class="content-count">1,900+ Verses</span>
+      </div>
+
+      <div class="content-card fade-up" onclick="showToast('🧘 Opening Guided Meditations...')">
+        <span class="content-icon">🧘</span>
+        <h4>Guided Meditations</h4>
+        <p>Expert-led sessions for stress relief, sleep, focus, and spiritual awakening</p>
+        <span class="content-count">450+ Sessions</span>
+      </div>
+
+    </div>
+
+    <div class="content-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 64px; margin-top: 32px;">
+
+      <div class="content-card fade-up" onclick="showToast('📖 Opening Ebooks...')">
+        <span class="content-icon">📖</span>
+        <h4>Ebooks & Audiobooks</h4>
+        <p>Ancient scriptures, spiritual philosophy, and modern self-help classics</p>
+        <span class="content-count">800+ Titles</span>
+      </div>
+
+      <div class="content-card fade-up" onclick="showToast('🎙 Opening Podcasts...')">
+        <span class="content-icon">🎙</span>
+        <h4>Spiritual Podcasts</h4>
+        <p>Weekly talks by thought leaders, saints, and spiritual teachers worldwide</p>
+        <span class="content-count">1,200+ Episodes</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== DEVOTIONAL TOURS =================== -->
+<section class="section" id="tours" aria-labelledby="tours-heading">
+  <div class="container">
+    <div class="section-actions">
+      <div>
+        <h2 id="tours-heading">Devotional Tour Packages</h2>
+        <p style="color: var(--color-text-light); margin-top: 4px; font-size: 15px;">
+          Curated spiritual journeys with EMI options available
+        </p>
+      </div>
+      <a href="#tourism" class="btn btn-secondary">View All Packages →</a>
+    </div>
+
+    <div class="tours-grid">
+
+      <!-- Tour 1 -->
+      <div class="tour-card fade-up">
+        <div class="tour-image varanasi">
+          🛕
+          <div class="tour-badge">🔥 Best Seller</div>
+        </div>
+        <div class="tour-info">
+          <div class="tour-destination">Uttar Pradesh</div>
+          <div class="tour-title">Varanasi — City of Light &amp; Moksha</div>
+          <div class="tour-meta">
+            <span>📅 5 Days / 4 Nights</span>
+            <span>👥 Group &amp; Private</span>
+          </div>
+          <div class="tour-meta">
+            <span class="stars">★★★★★</span>
+            <span class="rating-value">4.9</span>
+            <span style="color: var(--color-text-light)">(248 bookings)</span>
+          </div>
+          <div class="tour-footer">
+            <div class="tour-price">
+              ₹18,999
+              <small>Per person (incl. GST)</small>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="handleBookTour('Varanasi')">Book Now</button>
+          </div>
+          <div class="tour-details-grid">
+            <div>
+              <strong>Duration</strong>
+              <p>5 Days / 4 Nights</p>
+            </div>
+            <div>
+              <strong>Pricing</strong>
+              <p>₹18,999 per person (includes accommodation, transfers, meals)</p>
+            </div>
+          </div>
+          <div class="tour-itinerary">
+            <strong>Itinerary</strong>
+            <ul>
+              <li>Day 1 · Ganga Aarti, evening Ganga arti cruise</li>
+              <li>Day 2 · Sarnath sunrise vichar & Ganga ghats</li>
+              <li>Day 3 · Kashi Vishwanath darshan & cultural walk</li>
+            </ul>
+          </div>
+          <div class="tour-gallery" aria-label="Varanasi gallery">
+            <span class="tour-gallery-thumb varanasi-1" title="Ganga Sunrise"></span>
+            <span class="tour-gallery-thumb varanasi-2" title="Sarnath Stupa"></span>
+            <span class="tour-gallery-thumb varanasi-3" title="Evening Aarti"></span>
+          </div>
+          <div class="tour-emi">EMI from ₹1,584/month</div>
+        </div>
+      </div>
+
+      <!-- Tour 2 -->
+      <div class="tour-card fade-up">
+        <div class="tour-image kedarnath">
+          🏔️
+          <div class="tour-badge">❄️ Limited Slots</div>
+        </div>
+        <div class="tour-info">
+          <div class="tour-destination">Uttarakhand</div>
+          <div class="tour-title">Char Dham Yatra — Divine Himalayan Circuit</div>
+          <div class="tour-meta">
+            <span>📅 12 Days / 11 Nights</span>
+            <span>👥 Group Tour</span>
+          </div>
+          <div class="tour-meta">
+            <span class="stars">★★★★★</span>
+            <span class="rating-value">4.8</span>
+            <span style="color: var(--color-text-light)">(184 bookings)</span>
+          </div>
+          <div class="tour-footer">
+            <div class="tour-price">
+              ₹45,999
+              <small>Per person (incl. GST)</small>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="handleBookTour('Char Dham Yatra')">Book Now</button>
+          </div>
+          <div class="tour-details-grid">
+            <div>
+              <strong>Duration</strong>
+              <p>12 Days / 11 Nights</p>
+            </div>
+            <div>
+              <strong>Pricing</strong>
+              <p>₹45,999 per person (covers travel, pujas, accommodation)</p>
+            </div>
+          </div>
+          <div class="tour-itinerary">
+            <strong>Itinerary</strong>
+            <ul>
+              <li>Day 1 · Haridwar Ganga puja & stay</li>
+              <li>Day 4 · Yamunotri & Gangotri darshan</li>
+              <li>Day 9 · Badrinath meditation & Yagya</li>
+            </ul>
+          </div>
+          <div class="tour-gallery" aria-label="Char Dham gallery">
+            <span class="tour-gallery-thumb kedarnath-1" title="Yamunotri"></span>
+            <span class="tour-gallery-thumb kedarnath-2" title="Gangotri"></span>
+            <span class="tour-gallery-thumb kedarnath-3" title="Badrinath"></span>
+          </div>
+          <div class="tour-emi">EMI from ₹3,834/month</div>
+        </div>
+      </div>
+
+      <!-- Tour 3 -->
+      <div class="tour-card fade-up">
+        <div class="tour-image tirupati">
+          🌺
+          <div class="tour-badge">🌟 Premium</div>
+        </div>
+        <div class="tour-info">
+          <div class="tour-destination">Andhra Pradesh</div>
+          <div class="tour-title">Tirupati Balaji — Darshan &amp; Blessings</div>
+          <div class="tour-meta">
+            <span>📅 3 Days / 2 Nights</span>
+            <span>👥 Group &amp; Private</span>
+          </div>
+          <div class="tour-meta">
+            <span class="stars">★★★★★</span>
+            <span class="rating-value">4.9</span>
+            <span style="color: var(--color-text-light)">(320 bookings)</span>
+          </div>
+          <div class="tour-footer">
+            <div class="tour-price">
+              ₹12,999
+              <small>Per person (incl. GST)</small>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="handleBookTour('Tirupati')">Book Now</button>
+          </div>
+          <div class="tour-details-grid">
+            <div>
+              <strong>Duration</strong>
+              <p>3 Days / 2 Nights</p>
+            </div>
+            <div>
+              <strong>Pricing</strong>
+              <p>₹12,999 per person (includes darshan & accommodations)</p>
+            </div>
+          </div>
+          <div class="tour-itinerary">
+            <strong>Itinerary</strong>
+            <ul>
+              <li>Day 1 · Tirupati darshan & prasadam</li>
+              <li>Day 2 · Akhanda Bhajan & Alipiri climb</li>
+              <li>Day 3 · Temple sanctuary visits & return</li>
+            </ul>
+          </div>
+          <div class="tour-gallery" aria-label="Tirupati gallery">
+            <span class="tour-gallery-thumb tirupati-1" title="Balaji Temple"></span>
+            <span class="tour-gallery-thumb tirupati-2" title="Alipiri Trail"></span>
+            <span class="tour-gallery-thumb tirupati-3" title="Temple Prasadam"></span>
+          </div>
+          <div class="tour-emi">EMI from ₹1,084/month</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== CONTACT BOOKING FORM =================== -->
+<section class="section" id="booking" aria-labelledby="booking-heading">
+  <div class="container">
+    <div class="section-header">
+      <h2 id="booking-heading">Contact Booking Form</h2>
+      <p>Share your preferred service, payment option, and schedule so our team can confirm the session or tour.</p>
+    </div>
+
+    <form id="booking-form" class="booking-form" novalidate>
+      <div class="form-grid">
+        <label class="form-field">
+          <span>Full Name</span>
+          <input type="text" name="fullName" placeholder="e.g., Shalini Sharma" required />
+        </label>
+        <label class="form-field">
+          <span>Email Address</span>
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+        <label class="form-field">
+          <span>Phone Number</span>
+          <input type="tel" name="phone" placeholder="+91 98765 43210" required />
+        </label>
+        <label class="form-field">
+          <span>Preferred Date</span>
+          <input type="date" name="preferredDate" required />
+        </label>
+        <label class="form-field">
+          <span>Platform / Service</span>
+          <select name="platform" required>
+            <option value="">Select platform</option>
+            <option value="astrotalks">Astrotalks Platform</option>
+            <option value="merchandise">Spiritual Merchandise Store</option>
+            <option value="meditation">Meditation / Yoga Platform</option>
+            <option value="content">Devotional Books & Audio Podcasts</option>
+            <option value="tourism">Devotional Tourism</option>
+          </select>
+        </label>
+        <label class="form-field">
+          <span>Service / Package</span>
+          <input type="text" name="serviceDetails" placeholder="e.g., Varanasi Package, Tarot Call" />
+        </label>
+        <label class="form-field form-field-full">
+          <span>Additional Notes</span>
+          <textarea name="notes" rows="3" placeholder="Tell us about your intention, questions, or special requests"></textarea>
+        </label>
+      </div>
+      <div class="booking-payment">
+        <strong>Booking Options</strong>
+        <p>Choose how you would like to pay:</p>
+        <div class="payment-options" role="radiogroup" aria-label="Booking payment options">
+          <label><input type="radio" name="paymentOption" value="full" checked /> Pay full amount</label>
+          <label><input type="radio" name="paymentOption" value="advance" /> Pay advance</label>
+          <label><input type="radio" name="paymentOption" value="emi" /> EMI option</label>
+        </div>
+      </div>
+      <div class="form-footer">
+        <button type="submit" class="btn btn-primary">Submit Booking Request</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- =================== TESTIMONIALS =================== -->
+<section class="section testimonials-section" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <div class="section-header">
+      <h2 id="testimonials-heading">What Our Community Says</h2>
+      <p>Join 50,000+ spiritual seekers who have transformed their lives with Divya Darshan</p>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">
+          <span class="stars" style="font-size:18px">★★★★★</span>
+        </div>
+        <p class="testimonial-text">
+          "Pandit Sharma Ji's reading was incredibly accurate. He predicted my career change
+          months before it happened! The platform is smooth and the session was so easy to set up."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div class="author-info">
+            <strong>Rajesh Kumar</strong>
+            <span>Mumbai · Vedic Astrology Session</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">
+          <span class="stars" style="font-size:18px">★★★★★</span>
+        </div>
+        <p class="testimonial-text">
+          "The meditation course completely transformed my morning routine. I sleep better,
+          feel calmer, and my productivity has gone through the roof. Absolutely life-changing!"
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div class="author-info">
+            <strong>Priya Sharma</strong>
+            <span>Bangalore · Meditation Course</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">
+          <span class="stars" style="font-size:18px">★★★★★</span>
+        </div>
+        <p class="testimonial-text">
+          "The Varanasi tour was everything I prayed for and more. Ganga Aarti at dawn was
+          simply divine. Everything was organized perfectly — hotels, transport, and the guide."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div class="author-info">
+            <strong>Ananya Patel</strong>
+            <span>Delhi · Varanasi Yatra Tour</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== NEWSLETTER =================== -->
+<section class="newsletter-section" aria-labelledby="newsletter-heading">
+  <div class="container">
+    <div class="newsletter-inner">
+      <h2 id="newsletter-heading">Begin Your Spiritual Journey Today</h2>
+      <p>Subscribe to receive weekly horoscopes, new course announcements, exclusive deals, and spiritual wisdom.</p>
+      <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)" novalidate>
+        <input type="email" placeholder="Enter your email address" aria-label="Email address" required />
+        <button type="submit" class="btn btn-primary">
+          🙏 Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <div class="logo-text">🕉 Divya Darshan</div>
+        <p>
+          India's complete spiritual ecosystem — connecting you with expert astrologers,
+          authentic products, transformational courses, sacred content, and divine tours.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook">📘</a>
+          <a href="#" class="social-link" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+          <a href="#" class="social-link" aria-label="YouTube">📺</a>
+          <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+
+      <!-- Platform Links -->
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#astrotalks">✨ Astrology</a></li>
+          <li><a href="#store">🛒 Spiritual Shop</a></li>
+          <li><a href="#meditation">📚 Online Courses</a></li>
+          <li><a href="#content">🎵 Content Library</a></li>
+          <li><a href="#tourism">✈️ Devotional Tours</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Become an Astrologer</a></li>
+          <li><a href="#">Become a Seller</a></li>
+          <li><a href="#">Blog & Articles</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Kit</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Links -->
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Divya Darshan. All rights reserved. 🕉 Made with ❤️ in India</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =================== JAVASCRIPT =================== -->
+<script src="js/main.js"></script>
+
+</body>
+</html>

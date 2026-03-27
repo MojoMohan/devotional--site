@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Divya Darshan Astrotalks — Connect with 500+ expert astrologers via chat, audio and video call. Vedic Astrology, Tarot, Numerology, Palmistry and more." />
+  <title>Astrotalks — Divya Darshan</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕉</text></svg>" />
+</head>
+<body>
+
+<!-- =================== NAVBAR =================== -->
+<header class="navbar" role="banner">
+  <div class="container">
+    <div class="navbar-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="navbar-logo" aria-label="Divya Darshan Home">
+        <div class="logo-icon" aria-hidden="true">🕉</div>
+        <div class="logo-text">
+          Divya Darshan
+          <span>Spiritual Ecosystem</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="navbar-menu" role="navigation" aria-label="Main navigation">
+
+        <div class="nav-item">
+          <a href="astrotalks.html" class="nav-link active">
+            🔭 Astrotalks <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🔭</span> Vedic Astrology
+            </a>
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🃏</span> Tarot Reading
+            </a>
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🔢</span> Numerology
+            </a>
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">✋</span> Palmistry
+            </a>
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🏠</span> Vastu Shastra
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="store.html" class="nav-link">
+            🛒 Store <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🪔</span> Brass Idols
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📿</span> Rudraksha
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🌸</span> Pooja Items
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">💎</span> Spiritual Jewelry
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="meditation.html" class="nav-link">
+            🧘 Meditation &amp; Yoga <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🧘</span> Yoga &amp; Meditation
+            </a>
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📖</span> Vedic Studies
+            </a>
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🕉</span> Spirituality
+            </a>
+          </div>
+        </div>
+
+        <a href="content.html" class="nav-link">📚 Books &amp; Audio</a>
+        <a href="tourism.html" class="nav-link">✈️ Tourism</a>
+
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="nav-search" role="search">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          type="search"
+          class="search-input"
+          placeholder="Search astrologers, specializations..."
+          aria-label="Search astrologers"
+        />
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="navbar-actions">
+        <button id="theme-toggle" class="nav-action-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+          🌙
+        </button>
+
+        <button class="nav-action-btn" aria-label="Shopping cart" title="Shopping Cart" onclick="showToast('🛒 Your cart has ' + cartCount + ' item(s)')">
+          🛒
+          <span id="cart-badge" class="badge" style="display:none">0</span>
+        </button>
+
+        <a href="#" class="btn btn-primary btn-sm">Sign In</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-header">
+    <div class="navbar-logo">
+      <div class="logo-icon">🕉</div>
+      <div class="logo-text">Divya Darshan</div>
+    </div>
+    <button id="mobile-nav-close" class="nav-action-btn" aria-label="Close menu" style="font-size:22px">✕</button>
+  </div>
+  <a href="astrotalks.html" style="color:var(--color-primary-saffron);font-weight:700">🔭 Astrotalks</a>
+  <a href="store.html">🛒 Store</a>
+  <a href="meditation.html">🧘 Meditation &amp; Yoga</a>
+  <a href="content.html">📚 Books &amp; Audio</a>
+  <a href="tourism.html">✈️ Tourism</a>
+  <div style="padding-top:16px">
+    <a href="#" class="btn btn-primary" style="display:inline-flex; width:100%; justify-content:center;">Sign In</a>
+  </div>
+</nav>
+
+<!-- Toast Container -->
+<div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+<!-- =================== PAGE HERO =================== -->
+<section class="page-hero" aria-labelledby="page-hero-heading">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <div class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span>Astrotalks</span>
+        </div>
+        <h1 id="page-hero-heading">🔭 Astrotalks Platform</h1>
+        <p>Connect with 500+ expert astrologers via chat, audio &amp; video call. Get personalised guidance on career, relationships, health, finance &amp; more — available 24/7.</p>
+        <div style="display:flex;align-items:center;gap:20px;margin-top:20px;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--color-text-dark);">
+            <span style="width:10px;height:10px;border-radius:50%;background:var(--color-success);display:inline-block;"></span>
+            <strong>342</strong> Astrologers Online Now
+          </div>
+          <div style="font-size:14px;color:var(--color-text-light);">⭐ <strong style="color:var(--color-text-dark)">4.8</strong> Average Rating &nbsp;·&nbsp; 🛡️ 100% Secure Payments</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap;">
+        <div style="background:var(--color-primary-white);border:1px solid rgba(184,134,11,0.15);border-radius:var(--radius-xl);padding:20px 24px;text-align:center;min-width:100px;">
+          <div style="font-size:28px;font-weight:700;color:var(--color-primary-saffron);font-family:var(--font-serif)">500+</div>
+          <div style="font-size:12px;color:var(--color-text-light);margin-top:4px;">Astrologers</div>
+        </div>
+        <div style="background:var(--color-primary-white);border:1px solid rgba(184,134,11,0.15);border-radius:var(--radius-xl);padding:20px 24px;text-align:center;min-width:100px;">
+          <div style="font-size:28px;font-weight:700;color:var(--color-primary-saffron);font-family:var(--font-serif)">2M+</div>
+          <div style="font-size:12px;color:var(--color-text-light);margin-top:4px;">Consultations</div>
+        </div>
+        <div style="background:var(--color-primary-white);border:1px solid rgba(184,134,11,0.15);border-radius:var(--radius-xl);padding:20px 24px;text-align:center;min-width:100px;">
+          <div style="font-size:28px;font-weight:700;color:var(--color-primary-saffron);font-family:var(--font-serif)">4.8★</div>
+          <div style="font-size:12px;color:var(--color-text-light);margin-top:4px;">Avg. Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== MAIN CONTENT: FILTER + GRID =================== -->
+<main class="section" id="astrologers-section">
+  <div class="container">
+    <div class="filter-layout">
+
+      <!-- ===== FILTER SIDEBAR ===== -->
+      <aside class="filter-sidebar" aria-label="Filter astrologers">
+        <div class="filter-sidebar-header">
+          <h3>🎛️ Filters</h3>
+          <button class="filter-clear" onclick="clearAllFilters()">Clear All</button>
+        </div>
+
+        <!-- Specialization -->
+        <div class="filter-group" id="fg-spec">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-spec')">
+            Specialization <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="spec" value="vedic" />
+              Vedic Astrology <span class="option-count">148</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="spec" value="tarot" />
+              Tarot Reading <span class="option-count">92</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="spec" value="numerology" />
+              Numerology <span class="option-count">74</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="spec" value="palmistry" />
+              Palmistry <span class="option-count">61</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="spec" value="kp" />
+              KP Astrology <span class="option-count">45</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="spec" value="vastu" />
+              Vastu Shastra <span class="option-count">38</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="filter-group" id="fg-lang">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-lang')">
+            Languages <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="lang" value="hindi" />
+              Hindi <span class="option-count">310</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="lang" value="english" />
+              English <span class="option-count">245</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="lang" value="tamil" />
+              Tamil <span class="option-count">98</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="lang" value="telugu" />
+              Telugu <span class="option-count">82</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="lang" value="marathi" />
+              Marathi <span class="option-count">67</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="lang" value="bengali" />
+              Bengali <span class="option-count">54</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="filter-group" id="fg-exp">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-exp')">
+            Experience <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="radio" name="exp" value="0-2" />
+              0–2 Years <span class="option-count">78</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="exp" value="2-5" />
+              2–5 Years <span class="option-count">134</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="exp" value="5-10" />
+              5–10 Years <span class="option-count">187</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="exp" value="10+" />
+              10+ Years <span class="option-count">101</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Rating -->
+        <div class="filter-group" id="fg-rating">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-rating')">
+            Rating <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="radio" name="rating" value="4.5" />
+              4.5+ ⭐ <span class="option-count">203</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="rating" value="4.0" />
+              4.0+ ⭐ <span class="option-count">364</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="rating" value="3.5" />
+              3.5+ ⭐ <span class="option-count">431</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Price Per Min -->
+        <div class="filter-group" id="fg-price">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-price')">
+            Price Per Minute <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="radio" name="price" value="0-200" />
+              ₹0 – ₹200 <span class="option-count">112</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="price" value="200-500" />
+              ₹200 – ₹500 <span class="option-count">218</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="price" value="500+" />
+              ₹500+ <span class="option-count">170</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Availability -->
+        <div class="filter-group" id="fg-avail">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-avail')">
+            Availability <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="avail" value="online" />
+              🟢 Online Now <span class="option-count">342</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="avail" value="booking" />
+              📅 Accepting Bookings <span class="option-count">89</span>
+            </label>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="applyFilters()">
+          Apply Filters
+        </button>
+
+      </aside>
+
+      <!-- ===== ASTROLOGER GRID PANEL ===== -->
+      <div>
+        <!-- Results Toolbar -->
+        <div class="results-toolbar">
+          <p class="results-count">Showing <strong>500+</strong> astrologers</p>
+          <select class="sort-select" aria-label="Sort astrologers" onchange="showToast('✅ Sorted by: ' + this.options[this.selectedIndex].text)">
+            <option value="popular">Most Popular</option>
+            <option value="rating">Highest Rated</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="exp">Most Experienced</option>
+            <option value="new">Newly Joined</option>
+          </select>
+        </div>
+
+        <!-- Astrologer Full Grid -->
+        <div class="astrologers-full-grid" id="astrologers-grid">
+
+          <!-- Card 1: Pandit Sharma Ji -->
+          <article class="astrologer-full-card fade-up" aria-label="Pandit Sharma Ji">
+            <div class="card-top">
+              <div class="astrologer-photo">
+                🧙
+                <span class="online-dot" title="Online"></span>
+              </div>
+              <div class="astrologer-info">
+                <h3>Pandit Sharma Ji</h3>
+                <span class="spec-tag">Vedic Astrology</span>
+                <div class="rating-row">
+                  <span class="rating-badge">4.9</span>
+                  <span>★★★★★</span>
+                  <span class="review-cnt">(284 reviews)</span>
+                </div>
+              </div>
+            </div>
+            <div class="astrologer-details">
+              <div class="detail-item">
+                Experience
+                <strong>12 Years</strong>
+              </div>
+              <div class="detail-item">
+                Languages
+                <strong>Hindi, English</strong>
+              </div>
+              <div class="detail-item">
+                Sessions
+                <strong>4,820</strong>
+              </div>
+              <div class="detail-item">
+                Joined
+                <strong>Jan 2020</strong>
+              </div>
+            </div>
+            <div class="price-per-min">₹600 <span>/minute</span></div>
+            <div class="consult-actions">
+              <button class="consult-btn" onclick="handleBookSession('Pandit Sharma Ji', 'chat')">
+                <span class="cb-icon">💬</span> Chat
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Pandit Sharma Ji', 'audio')">
+                <span class="cb-icon">📞</span> Audio
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Pandit Sharma Ji', 'video')">
+                <span class="cb-icon">📹</span> Video
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 2: Devi Meera Ji -->
+          <article class="astrologer-full-card fade-up" aria-label="Devi Meera Ji">
+            <div class="card-top">
+              <div class="astrologer-photo">
+                🌙
+                <span class="online-dot" title="Online"></span>
+              </div>
+              <div class="astrologer-info">
+                <h3>Devi Meera Ji</h3>
+                <span class="spec-tag">Tarot Reading</span>
+                <div class="rating-row">
+                  <span class="rating-badge">4.8</span>
+                  <span>★★★★★</span>
+                  <span class="review-cnt">(192 reviews)</span>
+                </div>
+              </div>
+            </div>
+            <div class="astrologer-details">
+              <div class="detail-item">
+                Experience
+                <strong>8 Years</strong>
+              </div>
+              <div class="detail-item">
+                Languages
+                <strong>Hindi, Tamil</strong>
+              </div>
+              <div class="detail-item">
+                Sessions
+                <strong>3,210</strong>
+              </div>
+              <div class="detail-item">
+                Joined
+                <strong>Mar 2021</strong>
+              </div>
+            </div>
+            <div class="price-per-min">₹450 <span>/minute</span></div>
+            <div class="consult-actions">
+              <button class="consult-btn" onclick="handleBookSession('Devi Meera Ji', 'chat')">
+                <span class="cb-icon">💬</span> Chat
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Devi Meera Ji', 'audio')">
+                <span class="cb-icon">📞</span> Audio
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Devi Meera Ji', 'video')">
+                <span class="cb-icon">📹</span> Video
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 3: Guru Raghav Das -->
+          <article class="astrologer-full-card fade-up" aria-label="Guru Raghav Das">
+            <div class="card-top">
+              <div class="astrologer-photo">
+                ⭐
+                <span class="online-dot" title="Online"></span>
+              </div>
+              <div class="astrologer-info">
+                <h3>Guru Raghav Das</h3>
+                <span class="spec-tag">Numerology</span>
+                <div class="rating-row">
+                  <span class="rating-badge">4.9</span>
+                  <span>★★★★★</span>
+                  <span class="review-cnt">(341 reviews)</span>
+                </div>
+              </div>
+            </div>
+            <div class="astrologer-details">
+              <div class="detail-item">
+                Experience
+                <strong>15 Years</strong>
+              </div>
+              <div class="detail-item">
+                Languages
+                <strong>English, Bengali</strong>
+              </div>
+              <div class="detail-item">
+                Sessions
+                <strong>6,540</strong>
+              </div>
+              <div class="detail-item">
+                Joined
+                <strong>Jun 2019</strong>
+              </div>
+            </div>
+            <div class="price-per-min">₹800 <span>/minute</span></div>
+            <div class="consult-actions">
+              <button class="consult-btn" onclick="handleBookSession('Guru Raghav Das', 'chat')">
+                <span class="cb-icon">💬</span> Chat
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Guru Raghav Das', 'audio')">
+                <span class="cb-icon">📞</span> Audio
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Guru Raghav Das', 'video')">
+                <span class="cb-icon">📹</span> Video
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 4: Aacharya Priya -->
+          <article class="astrologer-full-card fade-up" aria-label="Aacharya Priya">
+            <div class="card-top">
+              <div class="astrologer-photo">
+                🌸
+                <span class="online-dot busy" title="Busy"></span>
+              </div>
+              <div class="astrologer-info">
+                <h3>Aacharya Priya</h3>
+                <span class="spec-tag">Palmistry</span>
+                <div class="rating-row">
+                  <span class="rating-badge">4.5</span>
+                  <span>★★★★☆</span>
+                  <span class="review-cnt">(127 reviews)</span>
+                </div>
+              </div>
+            </div>
+            <div class="astrologer-details">
+              <div class="detail-item">
+                Experience
+                <strong>6 Years</strong>
+              </div>
+              <div class="detail-item">
+                Languages
+                <strong>Hindi, Marathi</strong>
+              </div>
+              <div class="detail-item">
+                Sessions
+                <strong>1,890</strong>
+              </div>
+              <div class="detail-item">
+                Joined
+                <strong>Sep 2022</strong>
+              </div>
+            </div>
+            <div class="price-per-min">₹350 <span>/minute</span></div>
+            <div class="consult-actions">
+              <button class="consult-btn" onclick="handleBookSession('Aacharya Priya', 'chat')">
+                <span class="cb-icon">💬</span> Chat
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Aacharya Priya', 'audio')">
+                <span class="cb-icon">📞</span> Audio
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Aacharya Priya', 'video')">
+                <span class="cb-icon">📹</span> Video
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 5: Dr. Suresh Iyer -->
+          <article class="astrologer-full-card fade-up" aria-label="Dr. Suresh Iyer">
+            <div class="card-top">
+              <div class="astrologer-photo">
+                🔮
+                <span class="online-dot" title="Online"></span>
+              </div>
+              <div class="astrologer-info">
+                <h3>Dr. Suresh Iyer</h3>
+                <span class="spec-tag">KP Astrology</span>
+                <div class="rating-row">
+                  <span class="rating-badge">4.7</span>
+                  <span>★★★★★</span>
+                  <span class="review-cnt">(218 reviews)</span>
+                </div>
+              </div>
+            </div>
+            <div class="astrologer-details">
+              <div class="detail-item">
+                Experience
+                <strong>18 Years</strong>
+              </div>
+              <div class="detail-item">
+                Languages
+                <strong>Tamil, English</strong>
+              </div>
+              <div class="detail-item">
+                Sessions
+                <strong>7,320</strong>
+              </div>
+              <div class="detail-item">
+                Joined
+                <strong>Feb 2018</strong>
+              </div>
+            </div>
+            <div class="price-per-min">₹1,000 <span>/minute</span></div>
+            <div class="consult-actions">
+              <button class="consult-btn" onclick="handleBookSession('Dr. Suresh Iyer', 'chat')">
+                <span class="cb-icon">💬</span> Chat
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Dr. Suresh Iyer', 'audio')">
+                <span class="cb-icon">📞</span> Audio
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Dr. Suresh Iyer', 'video')">
+                <span class="cb-icon">📹</span> Video
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 6: Swami Ananda -->
+          <article class="astrologer-full-card fade-up" aria-label="Swami Ananda">
+            <div class="card-top">
+              <div class="astrologer-photo">
+                🕉
+                <span class="online-dot offline" title="Offline"></span>
+              </div>
+              <div class="astrologer-info">
+                <h3>Swami Ananda</h3>
+                <span class="spec-tag">Vastu Shastra</span>
+                <div class="rating-row">
+                  <span class="rating-badge">4.6</span>
+                  <span>★★★★★</span>
+                  <span class="review-cnt">(156 reviews)</span>
+                </div>
+              </div>
+            </div>
+            <div class="astrologer-details">
+              <div class="detail-item">
+                Experience
+                <strong>22 Years</strong>
+              </div>
+              <div class="detail-item">
+                Languages
+                <strong>Hindi, Telugu</strong>
+              </div>
+              <div class="detail-item">
+                Sessions
+                <strong>5,640</strong>
+              </div>
+              <div class="detail-item">
+                Joined
+                <strong>Nov 2017</strong>
+              </div>
+            </div>
+            <div class="price-per-min">₹750 <span>/minute</span></div>
+            <div class="consult-actions">
+              <button class="consult-btn" onclick="handleBookSession('Swami Ananda', 'chat')">
+                <span class="cb-icon">💬</span> Chat
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Swami Ananda', 'audio')">
+                <span class="cb-icon">📞</span> Audio
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Swami Ananda', 'video')">
+                <span class="cb-icon">📹</span> Video
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 7: Jyotika Malhotra -->
+          <article class="astrologer-full-card fade-up" aria-label="Jyotika Malhotra">
+            <div class="card-top">
+              <div class="astrologer-photo">
+                🌟
+                <span class="online-dot" title="Online"></span>
+              </div>
+              <div class="astrologer-info">
+                <h3>Jyotika Malhotra</h3>
+                <span class="spec-tag">Tarot Reading</span>
+                <div class="rating-row">
+                  <span class="rating-badge">4.4</span>
+                  <span>★★★★☆</span>
+                  <span class="review-cnt">(89 reviews)</span>
+                </div>
+              </div>
+            </div>
+            <div class="astrologer-details">
+              <div class="detail-item">
+                Experience
+                <strong>4 Years</strong>
+              </div>
+              <div class="detail-item">
+                Languages
+                <strong>Hindi, English</strong>
+              </div>
+              <div class="detail-item">
+                Sessions
+                <strong>980</strong>
+              </div>
+              <div class="detail-item">
+                Joined
+                <strong>Apr 2023</strong>
+              </div>
+            </div>
+            <div class="price-per-min">₹200 <span>/minute</span></div>
+            <div class="consult-actions">
+              <button class="consult-btn" onclick="handleBookSession('Jyotika Malhotra', 'chat')">
+                <span class="cb-icon">💬</span> Chat
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Jyotika Malhotra', 'audio')">
+                <span class="cb-icon">📞</span> Audio
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Jyotika Malhotra', 'video')">
+                <span class="cb-icon">📹</span> Video
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 8: Pandit Ramakrishna -->
+          <article class="astrologer-full-card fade-up" aria-label="Pandit Ramakrishna">
+            <div class="card-top">
+              <div class="astrologer-photo">
+                🪷
+                <span class="online-dot busy" title="Busy"></span>
+              </div>
+              <div class="astrologer-info">
+                <h3>Pandit Ramakrishna</h3>
+                <span class="spec-tag">Vedic Astrology</span>
+                <div class="rating-row">
+                  <span class="rating-badge">4.8</span>
+                  <span>★★★★★</span>
+                  <span class="review-cnt">(302 reviews)</span>
+                </div>
+              </div>
+            </div>
+            <div class="astrologer-details">
+              <div class="detail-item">
+                Experience
+                <strong>20 Years</strong>
+              </div>
+              <div class="detail-item">
+                Languages
+                <strong>Telugu, Hindi</strong>
+              </div>
+              <div class="detail-item">
+                Sessions
+                <strong>8,110</strong>
+              </div>
+              <div class="detail-item">
+                Joined
+                <strong>Aug 2016</strong>
+              </div>
+            </div>
+            <div class="price-per-min">₹900 <span>/minute</span></div>
+            <div class="consult-actions">
+              <button class="consult-btn" onclick="handleBookSession('Pandit Ramakrishna', 'chat')">
+                <span class="cb-icon">💬</span> Chat
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Pandit Ramakrishna', 'audio')">
+                <span class="cb-icon">📞</span> Audio
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Pandit Ramakrishna', 'video')">
+                <span class="cb-icon">📹</span> Video
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 9: Nisha Verma -->
+          <article class="astrologer-full-card fade-up" aria-label="Nisha Verma">
+            <div class="card-top">
+              <div class="astrologer-photo">
+                💫
+                <span class="online-dot" title="Online"></span>
+              </div>
+              <div class="astrologer-info">
+                <h3>Nisha Verma</h3>
+                <span class="spec-tag">Numerology</span>
+                <div class="rating-row">
+                  <span class="rating-badge">4.6</span>
+                  <span>★★★★★</span>
+                  <span class="review-cnt">(174 reviews)</span>
+                </div>
+              </div>
+            </div>
+            <div class="astrologer-details">
+              <div class="detail-item">
+                Experience
+                <strong>9 Years</strong>
+              </div>
+              <div class="detail-item">
+                Languages
+                <strong>Hindi, Marathi</strong>
+              </div>
+              <div class="detail-item">
+                Sessions
+                <strong>2,750</strong>
+              </div>
+              <div class="detail-item">
+                Joined
+                <strong>Jul 2021</strong>
+              </div>
+            </div>
+            <div class="price-per-min">₹400 <span>/minute</span></div>
+            <div class="consult-actions">
+              <button class="consult-btn" onclick="handleBookSession('Nisha Verma', 'chat')">
+                <span class="cb-icon">💬</span> Chat
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Nisha Verma', 'audio')">
+                <span class="cb-icon">📞</span> Audio
+              </button>
+              <button class="consult-btn" onclick="handleBookSession('Nisha Verma', 'video')">
+                <span class="cb-icon">📹</span> Video
+              </button>
+            </div>
+          </article>
+
+        </div><!-- /astrologers-full-grid -->
+
+        <!-- ===== PAGINATION ===== -->
+        <nav class="pagination" aria-label="Astrologer list pagination" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:40px;flex-wrap:wrap;">
+          <button class="page-btn" aria-label="Previous page" onclick="showToast('◀ Previous page')" style="padding:8px 14px;border:1px solid rgba(184,134,11,0.2);border-radius:var(--radius-md);background:var(--color-primary-white);cursor:pointer;font-size:14px;color:var(--color-text-dark);transition:all var(--transition-fast)">◀ Prev</button>
+          <button class="page-btn active" aria-current="page" style="padding:8px 14px;border:1px solid var(--color-primary-saffron);border-radius:var(--radius-md);background:linear-gradient(135deg,var(--color-primary-saffron),var(--color-primary-gold));color:#fff;cursor:pointer;font-size:14px;font-weight:700">1</button>
+          <button class="page-btn" onclick="showToast('📄 Page 2')" style="padding:8px 14px;border:1px solid rgba(184,134,11,0.2);border-radius:var(--radius-md);background:var(--color-primary-white);cursor:pointer;font-size:14px;color:var(--color-text-dark)">2</button>
+          <button class="page-btn" onclick="showToast('📄 Page 3')" style="padding:8px 14px;border:1px solid rgba(184,134,11,0.2);border-radius:var(--radius-md);background:var(--color-primary-white);cursor:pointer;font-size:14px;color:var(--color-text-dark)">3</button>
+          <button class="page-btn" onclick="showToast('📄 Page 4')" style="padding:8px 14px;border:1px solid rgba(184,134,11,0.2);border-radius:var(--radius-md);background:var(--color-primary-white);cursor:pointer;font-size:14px;color:var(--color-text-dark)">4</button>
+          <span style="color:var(--color-text-light);padding:0 4px">…</span>
+          <button class="page-btn" onclick="showToast('📄 Page 56')" style="padding:8px 14px;border:1px solid rgba(184,134,11,0.2);border-radius:var(--radius-md);background:var(--color-primary-white);cursor:pointer;font-size:14px;color:var(--color-text-dark)">56</button>
+          <button class="page-btn" aria-label="Next page" onclick="showToast('▶ Next page')" style="padding:8px 14px;border:1px solid rgba(184,134,11,0.2);border-radius:var(--radius-md);background:var(--color-primary-white);cursor:pointer;font-size:14px;color:var(--color-text-dark);transition:all var(--transition-fast)">Next ▶</button>
+        </nav>
+
+      </div><!-- /grid panel -->
+
+    </div><!-- /filter-layout -->
+  </div>
+</main>
+
+<!-- =================== FLOATING CHATBOT FAB =================== -->
+<button class="chatbot-fab" id="chatbot-fab" aria-label="Open spiritual assistant chat" onclick="toggleChatbot()">
+  🤖
+  <span class="fab-tooltip">Ask our AI guide</span>
+</button>
+
+<!-- Chatbot Window -->
+<div class="chatbot-window" id="chatbot-window" role="dialog" aria-label="Spiritual AI Assistant" aria-modal="true">
+  <div class="chatbot-header">
+    <span class="bot-icon">🕉</span>
+    <div class="bot-info">
+      <strong>Divya AI Guide</strong>
+      <span>Your spiritual companion · Always online</span>
+    </div>
+    <button class="close-chat" onclick="toggleChatbot()" aria-label="Close chat">✕</button>
+  </div>
+
+  <div class="chatbot-messages" id="chatbot-messages">
+    <div class="chat-msg bot">
+      🙏 Namaste! I am Divya, your spiritual AI guide. How can I help you find the right astrologer today?
+    </div>
+    <div class="chat-msg bot">
+      You can ask me about specializations, pricing, languages, or simply describe your concern and I'll match you with the perfect expert!
+    </div>
+    <div class="chat-msg user">
+      I need guidance on my career path
+    </div>
+    <div class="chat-msg bot">
+      ✨ For career guidance, I recommend Vedic Astrology or Numerology sessions. Pandit Sharma Ji (₹600/min) and Guru Raghav Das (₹800/min) are both highly rated and online now. Shall I connect you?
+    </div>
+  </div>
+
+  <div class="chatbot-input">
+    <input type="text" id="chat-input" placeholder="Ask about astrologers, services…" aria-label="Chat message" onkeydown="handleChatKeydown(event)" />
+    <button onclick="sendChatMessage()" aria-label="Send message">➤</button>
+  </div>
+</div>
+
+<!-- =================== FOOTER =================== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <div class="logo-text">🕉 Divya Darshan</div>
+        <p>
+          India's complete spiritual ecosystem — connecting you with expert astrologers,
+          authentic products, transformational courses, sacred content, and divine tours.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook">📘</a>
+          <a href="#" class="social-link" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+          <a href="#" class="social-link" aria-label="YouTube">📺</a>
+          <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+
+      <!-- Platform Links -->
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="astrotalks.html">🔭 Astrotalks</a></li>
+          <li><a href="store.html">🛒 Spiritual Shop</a></li>
+          <li><a href="meditation.html">🧘 Meditation &amp; Yoga</a></li>
+          <li><a href="content.html">📚 Books &amp; Audio</a></li>
+          <li><a href="tourism.html">✈️ Devotional Tours</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Become an Astrologer</a></li>
+          <li><a href="#">Become a Seller</a></li>
+          <li><a href="#">Blog &amp; Articles</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Kit</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Links -->
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Divya Darshan. All rights reserved. 🕉 Made with ❤️ in India</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =================== JAVASCRIPT =================== -->
+<script src="js/main.js"></script>
+
+<script>
+  /* =====================================================
+     ASTROTALKS PAGE — INLINE SCRIPTS
+     ===================================================== */
+
+  /* --- Chatbot Toggle --- */
+  function toggleChatbot() {
+    var win = document.getElementById('chatbot-window');
+    if (win) {
+      win.classList.toggle('open');
+      if (win.classList.contains('open')) {
+        var input = document.getElementById('chat-input');
+        if (input) input.focus();
+      }
+    }
+  }
+
+  function handleChatKeydown(e) {
+    if (e.key === 'Enter') sendChatMessage();
+  }
+
+  function sendChatMessage() {
+    var input = document.getElementById('chat-input');
+    var messages = document.getElementById('chatbot-messages');
+    if (!input || !messages || !input.value.trim()) return;
+
+    var userText = input.value.trim();
+    input.value = '';
+
+    // Append user message
+    var userMsg = document.createElement('div');
+    userMsg.className = 'chat-msg user';
+    userMsg.textContent = userText;
+    messages.appendChild(userMsg);
+
+    // Simulate bot reply
+    setTimeout(function () {
+      var botMsg = document.createElement('div');
+      botMsg.className = 'chat-msg bot';
+      botMsg.textContent = '🙏 Thank you for your question! Our experts are here to help. Please browse the astrologers above or use the filters to find the right guide for your concern.';
+      messages.appendChild(botMsg);
+      messages.scrollTop = messages.scrollHeight;
+    }, 800);
+
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  /* --- Filter Group Collapse/Expand --- */
+  function toggleFilterGroup(groupId) {
+    var group = document.getElementById(groupId);
+    if (group) {
+      group.classList.toggle('collapsed');
+    }
+  }
+
+  function clearAllFilters() {
+    var checkboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
+    var radios = document.querySelectorAll('.filter-option input[type="radio"]');
+    checkboxes.forEach(function(cb) { cb.checked = false; });
+    radios.forEach(function(r) { r.checked = false; });
+    if (typeof showToast === 'function') {
+      showToast('🔄 All filters cleared');
+    }
+  }
+
+  function applyFilters() {
+    var checked = [];
+    document.querySelectorAll('.filter-option input:checked').forEach(function(el) {
+      checked.push(el.value);
+    });
+    var msg = checked.length > 0
+      ? '🔍 Filters applied: ' + checked.join(', ')
+      : '⚠️ No filters selected. Showing all astrologers.';
+    if (typeof showToast === 'function') {
+      showToast(msg);
+    }
+  }
+
+  /* --- Consult Button Handlers --- */
+  function handleBookSession(name, type) {
+    var typeLabels = { chat: '💬 Chat', audio: '📞 Audio Call', video: '📹 Video Call' };
+    var label = typeLabels[type] || '📞 Session';
+    if (typeof showToast === 'function') {
+      showToast('✅ Starting ' + label + ' with ' + name + '...');
+    }
+  }
+
+  /* --- Pagination Hover Style (progressive enhancement) --- */
+  document.querySelectorAll('.page-btn').forEach(function(btn) {
+    btn.addEventListener('mouseenter', function() {
+      if (!btn.classList.contains('active')) {
+        btn.style.borderColor = 'var(--color-primary-saffron)';
+        btn.style.color = 'var(--color-primary-saffron)';
+      }
+    });
+    btn.addEventListener('mouseleave', function() {
+      if (!btn.classList.contains('active')) {
+        btn.style.borderColor = 'rgba(184,134,11,0.2)';
+        btn.style.color = 'var(--color-text-dark)';
+      }
+    });
+  });
+
+  /* --- Itinerary Accordion (generic, reusable) --- */
+  function toggleAccordion(btn) {
+    var item = btn.closest('.accordion-item');
+    if (!item) return;
+    var body = item.querySelector('.accordion-body');
+    var isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.accordion-item.open').forEach(function(el) {
+      el.classList.remove('open');
+      var b = el.querySelector('.accordion-body');
+      if (b) b.style.maxHeight = null;
+    });
+    // Toggle current
+    if (!isOpen) {
+      item.classList.add('open');
+      if (body) body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+
+  /* --- Payment Option Selection --- */
+  function selectPaymentOption(el) {
+    document.querySelectorAll('.payment-option').forEach(function(opt) {
+      opt.classList.remove('selected');
+    });
+    el.classList.add('selected');
+    if (typeof showToast === 'function') {
+      showToast('✅ Payment method selected');
+    }
+  }
+
+</script>
+
+</body>
+</html>
