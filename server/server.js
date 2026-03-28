@@ -8,9 +8,12 @@ const https = require('https');
 require('dotenv').config();
 
 const ROOT_DIR = path.resolve(__dirname, '..');
-const DB_PATH = path.join(__dirname, 'data.db');
+const DB_PATH = process.env.DATABASE_PATH
+  ? path.resolve(process.env.DATABASE_PATH)
+  : path.join(__dirname, 'data.db');
 const PORT = process.env.PORT || 3000;
 const SESSION_SECRET = process.env.SESSION_SECRET || 'change-this-session-secret';
+const NODE_ENV = process.env.NODE_ENV || 'development';
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || '';
 const STRIPE_PUBLIC_KEY = process.env.STRIPE_PUBLIC_KEY || '';
 const RAZORPAY_KEY_ID = process.env.RAZORPAY_KEY_ID || '';
@@ -18,11 +21,14 @@ const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET || '';
 const TIDIO_PUBLIC_KEY = process.env.TIDIO_PUBLIC_KEY || '';
 const TIDIO_WEBHOOK_SECRET = process.env.TIDIO_WEBHOOK_SECRET || '';
 
+fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+
 const app = express();
 const db = new Database(DB_PATH);
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.set('trust proxy', 1);
 
 app.use(express.urlencoded({ extended: true, limit: '5mb' }));
 app.use(express.json({ limit: '5mb' }));
@@ -31,12 +37,27 @@ app.use(
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: NODE_ENV === 'production',
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    },
   })
 );
 
 app.use('/css', express.static(path.join(ROOT_DIR, 'css')));
 app.use('/js', express.static(path.join(ROOT_DIR, 'js')));
 app.use('/images', express.static(path.join(ROOT_DIR, 'images')));
+
+app.get('/health', (req, res) => {
+  res.json({
+    ok: true,
+    env: NODE_ENV,
+    dbPath: DB_PATH,
+    now: new Date().toISOString(),
+  });
+});
 
 function initDb() {
   db.exec(`
@@ -2098,5 +2119,6 @@ app.get('/:slug.html', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Admin server running at http://localhost:${PORT}`);
+  console.log(`Admin server running on port ${PORT}`);
+  console.log(`Database path: ${DB_PATH}`);
 });
