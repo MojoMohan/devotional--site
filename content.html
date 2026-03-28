@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Divya Darshan Books & Podcasts — Explore 10,000+ devotional tracks, guided meditations, ebooks, audiobooks, and podcasts." />
+  <title>Books &amp; Podcasts — Divya Darshan</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕉</text></svg>" />
+
+  <style>
+    /* ============================================================
+       CONTENT PAGE — INLINE STYLES
+       ============================================================ */
+
+    /* --- Content Tabs --- */
+    .content-tabs-bar {
+      background: var(--color-primary-white);
+      border-bottom: 1px solid rgba(184, 134, 11, 0.12);
+      position: sticky;
+      top: 72px;
+      z-index: 90;
+    }
+
+    .content-tabs-inner {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding: 0 var(--spacing-lg);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .content-tabs-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .content-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-light);
+      border: none;
+      background: transparent;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+      font-family: var(--font-sans);
+    }
+
+    .content-tab:hover {
+      color: var(--color-primary-saffron);
+    }
+
+    .content-tab.active {
+      color: var(--color-primary-saffron);
+      border-bottom-color: var(--color-primary-saffron);
+    }
+
+    /* --- Featured Spotlight --- */
+    .featured-spotlight {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      min-height: 340px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .featured-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .featured-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(28, 20, 8, 0.88) 0%, rgba(28, 20, 8, 0.55) 60%, rgba(28, 20, 8, 0.15) 100%);
+    }
+
+    .featured-content {
+      position: relative;
+      z-index: 1;
+      padding: 56px 56px 56px 52px;
+      max-width: 580px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .featured-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-primary-saffron);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      width: fit-content;
+    }
+
+    .featured-title {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .featured-subtitle {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.5;
+    }
+
+    .featured-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn-ghost-white {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #fff;
+    }
+
+    .btn-ghost-white:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    /* --- Section Headers (inline variations) --- */
+    .section-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-xl);
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+    }
+
+    .section-header-row h2 {
+      font-size: clamp(22px, 3vw, 30px);
+    }
+
+    .see-all-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-primary-saffron);
+      white-space: nowrap;
+    }
+
+    .see-all-link:hover {
+      text-decoration: underline;
+    }
+
+    /* --- Content Card (New Releases / Popular) --- */
+    .content-card {
+      background: var(--color-primary-white);
+      border: 1px solid rgba(184, 134, 11, 0.1);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+      cursor: pointer;
+    }
+
+    .content-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .content-card-cover {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--color-bg-light);
+    }
+
+    .content-card-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .content-card:hover .content-card-cover img {
+      transform: scale(1.05);
+    }
+
+    .content-card-play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0);
+      transition: background var(--transition-fast);
+    }
+
+    .content-card:hover .content-card-play-overlay {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .play-circle-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--color-primary-saffron);
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all var(--transition-fast);
+      box-shadow: 0 4px 16px rgba(255, 153, 51, 0.5);
+    }
+
+    .content-card:hover .play-circle-btn {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .category-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(28, 20, 8, 0.75);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(4px);
+    }
+
+    .content-card-body {
+      padding: 16px;
+    }
+
+    .content-card-title {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .content-card-author {
+      font-size: 13px;
+      color: var(--color-text-light);
+    }
+
+    .content-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--color-text-light);
+    }
+
+    .content-card-duration {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .content-card-action {
+      background: none;
+      border: 1px solid rgba(184, 134, 11, 0.25);
+      border-radius: var(--radius-full);
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary-saffron);
+      font-size: 14px;
+      transition: all var(--transition-fast);
+    }
+
+    .content-card-action:hover {
+      background: var(--color-primary-saffron);
+      color: #fff;
+    }
+
+    /* --- New Releases Grid --- */
+    .new-releases-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-lg);
+    }
+
+    @media (max-width: 1024px) {
+      .new-releases-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .new-releases-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .new-releases-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* --- Categories Grid --- */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+    }
+
+    @media (max-width: 900px) {
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .category-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      min-height: 180px;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .category-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform var(--transition-slow);
+    }
+
+    .category-card:hover .category-card-bg {
+      transform: scale(1.06);
+    }
+
+    .category-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.72) 100%);
+    }
+
+    .category-card-content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .category-card-emoji {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    .category-card-name {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .category-card-count {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    /* --- Popular Grid --- */
+    .popular-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+    }
+
+    @media (max-width: 900px) {
+      .popular-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .popular-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* --- Popular Item Card (horizontal) --- */
+    .popular-item-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--color-primary-white);
+      border: 1px solid rgba(184, 134, 11, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      cursor: pointer;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .popular-item-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .popular-item-thumb {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .popular-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .popular-item-title {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 3px;
+    }
+
+    .popular-item-author {
+      font-size: 12px;
+      color: var(--color-text-light);
+      margin-bottom: 4px;
+    }
+
+    .popular-item-duration {
+      font-size: 11px;
+      color: var(--color-text-light);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .popular-item-play {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-primary-saffron), var(--color-primary-gold));
+      border: none;
+      color: #fff;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      box-shadow: 0 3px 10px rgba(255, 153, 51, 0.35);
+    }
+
+    .popular-item-play:hover {
+      transform: scale(1.12);
+      box-shadow: 0 5px 16px rgba(255, 153, 51, 0.5);
+    }
+
+    /* --- Hero Stats --- */
+    .hero-stats {
+      display: flex;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+      margin-top: var(--spacing-lg);
+    }
+
+    .hero-stat {
+      background: var(--color-primary-white);
+      border: 1px solid rgba(184, 134, 11, 0.15);
+      border-radius: var(--radius-xl);
+      padding: 16px 20px;
+      text-align: center;
+      min-width: 110px;
+    }
+
+    .hero-stat-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--color-primary-saffron);
+      font-family: var(--font-serif);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 11px;
+      color: var(--color-text-light);
+      margin-top: 4px;
+    }
+
+    /* --- Featured Spotlight Responsive --- */
+    @media (max-width: 640px) {
+      .featured-content {
+        padding: 36px 28px;
+        max-width: 100%;
+      }
+
+      .featured-spotlight {
+        min-height: 280px;
+      }
+    }
+
+    /* --- Audio Player Bar --- */
+    .audio-player-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--color-primary-white);
+      border-top: 1px solid rgba(184, 134, 11, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 24px;
+      z-index: 1000;
+      flex-wrap: wrap;
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .player-track {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 180px;
+      flex: 0 0 auto;
+    }
+
+    .player-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      border: 2px solid rgba(184, 134, 11, 0.2);
+    }
+
+    .player-track div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .player-track strong {
+      font-size: 14px;
+      color: var(--color-text-dark);
+      font-weight: 600;
+    }
+
+    .player-track span {
+      font-size: 12px;
+      color: var(--color-text-light);
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .player-controls button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      padding: 6px 8px;
+      border-radius: var(--radius-md);
+      transition: background var(--transition-fast);
+      color: var(--color-text-dark);
+    }
+
+    .player-controls button:hover {
+      background: var(--color-bg-light);
+    }
+
+    .player-controls .play-pause-btn {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--color-primary-saffron), var(--color-primary-gold));
+      border-radius: 50%;
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .player-controls .play-pause-btn:hover {
+      box-shadow: 0 4px 12px rgba(255, 153, 51, 0.4);
+      background: linear-gradient(135deg, var(--color-primary-saffron), var(--color-primary-gold));
+    }
+
+    .player-progress {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .player-progress input[type="range"],
+    .player-volume input[type="range"] {
+      width: 100%;
+      accent-color: var(--color-primary-saffron);
+      cursor: pointer;
+    }
+
+    .player-volume {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      min-width: 120px;
+    }
+
+    @media (max-width: 640px) {
+      .audio-player-bar {
+        gap: 10px;
+        padding: 10px 16px;
+      }
+
+      .player-progress,
+      .player-volume {
+        min-width: 80px;
+      }
+    }
+
+    /* --- Section background alternation --- */
+    .section-alt {
+      background: var(--color-bg-lighter);
+    }
+
+    [data-theme="dark"] .section-alt {
+      background: var(--color-bg-light);
+    }
+
+    /* Add bottom padding to body to account for fixed audio player */
+    body {
+      padding-bottom: 80px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- =================== NAVBAR =================== -->
+<header class="navbar" role="banner">
+  <div class="container">
+    <div class="navbar-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="navbar-logo" aria-label="Divya Darshan Home">
+        <div class="logo-icon" aria-hidden="true">🕉</div>
+        <div class="logo-text">
+          Divya Darshan
+          <span>Spiritual Ecosystem</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <!-- Desktop Navigation -->
+      <nav class="navbar-menu" role="navigation" aria-label="Main navigation">
+
+        <div class="nav-item">
+          <a href="astrotalks.html" class="nav-link ">
+            Astrotalks Platform <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🔭</span> Astrology Consultation
+            </a>
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📹</span> Video &amp; Audio Calls
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="store.html" class="nav-link ">
+            Spiritual Merchandise Store <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🪔</span> Brass Idols
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📿</span> Rudraksha
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🕯️</span> Incense &amp; Rituals
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">💎</span> Jewelry &amp; Copper
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="meditation.html" class="nav-link ">
+            Meditation / Yoga <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🆓</span> Free Courses
+            </a>
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">💰</span> Paid Courses
+            </a>
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🎥</span> Live &amp; Recorded
+            </a>
+          </div>
+        </div>
+
+        <a href="content.html" class="nav-link ">Books &amp; Podcasts</a>
+        <a href="tourism.html" class="nav-link ">Devotional Tourism</a>
+
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="navbar-actions">
+        <a href="booking.html" class="btn btn-primary btn-sm">Book Now</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-header">
+    <div class="navbar-logo">
+      <div class="logo-icon">🕉</div>
+      <div class="logo-text">Divya Darshan</div>
+    </div>
+    <button id="mobile-nav-close" class="nav-action-btn" aria-label="Close menu" style="font-size:22px">✕</button>
+  </div>
+  <a href="astrotalks.html">Astrotalks Platform</a>
+  <a href="store.html">Spiritual Merchandise Store</a>
+  <a href="meditation.html">Meditation / Yoga</a>
+  <a href="content.html">Books &amp; Podcasts</a>
+  <a href="tourism.html">Devotional Tourism</a>
+  <a href="booking.html">Book Now</a>
+</nav>
+
+
+<!-- Toast Container -->
+<div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+<!-- =================== PAGE HERO =================== -->
+<section class="page-hero" aria-labelledby="content-hero-heading">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <div class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span>Books &amp; Podcasts</span>
+        </div>
+        <h1 id="content-hero-heading">📚 Spiritual Content Library</h1>
+        <p>Explore 10,000+ devotional tracks, guided meditations, ebooks, audiobooks, and podcasts curated by spiritual masters and scholars.</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-value">10K+</div>
+            <div class="hero-stat-label">Tracks</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">800+</div>
+            <div class="hero-stat-label">Ebooks</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">1,200+</div>
+            <div class="hero-stat-label">Podcast Episodes</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">450+</div>
+            <div class="hero-stat-label">Guided Sessions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CONTENT TYPE TABS =================== -->
+<div class="content-tabs-bar" role="tablist" aria-label="Content type filter">
+  <div class="container" style="padding:0">
+    <div class="content-tabs-inner">
+      <button class="content-tab active" role="tab" aria-selected="true" onclick="switchTab(this, 'all')">All</button>
+      <button class="content-tab" role="tab" aria-selected="false" onclick="switchTab(this, 'ebooks')">📖 Ebooks</button>
+      <button class="content-tab" role="tab" aria-selected="false" onclick="switchTab(this, 'audiobooks')">🎧 Audiobooks</button>
+      <button class="content-tab" role="tab" aria-selected="false" onclick="switchTab(this, 'podcasts')">🎙 Podcasts</button>
+      <button class="content-tab" role="tab" aria-selected="false" onclick="switchTab(this, 'chants')">🔔 Chants &amp; Mantras</button>
+      <button class="content-tab" role="tab" aria-selected="false" onclick="switchTab(this, 'meditations')">🧘 Guided Meditations</button>
+    </div>
+  </div>
+</div>
+
+<!-- =================== MAIN CONTENT =================== -->
+<main id="content-main">
+
+  <!-- =================== FEATURED SPOTLIGHT =================== -->
+  <section class="section" aria-label="Featured content spotlight">
+    <div class="container">
+      <div class="featured-spotlight" role="region" aria-label="Featured this week">
+        <div class="featured-bg" aria-hidden="true"></div>
+        <div class="featured-content">
+          <div class="featured-tag">⭐ Featured This Week</div>
+          <h2 class="featured-title">The Bhagavad Gita — Complete Audio Edition</h2>
+          <p class="featured-subtitle">Narrated by Swami Chinmayananda &nbsp;·&nbsp; 18 Chapters &nbsp;·&nbsp; 12 hours</p>
+          <div class="featured-actions">
+            <button class="btn btn-primary" onclick="showToast('▶ Now playing: The Bhagavad Gita')">
+              ▶ Play Now
+            </button>
+            <button class="btn btn-ghost-white" onclick="showToast('✅ Added to your Library')">
+              + Add to Library
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== NEW RELEASES =================== -->
+  <section class="section section-alt" aria-labelledby="new-releases-heading">
+    <div class="container">
+      <div class="section-header-row">
+        <h2 id="new-releases-heading">New Releases</h2>
+        <a href="#" class="see-all-link" onclick="showToast('Opening full New Releases catalogue…');return false;">See All →</a>
+      </div>
+
+      <div class="new-releases-grid" id="new-releases-grid">
+
+        <!-- Card 1: Karma & Destiny -->
+        <article class="content-card fade-up" aria-label="Karma and Destiny Audiobook">
+          <div class="content-card-cover">
+            <img
+              src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80"
+              alt="Karma and Destiny Audiobook cover"
+              loading="lazy"
+            />
+            <span class="category-badge">Audiobook</span>
+            <div class="content-card-play-overlay" aria-hidden="true">
+              <button class="play-circle-btn" onclick="playContent('Karma &amp; Destiny')">▶</button>
+            </div>
+          </div>
+          <div class="content-card-body">
+            <div class="content-card-title">Karma &amp; Destiny</div>
+            <div class="content-card-author">by Swami Vivekananda</div>
+            <div class="content-card-meta">
+              <span class="content-card-duration">⏱ 6h 24m</span>
+              <button class="content-card-action" onclick="playContent('Karma &amp; Destiny')" aria-label="Play Karma and Destiny">▶</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Morning Aarti Collection -->
+        <article class="content-card fade-up" aria-label="Morning Aarti Collection">
+          <div class="content-card-cover">
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
+              alt="Morning Aarti Collection cover"
+              loading="lazy"
+            />
+            <span class="category-badge">Devotional</span>
+            <div class="content-card-play-overlay" aria-hidden="true">
+              <button class="play-circle-btn" onclick="playContent('Morning Aarti Collection')">▶</button>
+            </div>
+          </div>
+          <div class="content-card-body">
+            <div class="content-card-title">Morning Aarti Collection</div>
+            <div class="content-card-author">by Pandit Rajan Sharma</div>
+            <div class="content-card-meta">
+              <span class="content-card-duration">⏱ 45m</span>
+              <button class="content-card-action" onclick="playContent('Morning Aarti Collection')" aria-label="Play Morning Aarti Collection">▶</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Upanishads Simplified -->
+        <article class="content-card fade-up" aria-label="Upanishads Simplified">
+          <div class="content-card-cover">
+            <img
+              src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80"
+              alt="Upanishads Simplified cover"
+              loading="lazy"
+            />
+            <span class="category-badge">Ebook</span>
+            <div class="content-card-play-overlay" aria-hidden="true">
+              <button class="play-circle-btn" onclick="playContent('Upanishads Simplified')">▶</button>
+            </div>
+          </div>
+          <div class="content-card-body">
+            <div class="content-card-title">Upanishads Simplified</div>
+            <div class="content-card-author">by Dr. Kapila Mohan</div>
+            <div class="content-card-meta">
+              <span class="content-card-duration">📖 340 pages</span>
+              <button class="content-card-action" onclick="playContent('Upanishads Simplified')" aria-label="Read Upanishads Simplified">▶</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4: Yoga Sutras of Patanjali -->
+        <article class="content-card fade-up" aria-label="Yoga Sutras of Patanjali">
+          <div class="content-card-cover">
+            <img
+              src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400&q=80"
+              alt="Yoga Sutras of Patanjali cover"
+              loading="lazy"
+            />
+            <span class="category-badge">Podcast</span>
+            <div class="content-card-play-overlay" aria-hidden="true">
+              <button class="play-circle-btn" onclick="playContent('Yoga Sutras of Patanjali')">▶</button>
+            </div>
+          </div>
+          <div class="content-card-body">
+            <div class="content-card-title">Yoga Sutras of Patanjali</div>
+            <div class="content-card-author">by Sri B.K.S. Iyengar</div>
+            <div class="content-card-meta">
+              <span class="content-card-duration">⏱ 8h 10m</span>
+              <button class="content-card-action" onclick="playContent('Yoga Sutras of Patanjali')" aria-label="Play Yoga Sutras of Patanjali">▶</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== BROWSE BY CATEGORY =================== -->
+  <section class="section" aria-labelledby="categories-heading">
+    <div class="container">
+      <div class="section-header-row">
+        <h2 id="categories-heading">Browse by Category</h2>
+        <a href="#" class="see-all-link" onclick="showToast('Opening all categories…');return false;">See All →</a>
+      </div>
+
+      <div class="categories-grid">
+
+        <!-- Category 1: Devotional Chants -->
+        <article class="category-card fade-up" role="button" tabindex="0" aria-label="Devotional Chants — 3,200+ Tracks" onclick="showToast('Opening Devotional Chants…')">
+          <div class="category-card-bg" style="background-image:url('https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=500&q=80')"></div>
+          <div class="category-card-overlay"></div>
+          <div class="category-card-content">
+            <div class="category-card-emoji">🎶</div>
+            <div class="category-card-name">Devotional Chants</div>
+            <div class="category-card-count">3,200+ Tracks</div>
+          </div>
+        </article>
+
+        <!-- Category 2: Mantras & Shlokas -->
+        <article class="category-card fade-up" role="button" tabindex="0" aria-label="Mantras and Shlokas — 1,900+ Verses" onclick="showToast('Opening Mantras &amp; Shlokas…')">
+          <div class="category-card-bg" style="background-image:url('https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=500&q=80')"></div>
+          <div class="category-card-overlay"></div>
+          <div class="category-card-content">
+            <div class="category-card-emoji">📿</div>
+            <div class="category-card-name">Mantras &amp; Shlokas</div>
+            <div class="category-card-count">1,900+ Verses</div>
+          </div>
+        </article>
+
+        <!-- Category 3: Guided Meditations -->
+        <article class="category-card fade-up" role="button" tabindex="0" aria-label="Guided Meditations — 450+ Sessions" onclick="showToast('Opening Guided Meditations…')">
+          <div class="category-card-bg" style="background-image:url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=500&q=80')"></div>
+          <div class="category-card-overlay"></div>
+          <div class="category-card-content">
+            <div class="category-card-emoji">🧘</div>
+            <div class="category-card-name">Guided Meditations</div>
+            <div class="category-card-count">450+ Sessions</div>
+          </div>
+        </article>
+
+        <!-- Category 4: Ebooks & Audiobooks -->
+        <article class="category-card fade-up" role="button" tabindex="0" aria-label="Ebooks and Audiobooks — 800+ Titles" onclick="showToast('Opening Ebooks &amp; Audiobooks…')">
+          <div class="category-card-bg" style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=500&q=80')"></div>
+          <div class="category-card-overlay"></div>
+          <div class="category-card-content">
+            <div class="category-card-emoji">📖</div>
+            <div class="category-card-name">Ebooks &amp; Audiobooks</div>
+            <div class="category-card-count">800+ Titles</div>
+          </div>
+        </article>
+
+        <!-- Category 5: Spiritual Podcasts -->
+        <article class="category-card fade-up" role="button" tabindex="0" aria-label="Spiritual Podcasts — 1,200+ Episodes" onclick="showToast('Opening Spiritual Podcasts…')">
+          <div class="category-card-bg" style="background-image:url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=500&q=80')"></div>
+          <div class="category-card-overlay"></div>
+          <div class="category-card-content">
+            <div class="category-card-emoji">🎙</div>
+            <div class="category-card-name">Spiritual Podcasts</div>
+            <div class="category-card-count">1,200+ Episodes</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== POPULAR THIS WEEK =================== -->
+  <section class="section section-alt" aria-labelledby="popular-heading">
+    <div class="container">
+      <div class="section-header-row">
+        <h2 id="popular-heading">Popular This Week</h2>
+        <a href="#" class="see-all-link" onclick="showToast('Opening full Popular chart…');return false;">See All →</a>
+      </div>
+
+      <div class="popular-grid" id="popular-grid">
+
+        <!-- Popular Item 1 -->
+        <article class="popular-item-card fade-up" aria-label="Om Namah Shivaya — Classical Chants">
+          <img
+            class="popular-item-thumb"
+            src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=120&q=80"
+            alt="Om Namah Shivaya"
+            loading="lazy"
+          />
+          <div class="popular-item-info">
+            <div class="popular-item-title">Om Namah Shivaya</div>
+            <div class="popular-item-author">Classical Chants</div>
+            <div class="popular-item-duration">⏱ 28m &nbsp;·&nbsp; 🔔 Mantra</div>
+          </div>
+          <button class="popular-item-play" onclick="playContent('Om Namah Shivaya')" aria-label="Play Om Namah Shivaya">▶</button>
+        </article>
+
+        <!-- Popular Item 2 -->
+        <article class="popular-item-card fade-up" aria-label="Inner Peace Meditation — Ananda Ashram">
+          <img
+            class="popular-item-thumb"
+            src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=120&q=80"
+            alt="Inner Peace Meditation"
+            loading="lazy"
+          />
+          <div class="popular-item-info">
+            <div class="popular-item-title">Inner Peace Meditation</div>
+            <div class="popular-item-author">Ananda Ashram</div>
+            <div class="popular-item-duration">⏱ 35m &nbsp;·&nbsp; 🧘 Guided</div>
+          </div>
+          <button class="popular-item-play" onclick="playContent('Inner Peace Meditation')" aria-label="Play Inner Peace Meditation">▶</button>
+        </article>
+
+        <!-- Popular Item 3 -->
+        <article class="popular-item-card fade-up" aria-label="Ramayana — An Eternal Journey Podcast">
+          <img
+            class="popular-item-thumb"
+            src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=120&q=80"
+            alt="Ramayana — An Eternal Journey"
+            loading="lazy"
+          />
+          <div class="popular-item-info">
+            <div class="popular-item-title">Ramayana: An Eternal Journey</div>
+            <div class="popular-item-author">Swami Tejomayananda</div>
+            <div class="popular-item-duration">⏱ 52m &nbsp;·&nbsp; 🎙 Podcast</div>
+          </div>
+          <button class="popular-item-play" onclick="playContent('Ramayana: An Eternal Journey')" aria-label="Play Ramayana podcast">▶</button>
+        </article>
+
+        <!-- Popular Item 4 -->
+        <article class="popular-item-card fade-up" aria-label="Hanuman Chalisa — 108 Times">
+          <img
+            class="popular-item-thumb"
+            src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=120&q=80"
+            alt="Hanuman Chalisa 108 Times"
+            loading="lazy"
+          />
+          <div class="popular-item-info">
+            <div class="popular-item-title">Hanuman Chalisa — 108 Times</div>
+            <div class="popular-item-author">Hari Om Sharan</div>
+            <div class="popular-item-duration">⏱ 3h 20m &nbsp;·&nbsp; 🔔 Chant</div>
+          </div>
+          <button class="popular-item-play" onclick="playContent('Hanuman Chalisa 108 Times')" aria-label="Play Hanuman Chalisa">▶</button>
+        </article>
+
+        <!-- Popular Item 5 -->
+        <article class="popular-item-card fade-up" aria-label="The Art of Living — Audiobook">
+          <img
+            class="popular-item-thumb"
+            src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=120&q=80"
+            alt="The Art of Living Audiobook"
+            loading="lazy"
+          />
+          <div class="popular-item-info">
+            <div class="popular-item-title">The Art of Living</div>
+            <div class="popular-item-author">Sri Sri Ravi Shankar</div>
+            <div class="popular-item-duration">⏱ 4h 15m &nbsp;·&nbsp; 🎧 Audiobook</div>
+          </div>
+          <button class="popular-item-play" onclick="playContent('The Art of Living')" aria-label="Play The Art of Living audiobook">▶</button>
+        </article>
+
+        <!-- Popular Item 6 -->
+        <article class="popular-item-card fade-up" aria-label="Gayatri Mantra — 1008 Repetitions">
+          <img
+            class="popular-item-thumb"
+            src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=120&q=80"
+            alt="Gayatri Mantra 1008 Repetitions"
+            loading="lazy"
+          />
+          <div class="popular-item-info">
+            <div class="popular-item-title">Gayatri Mantra — 1008×</div>
+            <div class="popular-item-author">Vedic Traditions</div>
+            <div class="popular-item-duration">⏱ 1h 48m &nbsp;·&nbsp; 📿 Mantra</div>
+          </div>
+          <button class="popular-item-play" onclick="playContent('Gayatri Mantra 1008 Repetitions')" aria-label="Play Gayatri Mantra">▶</button>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- =================== NEWSLETTER =================== -->
+<section class="newsletter-section" aria-labelledby="newsletter-heading">
+  <div class="container">
+    <div class="newsletter-inner">
+      <h2 id="newsletter-heading">Begin Your Spiritual Journey Today</h2>
+      <p>Subscribe to receive weekly horoscopes, new course announcements, exclusive deals, and spiritual wisdom.</p>
+      <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)" novalidate>
+        <input type="email" placeholder="Enter your email address" aria-label="Email address" required />
+        <button type="submit" class="btn btn-primary">
+          🙏 Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <div class="logo-text">🕉 Divya Darshan</div>
+        <p>
+          India's complete spiritual ecosystem — connecting you with expert astrologers,
+          authentic products, transformational courses, sacred content, and divine tours.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook">📘</a>
+          <a href="#" class="social-link" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+          <a href="#" class="social-link" aria-label="YouTube">📺</a>
+          <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+
+      <!-- Platform Links -->
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="astrotalks.html">🔭 Astrotalks</a></li>
+          <li><a href="store.html">🛒 Spiritual Shop</a></li>
+          <li><a href="meditation.html">🧘 Meditation &amp; Yoga</a></li>
+          <li><a href="content.html">📚 Books &amp; Audio</a></li>
+          <li><a href="tourism.html">✈️ Devotional Tours</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Become an Astrologer</a></li>
+          <li><a href="#">Become a Seller</a></li>
+          <li><a href="#">Blog &amp; Articles</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Kit</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Links -->
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyrights &#169; 2026 All rights reserved. &#128497; Made by Mohan</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =================== MINI AUDIO PLAYER BAR =================== -->
+<div class="audio-player-bar" id="audio-player" role="region" aria-label="Audio player">
+  <div class="player-track">
+    <img
+      src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=80&q=80"
+      class="player-thumb"
+      alt="Now playing: Om Namah Shivaya"
+    />
+    <div>
+      <strong>Om Namah Shivaya</strong>
+      <span>Classical Chants</span>
+    </div>
+  </div>
+
+  <div class="player-controls">
+    <button onclick="showToast('⏮ Previous track')" aria-label="Previous track">⏮</button>
+    <button class="play-pause-btn" id="play-pause-btn" onclick="togglePlayerPlay()" aria-label="Play or pause">▶</button>
+    <button onclick="showToast('⏭ Next track')" aria-label="Next track">⏭</button>
+  </div>
+
+  <div class="player-progress" aria-label="Track progress">
+    <input type="range" value="35" min="0" max="100" aria-label="Seek position" oninput="showToast('⏩ Seeking…')" />
+  </div>
+
+  <div class="player-volume" aria-label="Volume">
+    🔊 <input type="range" value="70" min="0" max="100" aria-label="Volume control" />
+  </div>
+</div>
+
+<!-- =================== JAVASCRIPT =================== -->
+<script src="js/main.js"></script>
+
+<script>
+  /* =====================================================
+     CONTENT PAGE — INLINE SCRIPTS
+     ===================================================== */
+
+  /* --- Content Tab Switching --- */
+  function switchTab(btn, category) {
+    document.querySelectorAll('.content-tab').forEach(function(t) {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    var labels = {
+      all: 'All content',
+      ebooks: 'Ebooks',
+      audiobooks: 'Audiobooks',
+      podcasts: 'Podcasts',
+      chants: 'Chants & Mantras',
+      meditations: 'Guided Meditations'
+    };
+    showToast('📚 Showing: ' + (labels[category] || category));
+  }
+
+  /* --- Play Content --- */
+  function playContent(title) {
+    showToast('▶ Now playing: ' + title);
+    var trackEl = document.querySelector('.player-track strong');
+    var playerBar = document.getElementById('audio-player');
+    if (trackEl) { trackEl.textContent = title; }
+    if (playerBar) { playerBar.style.borderTopColor = 'rgba(255,153,51,0.5)'; }
+    var btn = document.getElementById('play-pause-btn');
+    if (btn) { btn.textContent = '⏸'; }
+  }
+
+  /* --- Toggle Player Play/Pause --- */
+  var playerPlaying = false;
+  function togglePlayerPlay() {
+    playerPlaying = !playerPlaying;
+    var btn = document.getElementById('play-pause-btn');
+    if (btn) {
+      btn.textContent = playerPlaying ? '⏸' : '▶';
+    }
+    showToast(playerPlaying ? '▶ Playing' : '⏸ Paused');
+  }
+
+  /* --- Category Card Keyboard Access --- */
+  document.querySelectorAll('.category-card[role="button"]').forEach(function(card) {
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+
+  /* --- Newsletter Submit (fallback if main.js not loaded) --- */
+  if (typeof handleNewsletterSubmit !== 'function') {
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      showToast('🙏 Thank you! You are now subscribed.');
+      e.target.reset();
+    }
+  }
+
+</script>
+
+</body>
+</html>
+
+

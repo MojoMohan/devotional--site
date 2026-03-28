@@ -1,0 +1,64 @@
+<%- include('partials/head', { title }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'books' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1><%= title %></h1>
+        <p>Manage book details.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-outline" href="/cms/book-items">Back to list</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Book details</h2>
+      <form method="post" action="<%= action %>" class="form-grid">
+        <div>
+          <label>Title</label>
+          <input name="title" value="<%= item ? item.title : '' %>" required />
+        </div>
+        <div>
+          <label>Author</label>
+          <input name="author" value="<%= item ? item.author : '' %>" />
+        </div>
+        <div>
+          <label>Format</label>
+          <select name="format">
+            <option value="">Select format</option>
+            <option <%= item && item.format === 'Ebook' ? 'selected' : '' %>>Ebook</option>
+            <option <%= item && item.format === 'Audiobook' ? 'selected' : '' %>>Audiobook</option>
+            <option <%= item && item.format === 'Podcast' ? 'selected' : '' %>>Podcast</option>
+            <option <%= item && item.format === 'Paperback' ? 'selected' : '' %>>Paperback</option>
+          </select>
+        </div>
+        <div>
+          <label>Price (INR)</label>
+          <input name="price" type="number" min="0" step="1" value="<%= item && item.price != null ? item.price : '' %>" />
+        </div>
+        <div>
+          <label>Image URL</label>
+          <input name="image_url" value="<%= item ? item.image_url : '' %>" placeholder="https://" />
+        </div>
+        <div style="grid-column: 1 / -1;">
+          <label>Description</label>
+          <textarea name="description"><%= item ? item.description : '' %></textarea>
+        </div>
+        <div>
+          <label>Status</label>
+          <select name="is_active">
+            <option value="1" <%= !item || item.is_active ? 'selected' : '' %>>Active</option>
+            <option value="0" <%= item && !item.is_active ? 'selected' : '' %>>Inactive</option>
+          </select>
+        </div>
+        <div style="grid-column: 1 / -1;" class="actions">
+          <button class="btn btn-primary" type="submit">Save</button>
+          <a class="btn btn-outline" href="/cms/book-items">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>
+

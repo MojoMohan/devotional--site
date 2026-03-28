@@ -1,0 +1,23 @@
+<%- include('partials/head', { title: 'CMS Setup' }) %>
+<div class="auth-shell">
+  <div class="auth-card">
+    <h1>Set up CMS Admin</h1>
+    <p class="muted">Create the first CMS admin account.</p>
+    <% if (typeof error !== 'undefined') { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+    <form method="post" class="form-grid">
+      <div style="grid-column: 1 / -1;">
+        <label>Username</label>
+        <input name="username" required />
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <label>Password (min 6 chars)</label>
+        <input name="password" type="password" minlength="6" required />
+      </div>
+      <button class="btn btn-primary" type="submit">Create admin</button>
+    </form>
+  </div>
+</div>
+<%- include('partials/foot') %>
+

@@ -1,0 +1,59 @@
+<%- include('partials/head', { title: 'Payments' }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'payments' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>Payments</h1>
+        <p>All payment attempts across gateways.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Recent Payments</h2>
+      <p>Sorted by newest first.</p>
+      <div style="overflow:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Booking</th>
+              <th>Customer</th>
+              <th>Platform</th>
+              <th>Gateway</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Order ID</th>
+              <th>Payment ID</th>
+              <th>EMI</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (!payments.length) { %>
+              <tr>
+                <td colspan="11" class="muted">No payments yet.</td>
+              </tr>
+            <% } %>
+            <% payments.forEach((p) => { %>
+              <tr>
+                <td><%= p.id %></td>
+                <td><%= p.booking_id %></td>
+                <td><%= p.full_name || '-' %></td>
+                <td><%= p.platform || '-' %></td>
+                <td><%= p.gateway %></td>
+                <td><%= p.amount %></td>
+                <td><%= p.status %></td>
+                <td><%= p.provider_order_id || '-' %></td>
+                <td><%= p.provider_payment_id || '-' %></td>
+                <td><%= p.emi_tenure || '-' %></td>
+                <td><%= p.created_at %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>

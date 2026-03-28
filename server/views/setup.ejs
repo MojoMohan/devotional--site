@@ -1,0 +1,15 @@
+<%- include('partials/head', { title: 'Admin Setup' }) %>
+  <div class="card" style="max-width:420px; margin:60px auto;">
+    <h1>Setup Admin</h1>
+    <% if (typeof error !== 'undefined') { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+    <form method="post">
+      <label>Username</label>
+      <input name="username" required />
+      <label>Password (min 6 chars)</label>
+      <input name="password" type="password" minlength="6" required />
+      <button type="submit" style="margin-top:16px;">Create Admin</button>
+    </form>
+  </div>
+<%- include('partials/foot') %>

@@ -16,6 +16,10 @@
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕉</text></svg>" />
+
+  <style>
+  .product-image { position: relative; overflow: hidden; }
+  </style>
 </head>
 <body>
 
@@ -34,31 +38,26 @@
       </a>
 
       <!-- Desktop Navigation -->
+      <!-- Desktop Navigation -->
       <nav class="navbar-menu" role="navigation" aria-label="Main navigation">
 
         <div class="nav-item">
-          <a href="astrotalks.html" class="nav-link">
-            ✨ Astrology <span class="nav-arrow">▾</span>
+          <a href="astrotalks.html" class="nav-link ">
+            Astrotalks Platform <span class="nav-arrow">▾</span>
           </a>
           <div class="nav-dropdown" role="menu">
             <a href="astrotalks.html" class="dropdown-item" role="menuitem">
-              <span class="item-icon">🔭</span> Vedic Astrology
+              <span class="item-icon">🔭</span> Astrology Consultation
             </a>
             <a href="astrotalks.html" class="dropdown-item" role="menuitem">
-              <span class="item-icon">🃏</span> Tarot Reading
-            </a>
-            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
-              <span class="item-icon">🔢</span> Numerology
-            </a>
-            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
-              <span class="item-icon">✋</span> Palmistry
+              <span class="item-icon">📹</span> Video &amp; Audio Calls
             </a>
           </div>
         </div>
 
         <div class="nav-item">
-          <a href="store.html" class="nav-link active" aria-current="page">
-            🛒 Shop <span class="nav-arrow">▾</span>
+          <a href="store.html" class="nav-link ">
+            Spiritual Merchandise Store <span class="nav-arrow">▾</span>
           </a>
           <div class="nav-dropdown" role="menu">
             <a href="store.html" class="dropdown-item" role="menuitem">
@@ -68,63 +67,39 @@
               <span class="item-icon">📿</span> Rudraksha
             </a>
             <a href="store.html" class="dropdown-item" role="menuitem">
-              <span class="item-icon">🌸</span> Pooja Items
+              <span class="item-icon">🕯️</span> Incense &amp; Rituals
             </a>
             <a href="store.html" class="dropdown-item" role="menuitem">
-              <span class="item-icon">💎</span> Spiritual Jewelry
+              <span class="item-icon">💎</span> Jewelry &amp; Copper
             </a>
           </div>
         </div>
 
         <div class="nav-item">
-          <a href="meditation.html" class="nav-link">
-            📚 Courses <span class="nav-arrow">▾</span>
+          <a href="meditation.html" class="nav-link ">
+            Meditation / Yoga <span class="nav-arrow">▾</span>
           </a>
           <div class="nav-dropdown" role="menu">
             <a href="meditation.html" class="dropdown-item" role="menuitem">
-              <span class="item-icon">🧘</span> Yoga &amp; Meditation
+              <span class="item-icon">🆓</span> Free Courses
             </a>
             <a href="meditation.html" class="dropdown-item" role="menuitem">
-              <span class="item-icon">📖</span> Vedic Studies
+              <span class="item-icon">💰</span> Paid Courses
             </a>
             <a href="meditation.html" class="dropdown-item" role="menuitem">
-              <span class="item-icon">🕉</span> Spirituality
+              <span class="item-icon">🎥</span> Live &amp; Recorded
             </a>
           </div>
         </div>
 
-        <a href="content.html" class="nav-link">🎵 Content</a>
-        <a href="tourism.html" class="nav-link">✈️ Tours</a>
+        <a href="content.html" class="nav-link ">Books &amp; Podcasts</a>
+        <a href="tourism.html" class="nav-link ">Devotional Tourism</a>
 
       </nav>
 
-      <!-- Search Bar -->
-      <div class="nav-search" role="search">
-        <span class="search-icon" aria-hidden="true">🔍</span>
-        <input
-          type="search"
-          class="search-input"
-          placeholder="Search products..."
-          aria-label="Search products"
-        />
-      </div>
-
       <!-- Action Buttons -->
       <div class="navbar-actions">
-        <button id="theme-toggle" class="nav-action-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
-          🌙
-        </button>
-
-        <button class="nav-action-btn" aria-label="Wishlist" title="Wishlist" onclick="showToast('❤️ View your wishlist')">
-          🤍
-        </button>
-
-        <button class="nav-action-btn" aria-label="Shopping cart" title="Shopping Cart" onclick="showToast('🛒 Your cart has ' + cartCount + ' item(s)')">
-          🛒
-          <span id="cart-badge" class="badge" style="display:none">0</span>
-        </button>
-
-        <a href="#" class="btn btn-primary btn-sm">Sign In</a>
+        <a href="booking.html" class="btn btn-primary btn-sm">Book Now</a>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -145,15 +120,14 @@
     </div>
     <button id="mobile-nav-close" class="nav-action-btn" aria-label="Close menu" style="font-size:22px">✕</button>
   </div>
-  <a href="astrotalks.html">✨ Astrology</a>
-  <a href="store.html" class="active">🛒 Shop</a>
-  <a href="meditation.html">📚 Courses</a>
-  <a href="content.html">🎵 Content Library</a>
-  <a href="tourism.html">✈️ Devotional Tours</a>
-  <div style="padding-top:16px">
-    <a href="#" class="btn btn-primary" style="display:inline-flex; width:100%; justify-content:center;">Sign In</a>
-  </div>
+  <a href="astrotalks.html">Astrotalks Platform</a>
+  <a href="store.html">Spiritual Merchandise Store</a>
+  <a href="meditation.html">Meditation / Yoga</a>
+  <a href="content.html">Books &amp; Podcasts</a>
+  <a href="tourism.html">Devotional Tourism</a>
+  <a href="booking.html">Book Now</a>
 </nav>
+
 
 <!-- Toast Container -->
 <div id="toast-container" class="toast-container" aria-live="polite"></div>
@@ -421,7 +395,7 @@
           <!-- Product 1: Brass Ganesha Idol -->
           <article class="product-card fade-up" role="listitem" data-category="brass-idols">
             <div class="product-image" aria-hidden="true">
-              🙏
+              <img src="https://images.unsplash.com/photo-1616428315126-d3a8e4e0a9e9?auto=format&fit=crop&w=600&q=80" alt="Brass Ganesha Idol" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge">-23%</span>
               <button
                 class="product-wishlist"
@@ -454,7 +428,7 @@
           <!-- Product 2: Lakshmi Idol -->
           <article class="product-card fade-up" role="listitem" data-category="brass-idols">
             <div class="product-image" aria-hidden="true">
-              💛
+              <img src="https://images.unsplash.com/photo-1609619385102-f12b6a174ce5?auto=format&fit=crop&w=600&q=80" alt="Brass Lakshmi Idol" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge">-25%</span>
               <button
                 class="product-wishlist"
@@ -487,7 +461,7 @@
           <!-- Product 3: Shiva Lingam -->
           <article class="product-card fade-up" role="listitem" data-category="brass-idols">
             <div class="product-image" aria-hidden="true">
-              🕉
+              <img src="https://images.unsplash.com/photo-1571019613576-2b22c76fd955?auto=format&fit=crop&w=600&q=80" alt="Brass Shiva Lingam" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge">-22%</span>
               <button
                 class="product-wishlist"
@@ -520,7 +494,7 @@
           <!-- Product 4: Puja Thali Set -->
           <article class="product-card fade-up" role="listitem" data-category="pooja-items">
             <div class="product-image" aria-hidden="true">
-              🌸
+              <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=600&q=80" alt="Complete Puja Thali Set" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge">-23%</span>
               <button
                 class="product-wishlist"
@@ -553,7 +527,7 @@
           <!-- Product 5: Brass Diya -->
           <article class="product-card fade-up" role="listitem" data-category="pooja-items">
             <div class="product-image" aria-hidden="true">
-              🪔
+              <img src="https://images.unsplash.com/photo-1574270981993-52a6b7e1fce7?auto=format&fit=crop&w=600&q=80" alt="Brass Diya Set" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge">-25%</span>
               <button
                 class="product-wishlist"
@@ -586,7 +560,7 @@
           <!-- Product 6: Agarbatti Stand -->
           <article class="product-card fade-up" role="listitem" data-category="pooja-items">
             <div class="product-image" aria-hidden="true">
-              🔔
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="Agarbatti Incense Stand" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge new">NEW</span>
               <button
                 class="product-wishlist"
@@ -619,7 +593,7 @@
           <!-- Product 7: 5-Mukhi Rudraksha Mala -->
           <article class="product-card fade-up" role="listitem" data-category="rudraksha">
             <div class="product-image" aria-hidden="true">
-              📿
+              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd6?auto=format&fit=crop&w=600&q=80" alt="5 Mukhi Rudraksha Mala" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge">-33%</span>
               <button
                 class="product-wishlist"
@@ -652,7 +626,7 @@
           <!-- Product 8: 11-Mukhi Rudraksha Single -->
           <article class="product-card fade-up" role="listitem" data-category="rudraksha">
             <div class="product-image" aria-hidden="true">
-              📿
+              <img src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=600&q=80" alt="11-Mukhi Rudraksha Single" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge">-25%</span>
               <button
                 class="product-wishlist"
@@ -685,7 +659,7 @@
           <!-- Product 9: Sandalwood Incense Bundle -->
           <article class="product-card fade-up" role="listitem" data-category="incense">
             <div class="product-image" aria-hidden="true">
-              🕯️
+              <img src="https://images.unsplash.com/photo-1603827457577-609e6f42a45e?auto=format&fit=crop&w=600&q=80" alt="Sandalwood Incense Bundle" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge">-25%</span>
               <button
                 class="product-wishlist"
@@ -718,7 +692,7 @@
           <!-- Product 10: Mogra Dhoop Sticks -->
           <article class="product-card fade-up" role="listitem" data-category="incense">
             <div class="product-image" aria-hidden="true">
-              🕯️
+              <img src="https://images.unsplash.com/photo-1565117131035-de3d9dc6e1b4?auto=format&fit=crop&w=600&q=80" alt="Mogra Dhoop Sticks" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge">-25%</span>
               <button
                 class="product-wishlist"
@@ -751,7 +725,7 @@
           <!-- Product 11: Meditation Kurta -->
           <article class="product-card fade-up" role="listitem" data-category="spiritual-clothing">
             <div class="product-image" aria-hidden="true">
-              👘
+              <img src="https://images.unsplash.com/photo-1583391733956-62e31a8f0503?auto=format&fit=crop&w=600&q=80" alt="Cotton Meditation Kurta" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge">-31%</span>
               <button
                 class="product-wishlist"
@@ -784,7 +758,7 @@
           <!-- Product 12: White Dhoti Set -->
           <article class="product-card fade-up" role="listitem" data-category="spiritual-clothing">
             <div class="product-image" aria-hidden="true">
-              👘
+              <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b4bf7?auto=format&fit=crop&w=600&q=80" alt="White Dhoti Set" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <span class="product-badge">-25%</span>
               <button
                 class="product-wishlist"
@@ -900,7 +874,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2024 Divya Darshan. All rights reserved. 🕉 Made with ❤️ in India</p>
+      <p>Copyrights &#169; 2026 All rights reserved. &#128497; Made by Mohan</p>
       <div class="footer-bottom-links">
         <a href="#">Privacy</a>
         <a href="#">Terms</a>
@@ -1067,3 +1041,5 @@
 
 </body>
 </html>
+
+

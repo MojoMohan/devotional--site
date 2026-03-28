@@ -1,0 +1,39 @@
+<%- include('partials/head', { title }) %>
+  <div class="nav">
+    <a href="/admin">Pages</a>
+    <a href="/admin/astrologers">Astrologers</a>
+    <a href="/admin/logout">Logout</a>
+  </div>
+  <div class="card">
+    <h1><%= title %></h1>
+    <form method="post" action="<%= action %>">
+      <label>Name</label>
+      <input name="name" value="<%= astrologer ? astrologer.name : '' %>" required />
+
+      <label>Profile Photo URL</label>
+      <input name="photo_url" value="<%= astrologer ? astrologer.photo_url : '' %>" placeholder="https://..." />
+
+      <label>Specialization</label>
+      <input name="specialization" value="<%= astrologer ? astrologer.specialization : '' %>" placeholder="Vedic Astrology, Tarot" />
+
+      <label>Years of Experience</label>
+      <input name="years_experience" type="number" min="0" value="<%= astrologer && astrologer.years_experience != null ? astrologer.years_experience : '' %>" />
+
+      <label>Languages (comma separated)</label>
+      <input name="languages" value="<%= astrologer ? astrologer.languages : '' %>" placeholder="Hindi, English" />
+
+      <label>Rating (0-5)</label>
+      <input name="rating" type="number" min="0" max="5" step="0.1" value="<%= astrologer && astrologer.rating != null ? astrologer.rating : '' %>" />
+
+      <label>Pricing Per Minute (INR)</label>
+      <input name="price_per_minute" type="number" min="0" step="1" value="<%= astrologer && astrologer.price_per_minute != null ? astrologer.price_per_minute : '' %>" />
+
+      <label style="display:flex; align-items:center; gap:10px;">
+        <input type="checkbox" name="is_active" value="1" style="width:auto;" <%= !astrologer || astrologer.is_active ? 'checked' : '' %> />
+        Active
+      </label>
+
+      <button type="submit" style="margin-top:16px;">Save</button>
+    </form>
+  </div>
+<%- include('partials/foot') %>

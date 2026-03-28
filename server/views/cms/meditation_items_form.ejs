@@ -1,0 +1,73 @@
+<%- include('partials/head', { title }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'meditation' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1><%= title %></h1>
+        <p>Manage meditation item details.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-outline" href="/cms/meditation-items">Back to list</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Item details</h2>
+      <form method="post" action="<%= action %>" class="form-grid">
+        <div>
+          <label>Title</label>
+          <input name="title" value="<%= item ? item.title : '' %>" required />
+        </div>
+        <div>
+          <label>Category</label>
+          <select name="category">
+            <option value="">Select category</option>
+            <option <%= item && item.category === 'Meditation' ? 'selected' : '' %>>Meditation</option>
+            <option <%= item && item.category === 'Yoga' ? 'selected' : '' %>>Yoga</option>
+            <option <%= item && item.category === 'Pranayama' ? 'selected' : '' %>>Pranayama</option>
+            <option <%= item && item.category === 'Spirituality' ? 'selected' : '' %>>Spirituality</option>
+          </select>
+        </div>
+        <div>
+          <label>Duration (minutes)</label>
+          <input name="duration_minutes" type="number" min="0" value="<%= item && item.duration_minutes != null ? item.duration_minutes : '' %>" />
+        </div>
+        <div>
+          <label>Level</label>
+          <select name="level">
+            <option value="">Select level</option>
+            <option <%= item && item.level === 'Beginner' ? 'selected' : '' %>>Beginner</option>
+            <option <%= item && item.level === 'Intermediate' ? 'selected' : '' %>>Intermediate</option>
+            <option <%= item && item.level === 'Advanced' ? 'selected' : '' %>>Advanced</option>
+          </select>
+        </div>
+        <div>
+          <label>Price (INR)</label>
+          <input name="price" type="number" min="0" step="1" value="<%= item && item.price != null ? item.price : '' %>" />
+        </div>
+        <div>
+          <label>Image URL</label>
+          <input name="image_url" value="<%= item ? item.image_url : '' %>" placeholder="https://" />
+        </div>
+        <div style="grid-column: 1 / -1;">
+          <label>Description</label>
+          <textarea name="description"><%= item ? item.description : '' %></textarea>
+        </div>
+        <div>
+          <label>Status</label>
+          <select name="is_active">
+            <option value="1" <%= !item || item.is_active ? 'selected' : '' %>>Active</option>
+            <option value="0" <%= item && !item.is_active ? 'selected' : '' %>>Inactive</option>
+          </select>
+        </div>
+        <div style="grid-column: 1 / -1;" class="actions">
+          <button class="btn btn-primary" type="submit">Save</button>
+          <a class="btn btn-outline" href="/cms/meditation-items">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>
+

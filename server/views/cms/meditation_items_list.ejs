@@ -1,0 +1,62 @@
+<%- include('partials/head', { title: 'Meditation Items' }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'meditation' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>Meditation Items</h1>
+        <p>Manage meditation and yoga offerings.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="/cms/meditation-items/new">New item</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Catalog</h2>
+      <p>Add, edit, or remove meditation items.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Duration</th>
+            <th>Level</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (!items.length) { %>
+            <tr>
+              <td colspan="7" class="muted">No meditation items yet.</td>
+            </tr>
+          <% } %>
+          <% items.forEach((item) => { %>
+            <tr>
+              <td><%= item.title %></td>
+              <td><%= item.category || '-' %></td>
+              <td><%= item.duration_minutes != null ? item.duration_minutes + ' min' : '-' %></td>
+              <td><%= item.level || '-' %></td>
+              <td><%= item.price != null ? 'INR ' + item.price : '-' %></td>
+              <td>
+                <span class="badge <%= item.is_active ? 'active' : 'inactive' %>">
+                  <%= item.is_active ? 'Active' : 'Inactive' %>
+                </span>
+              </td>
+              <td class="actions">
+                <a class="btn btn-outline" href="/cms/meditation-items/<%= item.id %>/edit">Edit</a>
+                <form method="post" action="/cms/meditation-items/<%= item.id %>/delete" style="display:inline;" onsubmit="return confirm('Delete this item?');">
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>
+

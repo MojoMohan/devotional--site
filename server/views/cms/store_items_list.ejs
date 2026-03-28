@@ -1,0 +1,58 @@
+<%- include('partials/head', { title: 'Store Items' }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'store' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>Store Items</h1>
+        <p>Manage products for the spiritual store.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="/cms/store-items/new">New item</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Catalog</h2>
+      <p>Add, edit, or remove store items.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (!items.length) { %>
+            <tr>
+              <td colspan="5" class="muted">No store items yet.</td>
+            </tr>
+          <% } %>
+          <% items.forEach((item) => { %>
+            <tr>
+              <td><%= item.name %></td>
+              <td><%= item.category || '-' %></td>
+              <td><%= item.price != null ? 'INR ' + item.price : '-' %></td>
+              <td>
+                <span class="badge <%= item.is_active ? 'active' : 'inactive' %>">
+                  <%= item.is_active ? 'Active' : 'Inactive' %>
+                </span>
+              </td>
+              <td class="actions">
+                <a class="btn btn-outline" href="/cms/store-items/<%= item.id %>/edit">Edit</a>
+                <form method="post" action="/cms/store-items/<%= item.id %>/delete" style="display:inline;" onsubmit="return confirm('Delete this item?');">
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>
+

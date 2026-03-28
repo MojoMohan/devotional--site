@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Divya Darshan Devotional Tourism — Expertly curated pilgrimage tours across India with spiritual guides, comfortable stays, and flexible EMI options." />
+  <title>Devotional Tourism — Divya Darshan</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕉</text></svg>" />
+
+  <style>
+    /* ============================================================
+       TOURISM PAGE — PAGE-SPECIFIC STYLES
+       ============================================================ */
+
+    /* --- Tour Type Filter Tabs --- */
+    .tour-tabs-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    .tour-tabs-wrap::-webkit-scrollbar { display: none; }
+
+    .tour-tabs {
+      display: flex;
+      gap: 10px;
+      white-space: nowrap;
+      padding: 4px 0;
+    }
+
+    .tour-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 20px;
+      border-radius: var(--radius-full);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      border: 2px solid rgba(184, 134, 11, 0.2);
+      background: var(--color-primary-white);
+      color: var(--color-text-dark);
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .tour-tab:hover {
+      border-color: var(--color-primary-saffron);
+      color: var(--color-primary-saffron);
+    }
+
+    .tour-tab.active {
+      background: linear-gradient(135deg, var(--color-primary-saffron), var(--color-primary-gold));
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
+    }
+
+    /* --- Featured Package Banner --- */
+    .featured-banner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--color-primary-white);
+      border: 1px solid rgba(184, 134, 11, 0.15);
+      box-shadow: var(--shadow-md);
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .featured-banner-img {
+      position: relative;
+      min-height: 360px;
+    }
+
+    .featured-banner-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .featured-banner-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+    }
+
+    .featured-banner-content {
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .featured-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-primary-saffron);
+      background: rgba(255, 153, 51, 0.12);
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      width: fit-content;
+    }
+
+    .featured-banner-content h2 {
+      font-size: clamp(22px, 2.5vw, 30px);
+      line-height: 1.25;
+      color: var(--color-text-dark);
+    }
+
+    .featured-subtitle {
+      font-size: 14px;
+      color: var(--color-text-light);
+      font-style: italic;
+    }
+
+    .featured-meta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .featured-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      color: var(--color-text-dark);
+    }
+
+    .featured-includes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .include-pill {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: var(--color-bg-light);
+      color: var(--color-text-dark);
+      font-weight: 500;
+    }
+
+    .featured-price-block {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .price-original {
+      font-size: 15px;
+      text-decoration: line-through;
+      color: var(--color-text-light);
+    }
+
+    .price-current {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-primary-saffron);
+      font-family: var(--font-serif);
+    }
+
+    .emi-note {
+      font-size: 13px;
+      color: var(--color-accent-green);
+      font-weight: 600;
+    }
+
+    .featured-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* --- Stats Bar --- */
+    .hero-stats {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat-card {
+      background: var(--color-primary-white);
+      border: 1px solid rgba(184, 134, 11, 0.15);
+      border-radius: var(--radius-xl);
+      padding: 16px 22px;
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .hero-stat-card .stat-num {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--color-primary-saffron);
+      font-family: var(--font-serif);
+    }
+
+    .hero-stat-card .stat-label {
+      font-size: 11px;
+      color: var(--color-text-light);
+      margin-top: 3px;
+    }
+
+    /* --- Tour Cards Grid --- */
+    .tour-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-lg);
+    }
+
+    .tour-card {
+      background: var(--color-primary-white);
+      border: 1px solid rgba(184, 134, 11, 0.12);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: all var(--transition-base);
+      position: relative;
+    }
+
+    .tour-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(255, 153, 51, 0.3);
+    }
+
+    .tour-card-img {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .tour-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform var(--transition-slow);
+    }
+
+    .tour-card:hover .tour-card-img img {
+      transform: scale(1.05);
+    }
+
+    .dest-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(255,255,255,0.92);
+      color: var(--color-primary-gold);
+      backdrop-filter: blur(4px);
+      letter-spacing: 0.3px;
+    }
+
+    .tour-card-body {
+      padding: 18px 20px 0;
+    }
+
+    .tour-card-body h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .tour-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 13px;
+      color: var(--color-text-light);
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tour-meta-row span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tour-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .tour-rating .rating-val {
+      font-weight: 700;
+      color: var(--color-text-dark);
+    }
+
+    .tour-rating .review-cnt {
+      color: var(--color-text-light);
+    }
+
+    .tour-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .tour-price {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-primary-saffron);
+      font-family: var(--font-serif);
+    }
+
+    .tour-price-label {
+      font-size: 12px;
+      color: var(--color-text-light);
+    }
+
+    .tour-emi {
+      font-size: 12px;
+      color: var(--color-accent-green);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    /* Itinerary Accordion */
+    .itinerary-accordion {
+      border-top: 1px solid rgba(184, 134, 11, 0.1);
+      margin: 0 -20px;
+    }
+
+    .itinerary-toggle {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 12px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-primary-saffron);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-sans);
+      transition: background var(--transition-fast);
+    }
+
+    .itinerary-toggle:hover {
+      background: rgba(255, 153, 51, 0.05);
+    }
+
+    .itinerary-toggle .acc-icon {
+      font-size: 11px;
+      transition: transform var(--transition-fast);
+    }
+
+    .itinerary-toggle.open .acc-icon {
+      transform: rotate(180deg);
+    }
+
+    .itinerary-body {
+      display: none;
+      padding: 0 20px 16px;
+      font-size: 13px;
+      color: var(--color-text-light);
+      line-height: 1.7;
+    }
+
+    .itinerary-body.open {
+      display: block;
+    }
+
+    .itinerary-body ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .itinerary-body ul li {
+      padding: 3px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .itinerary-body ul li::before {
+      content: '📍';
+      font-size: 12px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .tour-card-footer {
+      padding: 0 20px 18px;
+    }
+
+    .tour-book-btn {
+      width: 100%;
+      padding: 11px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--color-primary-saffron), var(--color-primary-gold));
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      font-family: var(--font-sans);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      margin-top: 12px;
+    }
+
+    .tour-book-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(255, 153, 51, 0.35);
+    }
+
+    /* --- Trust Badges / Why Choose Us --- */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-lg);
+    }
+
+    .trust-card {
+      background: var(--color-primary-white);
+      border: 1px solid rgba(184, 134, 11, 0.12);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl) var(--spacing-lg);
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+
+    .trust-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(255, 153, 51, 0.25);
+    }
+
+    .trust-icon {
+      font-size: 40px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .trust-card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .trust-card p {
+      font-size: 13px;
+      color: var(--color-text-light);
+      line-height: 1.6;
+    }
+
+    /* --- Testimonials --- */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+    }
+
+    .testimonial-card {
+      background: var(--color-primary-white);
+      border: 1px solid rgba(184, 134, 11, 0.12);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 64px;
+      line-height: 1;
+      font-family: var(--font-serif);
+      color: rgba(255, 153, 51, 0.15);
+      pointer-events: none;
+    }
+
+    .testimonial-stars {
+      color: var(--color-primary-saffron);
+      font-size: 15px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--color-text-dark);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 153, 51, 0.2);
+    }
+
+    .testimonial-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-dark);
+    }
+
+    .testimonial-meta {
+      font-size: 12px;
+      color: var(--color-text-light);
+    }
+
+    /* --- FAQ Accordion --- */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--color-primary-white);
+      border: 1px solid rgba(184, 134, 11, 0.12);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 22px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      text-align: left;
+      font-family: var(--font-sans);
+      transition: background var(--transition-fast);
+    }
+
+    .faq-question:hover {
+      background: rgba(255, 153, 51, 0.04);
+    }
+
+    .faq-question .faq-icon {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--color-primary-saffron);
+      flex-shrink: 0;
+      transition: transform var(--transition-fast);
+    }
+
+    .faq-question.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 22px 18px;
+      font-size: 14px;
+      color: var(--color-text-light);
+      line-height: 1.7;
+      border-top: 1px solid rgba(184, 134, 11, 0.08);
+    }
+
+    .faq-answer.open {
+      display: block;
+    }
+
+    /* --- Newsletter --- */
+    .newsletter-section {
+      background: linear-gradient(135deg, #FFF5E6 0%, #FFF0D6 100%);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-3xl) var(--spacing-2xl);
+      text-align: center;
+    }
+
+    [data-theme="dark"] .newsletter-section {
+      background: linear-gradient(135deg, #1E1810 0%, #201C10 100%);
+    }
+
+    .newsletter-section h2 {
+      font-size: clamp(22px, 3vw, 30px);
+      margin-bottom: 10px;
+    }
+
+    .newsletter-section p {
+      color: var(--color-text-light);
+      font-size: 15px;
+      max-width: 500px;
+      margin: 0 auto 28px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      max-width: 480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      min-width: 220px;
+      padding: 12px 18px;
+      border: 1px solid rgba(184, 134, 11, 0.25);
+      border-radius: var(--radius-full);
+      font-size: 14px;
+      font-family: var(--font-sans);
+      background: var(--color-primary-white);
+      color: var(--color-text-dark);
+      outline: none;
+      transition: border-color var(--transition-fast);
+    }
+
+    .newsletter-input:focus {
+      border-color: var(--color-primary-saffron);
+    }
+
+    /* --- Mobile Filter Toggle --- */
+    .mobile-filter-btn {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: 1px solid rgba(184, 134, 11, 0.25);
+      border-radius: var(--radius-full);
+      background: var(--color-primary-white);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: all var(--transition-fast);
+    }
+
+    .mobile-filter-btn:hover {
+      border-color: var(--color-primary-saffron);
+      color: var(--color-primary-saffron);
+    }
+
+    /* --- Section header helper --- */
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .section-header h2 {
+      font-size: clamp(24px, 3vw, 34px);
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      color: var(--color-text-light);
+      font-size: 15px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--color-primary-saffron);
+      margin-bottom: 8px;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1024px) {
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .featured-banner {
+        grid-template-columns: 1fr;
+      }
+      .featured-banner-img {
+        min-height: 260px;
+      }
+      .featured-banner-content {
+        padding: 28px 24px;
+      }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .filter-layout {
+        grid-template-columns: 1fr;
+      }
+      .filter-sidebar {
+        display: none;
+        position: static;
+      }
+      .filter-sidebar.mobile-open {
+        display: block;
+      }
+      .mobile-filter-btn {
+        display: flex;
+      }
+      .tour-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .trust-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats {
+        gap: 8px;
+      }
+      .hero-stat-card {
+        padding: 12px 14px;
+        min-width: 0;
+        flex: 1;
+      }
+      .hero-stat-card .stat-num {
+        font-size: 20px;
+      }
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+      .featured-banner-content {
+        padding: 22px 18px;
+      }
+      .featured-actions {
+        flex-direction: column;
+      }
+      .featured-actions .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =================== NAVBAR =================== -->
+<header class="navbar" role="banner">
+  <div class="container">
+    <div class="navbar-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="navbar-logo" aria-label="Divya Darshan Home">
+        <div class="logo-icon" aria-hidden="true">🕉</div>
+        <div class="logo-text">
+          Divya Darshan
+          <span>Spiritual Ecosystem</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <!-- Desktop Navigation -->
+      <nav class="navbar-menu" role="navigation" aria-label="Main navigation">
+
+        <div class="nav-item">
+          <a href="astrotalks.html" class="nav-link ">
+            Astrotalks Platform <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🔭</span> Astrology Consultation
+            </a>
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📹</span> Video &amp; Audio Calls
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="store.html" class="nav-link ">
+            Spiritual Merchandise Store <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🪔</span> Brass Idols
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📿</span> Rudraksha
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🕯️</span> Incense &amp; Rituals
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">💎</span> Jewelry &amp; Copper
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="meditation.html" class="nav-link ">
+            Meditation / Yoga <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🆓</span> Free Courses
+            </a>
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">💰</span> Paid Courses
+            </a>
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🎥</span> Live &amp; Recorded
+            </a>
+          </div>
+        </div>
+
+        <a href="content.html" class="nav-link ">Books &amp; Podcasts</a>
+        <a href="tourism.html" class="nav-link ">Devotional Tourism</a>
+
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="navbar-actions">
+        <a href="booking.html" class="btn btn-primary btn-sm">Book Now</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-header">
+    <div class="navbar-logo">
+      <div class="logo-icon">🕉</div>
+      <div class="logo-text">Divya Darshan</div>
+    </div>
+    <button id="mobile-nav-close" class="nav-action-btn" aria-label="Close menu" style="font-size:22px">✕</button>
+  </div>
+  <a href="astrotalks.html">Astrotalks Platform</a>
+  <a href="store.html">Spiritual Merchandise Store</a>
+  <a href="meditation.html">Meditation / Yoga</a>
+  <a href="content.html">Books &amp; Podcasts</a>
+  <a href="tourism.html">Devotional Tourism</a>
+  <a href="booking.html">Book Now</a>
+</nav>
+
+
+<!-- Toast Container -->
+<div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+<!-- =================== PAGE HERO =================== -->
+<section class="page-hero" aria-labelledby="tourism-hero-heading">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <div class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span>Devotional Tourism</span>
+        </div>
+        <h1 id="tourism-hero-heading">✈️ Sacred Journeys Across India</h1>
+        <p>Expertly curated pilgrimage tours with spiritual guides, comfortable stays, and flexible EMI payment options</p>
+        <div class="hero-stats">
+          <div class="hero-stat-card">
+            <div class="stat-num">120+</div>
+            <div class="stat-label">Packages</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-num">50K+</div>
+            <div class="stat-label">Pilgrims</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-num">4.9★</div>
+            <div class="stat-label">Rating</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">Support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== TOUR TYPE FILTER TABS =================== -->
+<section class="section" style="padding-bottom:0" aria-label="Filter by tour type">
+  <div class="container">
+    <div class="tour-tabs-wrap" role="tablist" aria-label="Tour type filters">
+      <div class="tour-tabs">
+        <button class="tour-tab active" role="tab" aria-selected="true" data-type="all" onclick="filterTours('all', this)">🗺️ All</button>
+        <button class="tour-tab" role="tab" aria-selected="false" data-type="temple" onclick="filterTours('temple', this)">🛕 Temple Tours</button>
+        <button class="tour-tab" role="tab" aria-selected="false" data-type="pilgrimage" onclick="filterTours('pilgrimage', this)">🙏 Pilgrimage</button>
+        <button class="tour-tab" role="tab" aria-selected="false" data-type="yoga" onclick="filterTours('yoga', this)">🧘 Yoga Retreats</button>
+        <button class="tour-tab" role="tab" aria-selected="false" data-type="himalayan" onclick="filterTours('himalayan', this)">🏔️ Himalayan</button>
+        <button class="tour-tab" role="tab" aria-selected="false" data-type="south" onclick="filterTours('south', this)">🌴 South India</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FEATURED PACKAGE BANNER =================== -->
+<section class="section" style="padding-top:28px;" aria-label="Featured package">
+  <div class="container">
+    <article class="featured-banner" aria-label="Featured: Char Dham Yatra">
+      <!-- Left: Image -->
+      <div class="featured-banner-img">
+        <img
+          src="https://images.unsplash.com/photo-1609619385102-f12b6a174ce5?auto=format&fit=crop&w=700&q=80"
+          alt="Kedarnath temple in the Himalayas during Char Dham Yatra"
+          loading="lazy"
+        />
+        <div class="featured-banner-img-overlay" aria-hidden="true"></div>
+      </div>
+      <!-- Right: Content -->
+      <div class="featured-banner-content">
+        <span class="featured-tag">⭐ Featured Package</span>
+        <h2>Char Dham Yatra — Complete Circuit</h2>
+        <p class="featured-subtitle">Badrinath · Kedarnath · Gangotri · Yamunotri</p>
+        <div class="featured-meta-row">
+          <span class="featured-meta-item">⏱️ <strong>14 Days</strong></span>
+          <span class="featured-meta-item">👥 Group &amp; Private</span>
+        </div>
+        <div>
+          <p style="font-size:12px;font-weight:700;color:var(--color-text-light);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;">Includes</p>
+          <div class="featured-includes">
+            <span class="include-pill">✈️ Flights</span>
+            <span class="include-pill">🏨 Hotels</span>
+            <span class="include-pill">🍽️ Meals</span>
+            <span class="include-pill">🧑‍✈️ Guide</span>
+          </div>
+        </div>
+        <div class="featured-price-block">
+          <span class="price-original">₹1,10,000</span>
+          <span class="price-current">₹89,999</span>
+          <span class="emi-note">EMI from ₹7,499/month</span>
+        </div>
+        <div class="featured-actions">
+          <button class="btn btn-primary" onclick="showToast('🙏 Booking Char Dham Yatra — our team will contact you shortly!')">Book Now</button>
+          <button class="btn btn-outline" onclick="showToast('📋 Char Dham itinerary details coming soon!')">View Itinerary</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =================== FILTER SIDEBAR + TOUR CARDS =================== -->
+<main class="section" id="tours-section" aria-label="Tour packages">
+  <div class="container">
+
+    <!-- Mobile Filter Toggle -->
+    <div style="margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <button class="mobile-filter-btn" id="mobile-filter-btn" onclick="toggleMobileFilter()" aria-expanded="false" aria-controls="filter-sidebar">
+        🎛️ Filters
+      </button>
+      <div class="results-count" style="font-size:14px;color:var(--color-text-light);">
+        Showing <strong id="visible-count" style="color:var(--color-text-dark);">8</strong> of <strong style="color:var(--color-text-dark);">120+</strong> packages
+      </div>
+    </div>
+
+    <div class="filter-layout">
+
+      <!-- ===== FILTER SIDEBAR ===== -->
+      <aside class="filter-sidebar" id="filter-sidebar" aria-label="Filter tour packages">
+        <div class="filter-sidebar-header">
+          <h3>🎛️ Filters</h3>
+          <button class="filter-clear" onclick="clearAllTourFilters()">Clear All</button>
+        </div>
+
+        <!-- Duration -->
+        <div class="filter-group" id="fg-duration">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-duration')">
+            Duration <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="duration" value="1-3" />
+              1–3 Days
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="duration" value="4-7" />
+              4–7 Days
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="duration" value="8-14" />
+              8–14 Days
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="duration" value="15+" />
+              15+ Days
+            </label>
+          </div>
+        </div>
+
+        <!-- Budget -->
+        <div class="filter-group" id="fg-budget">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-budget')">
+            Budget <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="radio" name="budget" value="under10k" />
+              Under ₹10K
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="budget" value="10k-30k" />
+              ₹10K – ₹30K
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="budget" value="30k-60k" />
+              ₹30K – ₹60K
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="budget" value="60k+" />
+              ₹60K+
+            </label>
+          </div>
+        </div>
+
+        <!-- Group Type -->
+        <div class="filter-group" id="fg-group">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-group')">
+            Group Type <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="radio" name="grouptype" value="solo" />
+              Solo
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="grouptype" value="couple" />
+              Couple
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="grouptype" value="family" />
+              Family
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="grouptype" value="group" />
+              Group Tour
+            </label>
+          </div>
+        </div>
+
+        <!-- Includes -->
+        <div class="filter-group" id="fg-includes">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-includes')">
+            Includes <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="includes" value="flights" />
+              ✈️ Flights
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="includes" value="hotel" />
+              🏨 Hotel
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="includes" value="meals" />
+              🍽️ Meals
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="includes" value="guide" />
+              🧑‍✈️ Guide
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="includes" value="puja" />
+              🪔 Puja
+            </label>
+          </div>
+        </div>
+
+      </aside><!-- /filter-sidebar -->
+
+      <!-- ===== TOUR CARDS GRID ===== -->
+      <div>
+        <div class="tour-cards-grid" id="tours-grid">
+
+          <!-- Card 1: Varanasi -->
+          <article class="tour-card fade-up" data-type="temple" aria-label="Varanasi — City of Light">
+            <div class="tour-card-img">
+              <img
+                src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=600&q=80"
+                alt="Ghats of Varanasi at sunrise"
+                loading="lazy"
+              />
+              <span class="dest-badge">Uttar Pradesh</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>🕯️ Varanasi — City of Light</h3>
+              <div class="tour-meta-row">
+                <span>⏱️ 5 Days</span>
+                <span>👥 Group &amp; Private</span>
+              </div>
+              <div class="tour-rating">
+                <span class="rating-val">★4.9</span>
+                <span class="review-cnt">(248 reviews)</span>
+              </div>
+              <div class="tour-price-row">
+                <span class="tour-price">₹18,999</span>
+                <span class="tour-price-label">per person</span>
+              </div>
+              <div class="tour-emi">💳 EMI from ₹1,584/month</div>
+            </div>
+            <div class="itinerary-accordion">
+              <button class="itinerary-toggle" onclick="toggleItinerary(this)" aria-expanded="false">
+                📋 View Itinerary <span class="acc-icon">▾</span>
+              </button>
+              <div class="itinerary-body">
+                <ul>
+                  <li>Day 1: Arrival in Varanasi, evening Ganga Aarti at Dashashwamedh Ghat</li>
+                  <li>Day 2: Sunrise boat ride, Kashi Vishwanath Temple darshan</li>
+                  <li>Day 3: Sarnath — Buddha's first sermon site</li>
+                  <li>Day 4: Free exploration of ghats, local culture walk</li>
+                  <li>Day 5: Morning puja, departure</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tour-card-footer">
+              <button class="tour-book-btn" onclick="bookTour('Varanasi — City of Light')">Book Now</button>
+            </div>
+          </article>
+
+          <!-- Card 2: Kedarnath Yatra -->
+          <article class="tour-card fade-up" data-type="himalayan" aria-label="Kedarnath Yatra">
+            <div class="tour-card-img">
+              <img
+                src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=600&q=80"
+                alt="Kedarnath temple in the Himalayas"
+                loading="lazy"
+              />
+              <span class="dest-badge">Uttarakhand</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>🏔️ Kedarnath Yatra</h3>
+              <div class="tour-meta-row">
+                <span>⏱️ 6 Days</span>
+                <span>👥 Group Tour</span>
+              </div>
+              <div class="tour-rating">
+                <span class="rating-val">★4.8</span>
+                <span class="review-cnt">(184 reviews)</span>
+              </div>
+              <div class="tour-price-row">
+                <span class="tour-price">₹28,999</span>
+                <span class="tour-price-label">per person</span>
+              </div>
+              <div class="tour-emi">💳 EMI from ₹2,416/month</div>
+            </div>
+            <div class="itinerary-accordion">
+              <button class="itinerary-toggle" onclick="toggleItinerary(this)" aria-expanded="false">
+                📋 View Itinerary <span class="acc-icon">▾</span>
+              </button>
+              <div class="itinerary-body">
+                <ul>
+                  <li>Day 1–2: Haridwar to Gaurikund trek base</li>
+                  <li>Day 3: Trek to Kedarnath (18 km) or helicopter option</li>
+                  <li>Day 4: Kedarnath temple darshan, stay overnight</li>
+                  <li>Day 5: Descent to Gaurikund, drive to Rudraprayag</li>
+                  <li>Day 6: Return to Haridwar, departure</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tour-card-footer">
+              <button class="tour-book-btn" onclick="bookTour('Kedarnath Yatra')">Book Now</button>
+            </div>
+          </article>
+
+          <!-- Card 3: Tirupati Balaji -->
+          <article class="tour-card fade-up" data-type="temple" aria-label="Tirupati Balaji Darshan">
+            <div class="tour-card-img">
+              <img
+                src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?auto=format&fit=crop&w=600&q=80"
+                alt="Tirupati Balaji temple gopuram"
+                loading="lazy"
+              />
+              <span class="dest-badge">Andhra Pradesh</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>🛕 Tirupati Balaji Darshan</h3>
+              <div class="tour-meta-row">
+                <span>⏱️ 3 Days</span>
+                <span>👥 Group &amp; Private</span>
+              </div>
+              <div class="tour-rating">
+                <span class="rating-val">★4.9</span>
+                <span class="review-cnt">(312 reviews)</span>
+              </div>
+              <div class="tour-price-row">
+                <span class="tour-price">₹12,999</span>
+                <span class="tour-price-label">per person</span>
+              </div>
+              <div class="tour-emi">💳 EMI from ₹1,083/month</div>
+            </div>
+            <div class="itinerary-accordion">
+              <button class="itinerary-toggle" onclick="toggleItinerary(this)" aria-expanded="false">
+                📋 View Itinerary <span class="acc-icon">▾</span>
+              </button>
+              <div class="itinerary-body">
+                <ul>
+                  <li>Day 1: Arrival at Tirupati, check-in, local exploration</li>
+                  <li>Day 2: Early morning darshan at Venkateswara Temple, Alipiri climb</li>
+                  <li>Day 3: Sri Padmavathi Ammavari Temple, departure</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tour-card-footer">
+              <button class="tour-book-btn" onclick="bookTour('Tirupati Balaji Darshan')">Book Now</button>
+            </div>
+          </article>
+
+          <!-- Card 4: Rishikesh Yoga Retreat -->
+          <article class="tour-card fade-up" data-type="yoga" aria-label="Rishikesh Yoga Retreat">
+            <div class="tour-card-img">
+              <img
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80"
+                alt="Rishikesh yoga retreat with mountain backdrop"
+                loading="lazy"
+              />
+              <span class="dest-badge">Uttarakhand</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>🧘 Rishikesh Yoga Retreat</h3>
+              <div class="tour-meta-row">
+                <span>⏱️ 7 Days</span>
+                <span>👥 Small Group</span>
+              </div>
+              <div class="tour-rating">
+                <span class="rating-val">★4.8</span>
+                <span class="review-cnt">(156 reviews)</span>
+              </div>
+              <div class="tour-price-row">
+                <span class="tour-price">₹24,999</span>
+                <span class="tour-price-label">per person</span>
+              </div>
+              <div class="tour-emi">💳 EMI from ₹2,083/month</div>
+            </div>
+            <div class="itinerary-accordion">
+              <button class="itinerary-toggle" onclick="toggleItinerary(this)" aria-expanded="false">
+                📋 View Itinerary <span class="acc-icon">▾</span>
+              </button>
+              <div class="itinerary-body">
+                <ul>
+                  <li>Day 1: Arrival, orientation, evening meditation at Ganga</li>
+                  <li>Day 2–6: Daily yoga &amp; pranayama, Vedic lectures, river rafting</li>
+                  <li>Day 3: Beatles Ashram visit, Laxman Jhula walk</li>
+                  <li>Day 5: Neelkanth Mahadev Temple trek</li>
+                  <li>Day 7: Final meditation ceremony, departure</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tour-card-footer">
+              <button class="tour-book-btn" onclick="bookTour('Rishikesh Yoga Retreat')">Book Now</button>
+            </div>
+          </article>
+
+          <!-- Card 5: Golden Temple Amritsar -->
+          <article class="tour-card fade-up" data-type="pilgrimage" aria-label="Golden Temple — Amritsar">
+            <div class="tour-card-img">
+              <img
+                src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=600&q=80"
+                alt="Golden Temple in Amritsar at dawn"
+                loading="lazy"
+              />
+              <span class="dest-badge">Punjab</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>🪙 Golden Temple — Amritsar</h3>
+              <div class="tour-meta-row">
+                <span>⏱️ 3 Days</span>
+                <span>👥 Group &amp; Private</span>
+              </div>
+              <div class="tour-rating">
+                <span class="rating-val">★4.9</span>
+                <span class="review-cnt">(289 reviews)</span>
+              </div>
+              <div class="tour-price-row">
+                <span class="tour-price">₹9,999</span>
+                <span class="tour-price-label">per person</span>
+              </div>
+              <div class="tour-emi">💳 EMI from ₹833/month</div>
+            </div>
+            <div class="itinerary-accordion">
+              <button class="itinerary-toggle" onclick="toggleItinerary(this)" aria-expanded="false">
+                📋 View Itinerary <span class="acc-icon">▾</span>
+              </button>
+              <div class="itinerary-body">
+                <ul>
+                  <li>Day 1: Arrival in Amritsar, evening Palki Sahib ceremony at Golden Temple</li>
+                  <li>Day 2: Morning Amrit Vela, Jallianwala Bagh, Wagah Border ceremony</li>
+                  <li>Day 3: Durgiana Temple, Maharaja Ranjit Singh Museum, departure</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tour-card-footer">
+              <button class="tour-book-btn" onclick="bookTour('Golden Temple — Amritsar')">Book Now</button>
+            </div>
+          </article>
+
+          <!-- Card 6: Mathura Vrindavan -->
+          <article class="tour-card fade-up" data-type="temple" aria-label="Mathura Vrindavan Yatra">
+            <div class="tour-card-img">
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
+                alt="Mathura Vrindavan temple at sunset"
+                loading="lazy"
+              />
+              <span class="dest-badge">Uttar Pradesh</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>🦚 Mathura Vrindavan Yatra</h3>
+              <div class="tour-meta-row">
+                <span>⏱️ 4 Days</span>
+                <span>👥 Group Tour</span>
+              </div>
+              <div class="tour-rating">
+                <span class="rating-val">★4.7</span>
+                <span class="review-cnt">(203 reviews)</span>
+              </div>
+              <div class="tour-price-row">
+                <span class="tour-price">₹14,999</span>
+                <span class="tour-price-label">per person</span>
+              </div>
+              <div class="tour-emi">💳 EMI from ₹1,249/month</div>
+            </div>
+            <div class="itinerary-accordion">
+              <button class="itinerary-toggle" onclick="toggleItinerary(this)" aria-expanded="false">
+                📋 View Itinerary <span class="acc-icon">▾</span>
+              </button>
+              <div class="itinerary-body">
+                <ul>
+                  <li>Day 1: Mathura — Krishna Janmabhoomi temple, Dwarkadhish mandir</li>
+                  <li>Day 2: Vrindavan — Banke Bihari, Prem Mandir, ISKCON temple</li>
+                  <li>Day 3: Govardhan Parvat parikrama, Radha Kund</li>
+                  <li>Day 4: Barsana — Nandgaon temples, departure</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tour-card-footer">
+              <button class="tour-book-btn" onclick="bookTour('Mathura Vrindavan Yatra')">Book Now</button>
+            </div>
+          </article>
+
+          <!-- Card 7: Puri Jagannath -->
+          <article class="tour-card fade-up" data-type="south" aria-label="Puri Jagannath Yatra">
+            <div class="tour-card-img">
+              <img
+                src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=600&q=80"
+                alt="Puri sea shore and Jagannath temple"
+                loading="lazy"
+              />
+              <span class="dest-badge">Odisha</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>🌊 Puri Jagannath Yatra</h3>
+              <div class="tour-meta-row">
+                <span>⏱️ 5 Days</span>
+                <span>👥 Group &amp; Private</span>
+              </div>
+              <div class="tour-rating">
+                <span class="rating-val">★4.8</span>
+                <span class="review-cnt">(167 reviews)</span>
+              </div>
+              <div class="tour-price-row">
+                <span class="tour-price">₹19,999</span>
+                <span class="tour-price-label">per person</span>
+              </div>
+              <div class="tour-emi">💳 EMI from ₹1,666/month</div>
+            </div>
+            <div class="itinerary-accordion">
+              <button class="itinerary-toggle" onclick="toggleItinerary(this)" aria-expanded="false">
+                📋 View Itinerary <span class="acc-icon">▾</span>
+              </button>
+              <div class="itinerary-body">
+                <ul>
+                  <li>Day 1: Arrival at Bhubaneswar, Lingaraj Temple</li>
+                  <li>Day 2: Puri — Jagannath Temple darshan, Puri beach</li>
+                  <li>Day 3: Konark Sun Temple, Chandrabhaga beach</li>
+                  <li>Day 4: Chilika Lake, dolphin watching, Alarnath Temple</li>
+                  <li>Day 5: Morning puja at Jagannath, departure</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tour-card-footer">
+              <button class="tour-book-btn" onclick="bookTour('Puri Jagannath Yatra')">Book Now</button>
+            </div>
+          </article>
+
+          <!-- Card 8: Rameshwaram -->
+          <article class="tour-card fade-up" data-type="south" aria-label="Rameshwaram Pilgrimage">
+            <div class="tour-card-img">
+              <img
+                src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=600&q=80"
+                alt="Rameshwaram temple corridor"
+                loading="lazy"
+              />
+              <span class="dest-badge">Tamil Nadu</span>
+            </div>
+            <div class="tour-card-body">
+              <h3>🐚 Rameshwaram Pilgrimage</h3>
+              <div class="tour-meta-row">
+                <span>⏱️ 4 Days</span>
+                <span>👥 Group Tour</span>
+              </div>
+              <div class="tour-rating">
+                <span class="rating-val">★4.9</span>
+                <span class="review-cnt">(221 reviews)</span>
+              </div>
+              <div class="tour-price-row">
+                <span class="tour-price">₹16,999</span>
+                <span class="tour-price-label">per person</span>
+              </div>
+              <div class="tour-emi">💳 EMI from ₹1,416/month</div>
+            </div>
+            <div class="itinerary-accordion">
+              <button class="itinerary-toggle" onclick="toggleItinerary(this)" aria-expanded="false">
+                📋 View Itinerary <span class="acc-icon">▾</span>
+              </button>
+              <div class="itinerary-body">
+                <ul>
+                  <li>Day 1: Arrival at Rameshwaram, Agnitheertham sacred bath</li>
+                  <li>Day 2: Ramanathaswamy Temple — 22 sacred wells (theerthams)</li>
+                  <li>Day 3: Dhanushkodi, Pamban Bridge, Ariyaman Beach</li>
+                  <li>Day 4: Gandhamadana Parvatham, Kothandaramaswamy Temple, departure</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tour-card-footer">
+              <button class="tour-book-btn" onclick="bookTour('Rameshwaram Pilgrimage')">Book Now</button>
+            </div>
+          </article>
+
+        </div><!-- /tour-cards-grid -->
+
+        <!-- No Results Message (hidden by default) -->
+        <div id="no-results" style="display:none;text-align:center;padding:60px 20px;color:var(--color-text-light);">
+          <div style="font-size:48px;margin-bottom:16px;">🗺️</div>
+          <h3 style="font-size:18px;margin-bottom:8px;color:var(--color-text-dark);">No packages found</h3>
+          <p style="font-size:14px;">Try selecting a different tour type or <button onclick="filterTours('all', document.querySelector('[data-type=all]'))" style="background:none;border:none;color:var(--color-primary-saffron);cursor:pointer;font-weight:600;font-size:14px;">view all packages</button>.</p>
+        </div>
+
+      </div><!-- /grid panel -->
+
+    </div><!-- /filter-layout -->
+  </div>
+</main>
+
+<!-- =================== WHY CHOOSE US =================== -->
+<section class="section" style="background:var(--color-bg-lighter);" aria-labelledby="why-choose-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Our Promise</p>
+      <h2 id="why-choose-heading">Why Choose Divya Darshan Tours?</h2>
+      <p>We make sacred travel effortless, safe, and deeply meaningful</p>
+    </div>
+    <div class="trust-grid">
+
+      <div class="trust-card fade-up">
+        <span class="trust-icon" aria-hidden="true">🛡️</span>
+        <h3>Safe &amp; Insured</h3>
+        <p>All packages include comprehensive travel insurance, certified vehicles, and 24/7 emergency support throughout your journey.</p>
+      </div>
+
+      <div class="trust-card fade-up">
+        <span class="trust-icon" aria-hidden="true">🧑‍✈️</span>
+        <h3>Expert Guides</h3>
+        <p>Our certified spiritual guides bring deep knowledge of rituals, history, and local customs to enrich every moment of your pilgrimage.</p>
+      </div>
+
+      <div class="trust-card fade-up">
+        <span class="trust-icon" aria-hidden="true">💎</span>
+        <h3>Transparent Pricing</h3>
+        <p>No hidden costs, no surprises. All inclusions are clearly stated upfront and flexible EMI options make sacred travel accessible to all.</p>
+      </div>
+
+      <div class="trust-card fade-up">
+        <span class="trust-icon" aria-hidden="true">⭐</span>
+        <h3>4.9★ Rated</h3>
+        <p>Over 50,000 pilgrims have rated us 4.9 stars. We are consistently ranked India's most trusted devotional tourism platform.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== TESTIMONIALS =================== -->
+<section class="section" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Pilgrim Stories</p>
+      <h2 id="testimonials-heading">What Our Pilgrims Say</h2>
+      <p>Real experiences from devotees who travelled with us</p>
+    </div>
+    <div class="testimonials-grid">
+
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+        <p class="testimonial-text">
+          "The Char Dham Yatra with Divya Darshan was a life-changing experience. Our guide, Pandit Rameshji, knew every ritual in detail. The helicopter option at Kedarnath was seamlessly arranged. I felt truly spiritually connected throughout."
+        </p>
+        <div class="testimonial-author">
+          <img
+            src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?auto=format&fit=crop&w=100&q=80"
+            alt="Suresh Kumar"
+            class="testimonial-avatar"
+            loading="lazy"
+          />
+          <div>
+            <div class="testimonial-name">Suresh Kumar</div>
+            <div class="testimonial-meta">Char Dham Yatra · Mumbai</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+        <p class="testimonial-text">
+          "I did the Rishikesh Yoga Retreat as a solo traveller and it exceeded every expectation. The ashram accommodation was comfortable, the yoga masters were world-class, and the Ganga ceremonies at dawn moved me to tears. Already planning my next trip."
+        </p>
+        <div class="testimonial-author">
+          <img
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80"
+            alt="Priya Nair"
+            class="testimonial-avatar"
+            loading="lazy"
+          />
+          <div>
+            <div class="testimonial-name">Priya Nair</div>
+            <div class="testimonial-meta">Rishikesh Retreat · Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars" aria-label="4 stars">★★★★★</div>
+        <p class="testimonial-text">
+          "We took our parents on the Tirupati Balaji Darshan package — it was flawless. VIP darshan tickets were arranged in advance, the hotel was clean and close to the temple, and the driver was patient and courteous throughout. Highly recommend!"
+        </p>
+        <div class="testimonial-author">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
+            alt="Vikram Reddy"
+            class="testimonial-avatar"
+            loading="lazy"
+          />
+          <div>
+            <div class="testimonial-name">Vikram Reddy</div>
+            <div class="testimonial-meta">Tirupati Darshan · Hyderabad</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== FAQ =================== -->
+<section class="section" style="background:var(--color-bg-lighter);" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Help Center</p>
+      <h2 id="faq-heading">Frequently Asked Questions</h2>
+      <p>Everything you need to know before your sacred journey</p>
+    </div>
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          How do I book a tour package? <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer">
+          Booking is simple — click "Book Now" on any package, fill in your details, choose your travel dates and group size, then proceed to payment. Our team will confirm your booking within 2 hours and send a detailed itinerary. You can also call our 24/7 helpline or chat with our AI guide for personalized assistance.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          What is your cancellation and refund policy? <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer">
+          We offer free cancellation up to 15 days before departure for a full refund. Cancellations between 7–15 days receive a 75% refund. Within 7 days, a 50% refund is issued. In case of unforeseen religious or weather events, we reschedule at no extra cost. Travel insurance is included in all packages, covering emergency cancellations.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          How does the EMI payment option work? <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer">
+          Our zero-cost EMI is available on all packages priced above ₹5,000 via major credit cards and select debit cards (HDFC, SBI, ICICI, Axis). Simply select "Pay in EMI" at checkout, choose your tenure (3, 6, or 12 months), and complete payment. No interest charges, no processing fees. You can also pay via UPI, net banking, or full card payment.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Are the tours suitable for senior citizens and differently-abled pilgrims? <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer">
+          Absolutely. We cater specially for senior travellers with comfortable vehicles, wheelchair-friendly accommodations where available, and helicopter alternatives for high-altitude destinations like Kedarnath. Our guides are trained in first aid and senior care. Please mention any special requirements during booking and we will customise the itinerary accordingly.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Can I book a private or custom group tour? <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes! All packages are available in private mode for individuals, couples, and families. For group bookings of 10 or more, we offer exclusive discounts of up to 20%. We also design fully custom itineraries around specific festivals, temple calendars, or personal spiritual objectives. Contact our team at tours@divyadarshan.in or call our 24/7 helpline for a personalised quote.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== NEWSLETTER =================== -->
+<section class="section" aria-labelledby="newsletter-heading">
+  <div class="container">
+    <div class="newsletter-section">
+      <p class="section-label">Stay Connected</p>
+      <h2 id="newsletter-heading">🙏 Get Sacred Journey Alerts</h2>
+      <p>Receive exclusive offers, new package launches, pilgrimage calendars, and spiritual travel tips directly to your inbox.</p>
+      <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)" aria-label="Newsletter signup">
+        <input
+          type="email"
+          class="newsletter-input"
+          placeholder="Your email address"
+          aria-label="Email address for newsletter"
+          required
+        />
+        <button type="submit" class="btn btn-primary">Subscribe ✈️</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <div class="logo-text">🕉 Divya Darshan</div>
+        <p>
+          India's complete spiritual ecosystem — connecting you with expert astrologers,
+          authentic products, transformational courses, sacred content, and divine tours.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook">📘</a>
+          <a href="#" class="social-link" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+          <a href="#" class="social-link" aria-label="YouTube">📺</a>
+          <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+
+      <!-- Platform Links -->
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="astrotalks.html">🔭 Astrotalks</a></li>
+          <li><a href="store.html">🛒 Spiritual Shop</a></li>
+          <li><a href="meditation.html">🧘 Meditation &amp; Yoga</a></li>
+          <li><a href="content.html">📚 Books &amp; Audio</a></li>
+          <li><a href="tourism.html">✈️ Devotional Tours</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Become an Astrologer</a></li>
+          <li><a href="#">Become a Seller</a></li>
+          <li><a href="#">Blog &amp; Articles</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Kit</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Links -->
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyrights &#169; 2026 All rights reserved. &#128497; Made by Mohan</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =================== JAVASCRIPT =================== -->
+<script src="js/main.js"></script>
+
+<script>
+  /* =====================================================
+     TOURISM PAGE — INLINE SCRIPTS
+     ===================================================== */
+
+  /* --- Tour Type Tab Filtering --- */
+  function filterTours(type, clickedTab) {
+    /* Update tab states */
+    var tabs = document.querySelectorAll('.tour-tab');
+    tabs.forEach(function(tab) {
+      tab.classList.remove('active');
+      tab.setAttribute('aria-selected', 'false');
+    });
+    if (clickedTab) {
+      clickedTab.classList.add('active');
+      clickedTab.setAttribute('aria-selected', 'true');
+    }
+
+    /* Filter cards */
+    var cards = document.querySelectorAll('.tour-card');
+    var visibleCount = 0;
+
+    cards.forEach(function(card) {
+      if (type === 'all' || card.getAttribute('data-type') === type) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    /* Update count display */
+    var countEl = document.getElementById('visible-count');
+    if (countEl) countEl.textContent = visibleCount;
+
+    /* Show / hide no results message */
+    var noResults = document.getElementById('no-results');
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+  }
+
+  /* --- Itinerary Accordion Toggle --- */
+  function toggleItinerary(btn) {
+    var body = btn.nextElementSibling;
+    var isOpen = body.classList.contains('open');
+
+    /* Close all open itineraries in the same card first */
+    btn.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    body.classList.toggle('open', !isOpen);
+  }
+
+  /* --- FAQ Accordion Toggle --- */
+  function toggleFaq(btn) {
+    var answer = btn.nextElementSibling;
+    var isOpen = answer.classList.contains('open');
+
+    /* Close all open FAQs */
+    document.querySelectorAll('.faq-question').forEach(function(q) {
+      q.classList.remove('open');
+      q.setAttribute('aria-expanded', 'false');
+    });
+    document.querySelectorAll('.faq-answer').forEach(function(a) {
+      a.classList.remove('open');
+    });
+
+    /* Open clicked one if it was closed */
+    if (!isOpen) {
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      answer.classList.add('open');
+    }
+  }
+
+  /* --- Mobile Filter Sidebar Toggle --- */
+  function toggleMobileFilter() {
+    var sidebar = document.getElementById('filter-sidebar');
+    var btn = document.getElementById('mobile-filter-btn');
+    if (!sidebar) return;
+
+    var isOpen = sidebar.classList.contains('mobile-open');
+    sidebar.classList.toggle('mobile-open', !isOpen);
+    if (btn) btn.setAttribute('aria-expanded', String(!isOpen));
+  }
+
+  /* --- Book Now Toast --- */
+  function bookTour(name) {
+    showToast('🙏 Booking "' + name + '" — our travel team will reach you within 24 hours!');
+  }
+
+  /* --- Newsletter Submit --- */
+  function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    var input = e.target.querySelector('input[type="email"]');
+    if (input && input.value) {
+      showToast('✈️ You\'re subscribed! Sacred journey updates coming your way.');
+      input.value = '';
+    }
+  }
+
+  /* --- Filter group collapse (sidebar) --- */
+  function toggleFilterGroup(groupId) {
+    var group = document.getElementById(groupId);
+    if (group) {
+      group.classList.toggle('collapsed');
+    }
+  }
+
+  /* --- Clear All Filters --- */
+  function clearAllTourFilters() {
+    /* Reset all checkboxes and radios */
+    document.querySelectorAll('#filter-sidebar input[type="checkbox"]').forEach(function(cb) {
+      cb.checked = false;
+    });
+    document.querySelectorAll('#filter-sidebar input[type="radio"]').forEach(function(rb) {
+      rb.checked = false;
+    });
+    showToast('🎛️ All filters cleared');
+  }
+
+</script>
+
+</body>
+</html>
+
+

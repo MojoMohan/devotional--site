@@ -1,0 +1,60 @@
+<%- include('partials/head', { title: 'Books' }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'books' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>Books</h1>
+        <p>Manage books and audio content listings.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="/cms/book-items/new">New book</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Catalog</h2>
+      <p>Add, edit, or remove book items.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Format</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (!items.length) { %>
+            <tr>
+              <td colspan="6" class="muted">No books yet.</td>
+            </tr>
+          <% } %>
+          <% items.forEach((item) => { %>
+            <tr>
+              <td><%= item.title %></td>
+              <td><%= item.author || '-' %></td>
+              <td><%= item.format || '-' %></td>
+              <td><%= item.price != null ? 'INR ' + item.price : '-' %></td>
+              <td>
+                <span class="badge <%= item.is_active ? 'active' : 'inactive' %>">
+                  <%= item.is_active ? 'Active' : 'Inactive' %>
+                </span>
+              </td>
+              <td class="actions">
+                <a class="btn btn-outline" href="/cms/book-items/<%= item.id %>/edit">Edit</a>
+                <form method="post" action="/cms/book-items/<%= item.id %>/delete" style="display:inline;" onsubmit="return confirm('Delete this book?');">
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>
+

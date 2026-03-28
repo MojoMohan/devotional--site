@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Divya Darshan Meditation & Yoga — Transform your mind, body and spirit with 500+ expert-led courses in Vedic meditation, yoga, pranayama, and more." />
+  <title>Meditation &amp; Yoga Courses — Divya Darshan</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+
+  <style>
+.instructor-avatar { overflow: hidden; }
+.course-thumbnail { position: relative; overflow: hidden; }
+</style>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕉</text></svg>" />
+
+  <style>
+    /* ── Meditation page extras ── */
+    .filter-mobile-toggle {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      border: 2px solid rgba(184,134,11,0.25);
+      background: var(--color-primary-white);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: all var(--transition-fast);
+    }
+    .filter-mobile-toggle:hover {
+      border-color: var(--color-primary-saffron);
+      color: var(--color-primary-saffron);
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+    }
+
+    /* Course thumbnail using real images */
+    .course-thumbnail {
+      position: relative;
+      overflow: hidden;
+      height: 180px;
+    }
+    .course-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform var(--transition-base);
+    }
+    .course-card:hover .course-thumbnail img {
+      transform: scale(1.05);
+    }
+    .course-thumbnail .course-play-btn {
+      opacity: 0;
+      transition: opacity var(--transition-base), transform var(--transition-base);
+    }
+    .course-card:hover .course-thumbnail .course-play-btn {
+      opacity: 1;
+    }
+
+    /* Course price paid */
+    .course-price-paid {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-primary-gold);
+    }
+
+    /* Course tabs scroll on mobile */
+    .course-tabs-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+      margin-bottom: var(--spacing-xl);
+    }
+    .course-tabs-wrap::-webkit-scrollbar { height: 3px; }
+    .course-tabs-wrap::-webkit-scrollbar-thumb { background: rgba(184,134,11,0.3); border-radius: 2px; }
+
+    /* Live sessions section */
+    .live-sessions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+    }
+
+    .live-session-card {
+      background: linear-gradient(135deg, #1F3A93 0%, #2d4fb3 100%);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .live-session-card::after {
+      content: '🧘';
+      position: absolute;
+      right: 16px;
+      bottom: -8px;
+      font-size: 80px;
+      opacity: 0.15;
+    }
+    .live-session-card h3 { color: #fff; font-size: 18px; }
+    .live-session-card .live-session-instructor {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .live-session-card .live-session-instructor img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .live-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    /* Instructor spotlight */
+    .instructors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+    }
+    .instructor-card {
+      background: var(--color-primary-white);
+      border: 1px solid rgba(184,134,11,0.12);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+    .instructor-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(255,153,51,0.3);
+    }
+    .instructor-avatar-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255,153,51,0.3);
+      margin: 0 auto var(--spacing-md);
+      display: block;
+    }
+    .instructor-card h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .instructor-card .instructor-specialty {
+      font-size: 12px;
+      color: var(--color-primary-saffron);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--spacing-sm);
+    }
+    .instructor-card .instructor-stats {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--color-text-light);
+    }
+
+    /* Stat pills */
+    .stat-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .stat-pill {
+      background: var(--color-primary-white);
+      border: 1px solid rgba(184,134,11,0.15);
+      border-radius: var(--radius-full);
+      padding: 8px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-dark);
+    }
+    .stat-pill strong {
+      color: var(--color-primary-saffron);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .filter-layout {
+        grid-template-columns: 220px 1fr;
+      }
+      .live-sessions-grid,
+      .instructors-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .filter-layout {
+        grid-template-columns: 1fr;
+      }
+      .filter-sidebar {
+        display: none;
+        position: static;
+      }
+      .filter-sidebar.open {
+        display: block;
+      }
+      .filter-mobile-toggle {
+        display: flex;
+      }
+      .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .live-sessions-grid {
+        grid-template-columns: 1fr;
+      }
+      .instructors-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .courses-grid {
+        grid-template-columns: 1fr;
+      }
+      .instructors-grid {
+        grid-template-columns: 1fr;
+      }
+      .stat-pills {
+        gap: 8px;
+      }
+      .stat-pill {
+        padding: 6px 14px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =================== NAVBAR =================== -->
+<header class="navbar" role="banner">
+  <div class="container">
+    <div class="navbar-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="navbar-logo" aria-label="Divya Darshan Home">
+        <div class="logo-icon" aria-hidden="true">🕉</div>
+        <div class="logo-text">
+          Divya Darshan
+          <span>Spiritual Ecosystem</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <!-- Desktop Navigation -->
+      <nav class="navbar-menu" role="navigation" aria-label="Main navigation">
+
+        <div class="nav-item">
+          <a href="astrotalks.html" class="nav-link ">
+            Astrotalks Platform <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🔭</span> Astrology Consultation
+            </a>
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📹</span> Video &amp; Audio Calls
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="store.html" class="nav-link ">
+            Spiritual Merchandise Store <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🪔</span> Brass Idols
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📿</span> Rudraksha
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🕯️</span> Incense &amp; Rituals
+            </a>
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">💎</span> Jewelry &amp; Copper
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="meditation.html" class="nav-link ">
+            Meditation / Yoga <span class="nav-arrow">▾</span>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🆓</span> Free Courses
+            </a>
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">💰</span> Paid Courses
+            </a>
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🎥</span> Live &amp; Recorded
+            </a>
+          </div>
+        </div>
+
+        <a href="content.html" class="nav-link ">Books &amp; Podcasts</a>
+        <a href="tourism.html" class="nav-link ">Devotional Tourism</a>
+
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="navbar-actions">
+        <a href="booking.html" class="btn btn-primary btn-sm">Book Now</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-header">
+    <div class="navbar-logo">
+      <div class="logo-icon">🕉</div>
+      <div class="logo-text">Divya Darshan</div>
+    </div>
+    <button id="mobile-nav-close" class="nav-action-btn" aria-label="Close menu" style="font-size:22px">✕</button>
+  </div>
+  <a href="astrotalks.html">Astrotalks Platform</a>
+  <a href="store.html">Spiritual Merchandise Store</a>
+  <a href="meditation.html">Meditation / Yoga</a>
+  <a href="content.html">Books &amp; Podcasts</a>
+  <a href="tourism.html">Devotional Tourism</a>
+  <a href="booking.html">Book Now</a>
+</nav>
+
+
+<!-- Toast Container -->
+<div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+<!-- =================== PAGE HERO =================== -->
+<section class="page-hero" aria-labelledby="page-hero-heading">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <div class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span>Meditation &amp; Yoga</span>
+        </div>
+        <h1 id="page-hero-heading">🧘 Meditation &amp; Yoga Platform</h1>
+        <p>Transform your mind, body and spirit with 500+ expert-led courses in Vedic meditation, yoga, pranayama, and more</p>
+        <div class="stat-pills">
+          <div class="stat-pill"><strong>500+</strong> Courses</div>
+          <div class="stat-pill"><strong>200+</strong> Instructors</div>
+          <div class="stat-pill"><strong>50,000+</strong> Students</div>
+          <div class="stat-pill"><strong>4.8★</strong> Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== MAIN CONTENT: FILTER + GRID =================== -->
+<main class="section" id="courses-section">
+  <div class="container">
+    <div class="filter-layout">
+
+      <!-- ===== FILTER SIDEBAR ===== -->
+      <aside class="filter-sidebar" id="filter-sidebar" aria-label="Filter courses">
+        <div class="filter-sidebar-header">
+          <h3>🎛️ Filters</h3>
+          <button class="filter-clear" onclick="clearAllFilters()">Clear All</button>
+        </div>
+
+        <!-- Filter by Type -->
+        <div class="filter-group" id="fg-type">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-type')">
+            Type <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="type" value="yoga" />
+              Yoga <span class="option-count">180</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="type" value="meditation" />
+              Meditation <span class="option-count">145</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="type" value="pranayama" />
+              Pranayama <span class="option-count">72</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="type" value="vedic" />
+              Vedic Studies <span class="option-count">58</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="type" value="spirituality" />
+              Spirituality <span class="option-count">45</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter by Level -->
+        <div class="filter-group" id="fg-level">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-level')">
+            Level <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="level" value="beginner" />
+              Beginner <span class="option-count">210</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="level" value="intermediate" />
+              Intermediate <span class="option-count">178</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="level" value="advanced" />
+              Advanced <span class="option-count">112</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter by Duration -->
+        <div class="filter-group" id="fg-dur">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-dur')">
+            Duration <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="radio" name="duration" value="under1" />
+              Under 1 hour <span class="option-count">38</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="duration" value="1to5" />
+              1–5 hours <span class="option-count">96</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="duration" value="5to20" />
+              5–20 hours <span class="option-count">214</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="duration" value="20plus" />
+              20+ hours <span class="option-count">152</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter by Language -->
+        <div class="filter-group" id="fg-lang">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-lang')">
+            Language <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="lang" value="hindi" />
+              Hindi <span class="option-count">280</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="lang" value="english" />
+              English <span class="option-count">210</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="lang" value="sanskrit" />
+              Sanskrit <span class="option-count">64</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="lang" value="tamil" />
+              Tamil <span class="option-count">88</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter by Price -->
+        <div class="filter-group" id="fg-price">
+          <div class="filter-group-title" onclick="toggleFilterGroup('fg-price')">
+            Price <span class="toggle-icon">▾</span>
+          </div>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="radio" name="price" value="free" />
+              Free <span class="option-count">148</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="price" value="under999" />
+              Under ₹999 <span class="option-count">92</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="price" value="999to4999" />
+              ₹999–₹4,999 <span class="option-count">176</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="price" value="5000plus" />
+              ₹5,000+ <span class="option-count">84</span>
+            </label>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="showToast('✅ Filters applied')">
+          Apply Filters
+        </button>
+
+      </aside>
+
+      <!-- ===== COURSES PANEL ===== -->
+      <div>
+
+        <!-- Mobile filter toggle -->
+        <button class="filter-mobile-toggle" onclick="toggleSidebar()" aria-controls="filter-sidebar" aria-expanded="false" id="filter-toggle-btn">
+          🎛️ Filter Courses
+        </button>
+
+        <!-- Results Toolbar -->
+        <div class="results-toolbar">
+          <p class="results-count">Showing <strong>500+</strong> courses</p>
+          <select class="sort-select" aria-label="Sort courses" onchange="showToast('✅ Sorted by: ' + this.options[this.selectedIndex].text)">
+            <option value="popular">Most Popular</option>
+            <option value="rating">Highest Rated</option>
+            <option value="newest">Newest</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+
+        <!-- Course Type Tabs -->
+        <div class="course-tabs-wrap" role="tablist" aria-label="Filter by course type">
+          <div class="course-tabs">
+            <button class="course-tab active" data-filter="all" onclick="filterCourses(this, 'all')" role="tab" aria-selected="true">All</button>
+            <button class="course-tab" data-filter="free" onclick="filterCourses(this, 'free')" role="tab" aria-selected="false">Free</button>
+            <button class="course-tab" data-filter="paid" onclick="filterCourses(this, 'paid')" role="tab" aria-selected="false">Paid</button>
+            <button class="course-tab" data-filter="live" onclick="filterCourses(this, 'live')" role="tab" aria-selected="false">Live</button>
+            <button class="course-tab" data-filter="recorded" onclick="filterCourses(this, 'recorded')" role="tab" aria-selected="false">Recorded</button>
+          </div>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="courses-grid" id="courses-grid">
+
+          <!-- Course 1: Beginner Hatha Yoga -->
+          <article class="course-card fade-up" data-type="yoga" data-pricing="free" data-format="recorded" aria-label="Beginner Hatha Yoga">
+            <div class="course-thumbnail">
+              <img
+                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80"
+                alt="Beginner Hatha Yoga — women practicing yoga"
+                loading="lazy"
+              />
+              <span class="course-level">Beginner</span>
+              <div class="course-play-btn" aria-hidden="true">▶</div>
+            </div>
+            <div class="course-info">
+              <div class="course-category">Yoga</div>
+              <h3 class="course-title">Beginner Hatha Yoga</h3>
+              <div class="course-instructor">
+                <div class="instructor-avatar">
+                  <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=160&q=80" alt="Yoga Guru Ramesh" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                </div>
+                <span>Yoga Guru Ramesh</span>
+              </div>
+              <div class="course-meta">
+                <span>⭐ 4.8</span>
+                <span>👥 1,240 students</span>
+                <span>⏱️ 8 hours</span>
+              </div>
+              <div class="course-footer">
+                <span class="course-price-free">Free</span>
+                <button class="btn btn-primary btn-sm" onclick="handleEnroll('Beginner Hatha Yoga')">Enroll Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Course 2: Pranayama & Breathwork Fundamentals -->
+          <article class="course-card fade-up" data-type="pranayama" data-pricing="paid" data-format="recorded" aria-label="Pranayama & Breathwork Fundamentals">
+            <div class="course-thumbnail">
+              <img
+                src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80"
+                alt="Pranayama & Breathwork — person meditating outdoors"
+                loading="lazy"
+              />
+              <span class="course-level">Beginner</span>
+              <div class="course-play-btn" aria-hidden="true">▶</div>
+            </div>
+            <div class="course-info">
+              <div class="course-category">Pranayama</div>
+              <h3 class="course-title">Pranayama &amp; Breathwork Fundamentals</h3>
+              <div class="course-instructor">
+                <div class="instructor-avatar">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80" alt="Dr. Anita Rao" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                </div>
+                <span>Dr. Anita Rao</span>
+              </div>
+              <div class="course-meta">
+                <span>⭐ 4.9</span>
+                <span>👥 890 students</span>
+                <span>⏱️ 6 hours</span>
+              </div>
+              <div class="course-footer">
+                <span class="course-price-paid">₹1,499</span>
+                <button class="btn btn-primary btn-sm" onclick="handleEnroll('Pranayama & Breathwork Fundamentals')">Enroll Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Course 3: Advanced Kundalini Awakening -->
+          <article class="course-card fade-up" data-type="meditation" data-pricing="paid" data-format="recorded" aria-label="Advanced Kundalini Awakening">
+            <div class="course-thumbnail">
+              <img
+                src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=600&q=80"
+                alt="Advanced Kundalini Awakening — deep meditation practice"
+                loading="lazy"
+              />
+              <span class="course-level">Advanced</span>
+              <div class="course-play-btn" aria-hidden="true">▶</div>
+            </div>
+            <div class="course-info">
+              <div class="course-category">Meditation</div>
+              <h3 class="course-title">Advanced Kundalini Awakening</h3>
+              <div class="course-instructor">
+                <div class="instructor-avatar">
+                  <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&q=80" alt="Swami Krishnananda" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                </div>
+                <span>Swami Krishnananda</span>
+              </div>
+              <div class="course-meta">
+                <span>⭐ 4.7</span>
+                <span>👥 620 students</span>
+                <span>⏱️ 20 hours</span>
+              </div>
+              <div class="course-footer">
+                <span class="course-price-paid">₹3,999</span>
+                <button class="btn btn-primary btn-sm" onclick="handleEnroll('Advanced Kundalini Awakening')">Enroll Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Course 4: Vedic Meditation — Ancient Techniques -->
+          <article class="course-card fade-up" data-type="meditation" data-pricing="free" data-format="recorded" aria-label="Vedic Meditation — Ancient Techniques">
+            <div class="course-thumbnail">
+              <img
+                src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=600&q=80"
+                alt="Vedic Meditation — ancient techniques practice"
+                loading="lazy"
+              />
+              <span class="course-level">Intermediate</span>
+              <div class="course-play-btn" aria-hidden="true">▶</div>
+            </div>
+            <div class="course-info">
+              <div class="course-category">Meditation</div>
+              <h3 class="course-title">Vedic Meditation — Ancient Techniques</h3>
+              <div class="course-instructor">
+                <div class="instructor-avatar">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=160&q=80" alt="Pandit Shyam Das" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                </div>
+                <span>Pandit Shyam Das</span>
+              </div>
+              <div class="course-meta">
+                <span>⭐ 4.9</span>
+                <span>👥 2,100 students</span>
+                <span>⏱️ 12 hours</span>
+              </div>
+              <div class="course-footer">
+                <span class="course-price-free">Free</span>
+                <button class="btn btn-primary btn-sm" onclick="handleEnroll('Vedic Meditation — Ancient Techniques')">Enroll Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Course 5: Power Yoga for Weight Loss -->
+          <article class="course-card fade-up" data-type="yoga" data-pricing="paid" data-format="recorded" aria-label="Power Yoga for Weight Loss">
+            <div class="course-thumbnail">
+              <img
+                src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&w=600&q=80"
+                alt="Power Yoga for Weight Loss — dynamic yoga session"
+                loading="lazy"
+              />
+              <span class="course-level">Intermediate</span>
+              <div class="course-play-btn" aria-hidden="true">▶</div>
+            </div>
+            <div class="course-info">
+              <div class="course-category">Yoga</div>
+              <h3 class="course-title">Power Yoga for Weight Loss</h3>
+              <div class="course-instructor">
+                <div class="instructor-avatar">
+                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=160&q=80" alt="Priya Verma" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                </div>
+                <span>Priya Verma</span>
+              </div>
+              <div class="course-meta">
+                <span>⭐ 4.6</span>
+                <span>👥 3,200 students</span>
+                <span>⏱️ 10 hours</span>
+              </div>
+              <div class="course-footer">
+                <span class="course-price-paid">₹2,499</span>
+                <button class="btn btn-primary btn-sm" onclick="handleEnroll('Power Yoga for Weight Loss')">Enroll Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Course 6: Mindfulness & Stress Relief -->
+          <article class="course-card fade-up" data-type="meditation" data-pricing="free" data-format="recorded" aria-label="Mindfulness & Stress Relief">
+            <div class="course-thumbnail">
+              <img
+                src="https://images.unsplash.com/photo-1528319725582-ddc096101511?auto=format&fit=crop&w=600&q=80"
+                alt="Mindfulness & Stress Relief — calm meditation"
+                loading="lazy"
+              />
+              <span class="course-level">Beginner</span>
+              <div class="course-play-btn" aria-hidden="true">▶</div>
+            </div>
+            <div class="course-info">
+              <div class="course-category">Meditation</div>
+              <h3 class="course-title">Mindfulness &amp; Stress Relief</h3>
+              <div class="course-instructor">
+                <div class="instructor-avatar">
+                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80" alt="Mata Savitri" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                </div>
+                <span>Dr. Meera Nair</span>
+              </div>
+              <div class="course-meta">
+                <span>⭐ 4.8</span>
+                <span>👥 4,500 students</span>
+                <span>⏱️ 5 hours</span>
+              </div>
+              <div class="course-footer">
+                <span class="course-price-free">Free</span>
+                <button class="btn btn-primary btn-sm" onclick="handleEnroll('Mindfulness & Stress Relief')">Enroll Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Course 7: Vinyasa Flow — Intermediate -->
+          <article class="course-card fade-up" data-type="yoga" data-pricing="paid" data-format="recorded" aria-label="Vinyasa Flow — Intermediate">
+            <div class="course-thumbnail">
+              <img
+                src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=600&q=80"
+                alt="Vinyasa Flow — intermediate yoga sequence"
+                loading="lazy"
+              />
+              <span class="course-level">Intermediate</span>
+              <div class="course-play-btn" aria-hidden="true">▶</div>
+            </div>
+            <div class="course-info">
+              <div class="course-category">Yoga</div>
+              <h3 class="course-title">Vinyasa Flow — Intermediate</h3>
+              <div class="course-instructor">
+                <div class="instructor-avatar">
+                  <img src="https://images.unsplash.com/photo-1531746020798-e6db3574935d?auto=format&fit=crop&w=160&q=80" alt="Deepa Krishnan" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                </div>
+                <span>Deepa Krishnan</span>
+              </div>
+              <div class="course-meta">
+                <span>⭐ 4.7</span>
+                <span>👥 1,800 students</span>
+                <span>⏱️ 15 hours</span>
+              </div>
+              <div class="course-footer">
+                <span class="course-price-paid">₹1,999</span>
+                <button class="btn btn-primary btn-sm" onclick="handleEnroll('Vinyasa Flow — Intermediate')">Enroll Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Course 8: Yoga Nidra — Deep Sleep Meditation -->
+          <article class="course-card fade-up" data-type="meditation" data-pricing="paid" data-format="recorded" aria-label="Yoga Nidra — Deep Sleep Meditation">
+            <div class="course-thumbnail">
+              <img
+                src="https://images.unsplash.com/photo-1531353826977-0941b4779a1c?auto=format&fit=crop&w=600&q=80"
+                alt="Yoga Nidra — deep sleep meditation practice"
+                loading="lazy"
+              />
+              <span class="course-level">Beginner</span>
+              <div class="course-play-btn" aria-hidden="true">▶</div>
+            </div>
+            <div class="course-info">
+              <div class="course-category">Meditation</div>
+              <h3 class="course-title">Yoga Nidra — Deep Sleep Meditation</h3>
+              <div class="course-instructor">
+                <div class="instructor-avatar">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80" alt="Yogi Balram" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                </div>
+                <span>Yogi Balram</span>
+              </div>
+              <div class="course-meta">
+                <span>⭐ 4.9</span>
+                <span>👥 960 students</span>
+                <span>⏱️ 4 hours</span>
+              </div>
+              <div class="course-footer">
+                <span class="course-price-paid">₹999</span>
+                <button class="btn btn-primary btn-sm" onclick="handleEnroll('Yoga Nidra — Deep Sleep Meditation')">Enroll Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Course 9: Bhakti Yoga & Devotional Singing -->
+          <article class="course-card fade-up" data-type="spirituality" data-pricing="free" data-format="recorded" aria-label="Bhakti Yoga & Devotional Singing">
+            <div class="course-thumbnail">
+              <img
+                src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=600&q=80"
+                alt="Bhakti Yoga & Devotional Singing — spiritual practice"
+                loading="lazy"
+              />
+              <span class="course-level">All Levels</span>
+              <div class="course-play-btn" aria-hidden="true">▶</div>
+            </div>
+            <div class="course-info">
+              <div class="course-category">Spirituality</div>
+              <h3 class="course-title">Bhakti Yoga &amp; Devotional Singing</h3>
+              <div class="course-instructor">
+                <div class="instructor-avatar">
+                  <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=160&q=80" alt="Mata Savitri" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                </div>
+                <span>Mata Savitri</span>
+              </div>
+              <div class="course-meta">
+                <span>⭐ 4.8</span>
+                <span>👥 1,500 students</span>
+                <span>⏱️ 8 hours</span>
+              </div>
+              <div class="course-footer">
+                <span class="course-price-free">Free</span>
+                <button class="btn btn-primary btn-sm" onclick="handleEnroll('Bhakti Yoga & Devotional Singing')">Enroll Now</button>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /courses-grid -->
+
+      </div><!-- /courses panel -->
+    </div><!-- /filter-layout -->
+  </div>
+</main>
+
+<!-- =================== LIVE SESSIONS =================== -->
+<section class="section" style="background: var(--color-bg-lighter);" aria-labelledby="live-heading">
+  <div class="container">
+    <div class="section-header">
+      <h2 id="live-heading">🔴 Upcoming Live Sessions</h2>
+      <p>Join our expert instructors in real-time for immersive, interactive spiritual experiences</p>
+    </div>
+
+    <div class="live-sessions-grid">
+
+      <!-- Live Session 1 -->
+      <div class="live-session-card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <span class="live-badge"><span class="live-dot"></span>LIVE</span>
+        </div>
+        <h3>Morning Ashtanga Yoga Flow</h3>
+        <div class="live-session-instructor">
+          <img
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80"
+            alt="Instructor Priya Verma"
+          />
+          <span>Priya Verma</span>
+        </div>
+        <div class="live-meta-row">
+          <span>📅 Apr 2, 2026 · 6:00 AM</span>
+          <span>🕐 90 min</span>
+          <span>💺 28 seats left</span>
+        </div>
+        <button class="btn btn-primary btn-sm" style="width:fit-content;margin-top:4px;" onclick="handleJoinLive('Morning Ashtanga Yoga Flow')">
+          Join Live
+        </button>
+      </div>
+
+      <!-- Live Session 2 -->
+      <div class="live-session-card" style="background: linear-gradient(135deg, #4a235a 0%, #6c3483 100%);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <span class="live-badge"><span class="live-dot"></span>UPCOMING</span>
+        </div>
+        <h3>Kundalini Awakening — Group Session</h3>
+        <div class="live-session-instructor">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80"
+            alt="Instructor Swami Krishnananda"
+          />
+          <span>Swami Krishnananda</span>
+        </div>
+        <div class="live-meta-row">
+          <span>📅 Apr 5, 2026 · 7:00 AM</span>
+          <span>🕐 60 min</span>
+          <span>💺 14 seats left</span>
+        </div>
+        <button class="btn btn-sm" style="width:fit-content;margin-top:4px;background:rgba(255,255,255,0.2);border:1.5px solid rgba(255,255,255,0.5);color:#fff;border-radius:var(--radius-full);padding:8px 20px;font-weight:600;cursor:pointer;" onclick="handleJoinLive('Kundalini Awakening Group Session')">
+          Book Seat
+        </button>
+      </div>
+
+      <!-- Live Session 3 -->
+      <div class="live-session-card" style="background: linear-gradient(135deg, #1a5c3a 0%, #2e8b57 100%);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <span class="live-badge"><span class="live-dot"></span>UPCOMING</span>
+        </div>
+        <h3>Pranayama &amp; Breathwork Masterclass</h3>
+        <div class="live-session-instructor">
+          <img
+            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=80&q=80"
+            alt="Instructor Dr. Anita Rao"
+          />
+          <span>Dr. Anita Rao</span>
+        </div>
+        <div class="live-meta-row">
+          <span>📅 Apr 8, 2026 · 8:00 AM</span>
+          <span>🕐 75 min</span>
+          <span>💺 42 seats left</span>
+        </div>
+        <button class="btn btn-sm" style="width:fit-content;margin-top:4px;background:rgba(255,255,255,0.2);border:1.5px solid rgba(255,255,255,0.5);color:#fff;border-radius:var(--radius-full);padding:8px 20px;font-weight:600;cursor:pointer;" onclick="handleJoinLive('Pranayama & Breathwork Masterclass')">
+          Book Seat
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== INSTRUCTOR SPOTLIGHT =================== -->
+<section class="section" aria-labelledby="instructors-heading">
+  <div class="container">
+    <div class="section-header">
+      <h2 id="instructors-heading">🌟 Instructor Spotlight</h2>
+      <p>Learn from India's most celebrated yoga teachers, meditation masters, and spiritual guides</p>
+    </div>
+
+    <div class="instructors-grid">
+
+      <!-- Instructor 1 -->
+      <div class="instructor-card">
+        <img
+          class="instructor-avatar-img"
+          src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=160&q=80"
+          alt="Yoga Guru Ramesh"
+        />
+        <h4>Yoga Guru Ramesh</h4>
+        <div class="instructor-specialty">Hatha Yoga</div>
+        <div class="instructor-stats">
+          <span>👥 8,400 students</span>
+          <span>⭐ 4.8</span>
+        </div>
+      </div>
+
+      <!-- Instructor 2 -->
+      <div class="instructor-card">
+        <img
+          class="instructor-avatar-img"
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80"
+          alt="Dr. Anita Rao"
+        />
+        <h4>Dr. Anita Rao</h4>
+        <div class="instructor-specialty">Pranayama</div>
+        <div class="instructor-stats">
+          <span>👥 5,200 students</span>
+          <span>⭐ 4.9</span>
+        </div>
+      </div>
+
+      <!-- Instructor 3 -->
+      <div class="instructor-card">
+        <img
+          class="instructor-avatar-img"
+          src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=160&q=80"
+          alt="Swami Krishnananda"
+        />
+        <h4>Swami Krishnananda</h4>
+        <div class="instructor-specialty">Kundalini Meditation</div>
+        <div class="instructor-stats">
+          <span>👥 3,900 students</span>
+          <span>⭐ 4.7</span>
+        </div>
+      </div>
+
+      <!-- Instructor 4 -->
+      <div class="instructor-card">
+        <img
+          class="instructor-avatar-img"
+          src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=160&q=80"
+          alt="Priya Verma"
+        />
+        <h4>Priya Verma</h4>
+        <div class="instructor-specialty">Power &amp; Vinyasa Yoga</div>
+        <div class="instructor-stats">
+          <span>👥 12,600 students</span>
+          <span>⭐ 4.6</span>
+        </div>
+      </div>
+
+      <!-- Instructor 5 -->
+      <div class="instructor-card">
+        <img
+          class="instructor-avatar-img"
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80"
+          alt="Pandit Shyam Das"
+        />
+        <h4>Pandit Shyam Das</h4>
+        <div class="instructor-specialty">Vedic Meditation</div>
+        <div class="instructor-stats">
+          <span>👥 9,100 students</span>
+          <span>⭐ 4.9</span>
+        </div>
+      </div>
+
+      <!-- Instructor 6 -->
+      <div class="instructor-card">
+        <img
+          class="instructor-avatar-img"
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80"
+          alt="Dr. Meera Nair"
+        />
+        <h4>Dr. Meera Nair</h4>
+        <div class="instructor-specialty">Mindfulness &amp; Wellness</div>
+        <div class="instructor-stats">
+          <span>👥 18,300 students</span>
+          <span>⭐ 4.8</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== NEWSLETTER CTA =================== -->
+<section class="newsletter-section" aria-labelledby="newsletter-heading">
+  <div class="container">
+    <div class="newsletter-inner">
+      <h2 id="newsletter-heading">Begin Your Spiritual Journey Today</h2>
+      <p>Subscribe to receive weekly horoscopes, new course announcements, exclusive deals, and spiritual wisdom.</p>
+      <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)" novalidate>
+        <input type="email" placeholder="Enter your email address" aria-label="Email address" required />
+        <button type="submit" class="btn btn-primary">
+          🙏 Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <div class="logo-text">🕉 Divya Darshan</div>
+        <p>
+          India's complete spiritual ecosystem — connecting you with expert astrologers,
+          authentic products, transformational courses, sacred content, and divine tours.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook">📘</a>
+          <a href="#" class="social-link" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+          <a href="#" class="social-link" aria-label="YouTube">📺</a>
+          <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+
+      <!-- Platform Links -->
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="astrotalks.html">🔭 Astrotalks</a></li>
+          <li><a href="store.html">🛒 Spiritual Shop</a></li>
+          <li><a href="meditation.html">🧘 Meditation &amp; Yoga</a></li>
+          <li><a href="content.html">📚 Books &amp; Audio</a></li>
+          <li><a href="tourism.html">✈️ Devotional Tours</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Become an Astrologer</a></li>
+          <li><a href="#">Become a Seller</a></li>
+          <li><a href="#">Blog &amp; Articles</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Kit</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Links -->
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyrights &#169; 2026 All rights reserved. &#128497; Made by Mohan</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =================== JAVASCRIPT =================== -->
+<script src="js/main.js"></script>
+
+<script>
+  /* =====================================================
+     MEDITATION PAGE — INLINE SCRIPTS
+     ===================================================== */
+
+  /* --- Course Tab Filter --- */
+  function filterCourses(btn, filter) {
+    // Update active tab
+    var tabs = document.querySelectorAll('.course-tab');
+    tabs.forEach(function (t) {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+
+    // Show / hide cards
+    var cards = document.querySelectorAll('#courses-grid .course-card');
+    var visibleCount = 0;
+
+    cards.forEach(function (card) {
+      var pricing = card.getAttribute('data-pricing');   // 'free' | 'paid'
+      var format  = card.getAttribute('data-format');    // 'live' | 'recorded'
+
+      var show = false;
+      if (filter === 'all')      { show = true; }
+      else if (filter === 'free')     { show = (pricing === 'free'); }
+      else if (filter === 'paid')     { show = (pricing === 'paid'); }
+      else if (filter === 'live')     { show = (format  === 'live'); }
+      else if (filter === 'recorded') { show = (format  === 'recorded'); }
+
+      if (show) {
+        card.removeAttribute('hidden');
+        visibleCount++;
+      } else {
+        card.setAttribute('hidden', '');
+      }
+    });
+
+    // Update results count
+    var countEl = document.querySelector('.results-count strong');
+    if (countEl) {
+      countEl.textContent = visibleCount + (filter === 'all' ? '+' : '');
+    }
+  }
+
+  /* --- Filter Sidebar Toggle (mobile) --- */
+  function toggleSidebar() {
+    var sidebar = document.getElementById('filter-sidebar');
+    var toggleBtn = document.getElementById('filter-toggle-btn');
+    var isOpen = sidebar.classList.toggle('open');
+    if (toggleBtn) {
+      toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggleBtn.textContent = isOpen ? '✕ Close Filters' : '🎛️ Filter Courses';
+    }
+  }
+
+  /* --- Filter Group Collapse/Expand --- */
+  function toggleFilterGroup(groupId) {
+    var group = document.getElementById(groupId);
+    if (group) {
+      group.classList.toggle('collapsed');
+    }
+  }
+
+  /* --- Clear All Filters --- */
+  function clearAllFilters() {
+    var checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+    var radios     = document.querySelectorAll('.filter-sidebar input[type="radio"]');
+    checkboxes.forEach(function (cb) { cb.checked = false; });
+    radios.forEach(function (r)  { r.checked = false; });
+    showToast('🔄 All filters cleared');
+  }
+
+  /* --- Enroll Handler --- */
+  function handleEnroll(courseName) {
+    showToast('🧘 Enrolling in "' + courseName + '"… Redirecting to checkout!');
+  }
+
+  /* --- Join Live Handler --- */
+  function handleJoinLive(sessionName) {
+    showToast('🔴 Joining "' + sessionName + '"… Preparing your live session!');
+  }
+
+</script>
+
+</body>
+</html>
+
+

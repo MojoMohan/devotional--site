@@ -1,0 +1,50 @@
+<%- include('partials/head', { title: 'Astrologers' }) %>
+  <div class="nav">
+    <a href="/admin">Pages</a>
+    <a href="/admin/astrologers">Astrologers</a>
+    <a href="/admin/logout">Logout</a>
+  </div>
+  <div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:16px;">
+      <h1 style="margin:0;">Astrologers</h1>
+      <a href="/admin/astrologers/new">+ Add Astrologer</a>
+    </div>
+    <p class="muted">Create, edit, and delete astrologer profiles.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Specialization</th>
+          <th>Experience</th>
+          <th>Rating</th>
+          <th>Price/Min</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (!astrologers.length) { %>
+          <tr>
+            <td colspan="7" class="muted">No astrologers yet.</td>
+          </tr>
+        <% } %>
+        <% astrologers.forEach((astro) => { %>
+          <tr>
+            <td><%= astro.name %></td>
+            <td><%= astro.specialization || '-' %></td>
+            <td><%= astro.years_experience != null ? astro.years_experience + ' yrs' : '-' %></td>
+            <td><%= astro.rating != null ? astro.rating.toFixed(1) : '-' %></td>
+            <td><%= astro.price_per_minute != null ? '₹' + astro.price_per_minute : '-' %></td>
+            <td><%= astro.is_active ? 'Active' : 'Inactive' %></td>
+            <td class="actions">
+              <a href="/admin/astrologers/<%= astro.id %>/edit">Edit</a>
+              <form method="post" action="/admin/astrologers/<%= astro.id %>/delete" style="display:inline;">
+                <button type="submit" style="background:#442222; color:#ffd5d5;">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<%- include('partials/foot') %>

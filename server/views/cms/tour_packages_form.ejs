@@ -1,0 +1,68 @@
+<%- include('partials/head', { title }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'tours' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1><%= title %></h1>
+        <p>Manage tour package details.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-outline" href="/cms/tour-packages">Back to list</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Package details</h2>
+      <form method="post" action="<%= action %>" class="form-grid">
+        <div>
+          <label>Title</label>
+          <input name="title" value="<%= item ? item.title : '' %>" required />
+        </div>
+        <div>
+          <label>Destination</label>
+          <select name="destination">
+            <option value="">Select destination</option>
+            <option <%= item && item.destination === 'Uttar Pradesh' ? 'selected' : '' %>>Uttar Pradesh</option>
+            <option <%= item && item.destination === 'Uttarakhand' ? 'selected' : '' %>>Uttarakhand</option>
+            <option <%= item && item.destination === 'Andhra Pradesh' ? 'selected' : '' %>>Andhra Pradesh</option>
+            <option <%= item && item.destination === 'Punjab' ? 'selected' : '' %>>Punjab</option>
+            <option <%= item && item.destination === 'Tamil Nadu' ? 'selected' : '' %>>Tamil Nadu</option>
+            <option <%= item && item.destination === 'Gujarat' ? 'selected' : '' %>>Gujarat</option>
+            <option <%= item && item.destination === 'Rajasthan' ? 'selected' : '' %>>Rajasthan</option>
+            <option <%= item && item.destination === 'Karnataka' ? 'selected' : '' %>>Karnataka</option>
+          </select>
+        </div>
+        <div>
+          <label>Duration (days)</label>
+          <input name="duration_days" type="number" min="0" value="<%= item && item.duration_days != null ? item.duration_days : '' %>" />
+        </div>
+        <div>
+          <label>Price (INR)</label>
+          <input name="price" type="number" min="0" step="1" value="<%= item && item.price != null ? item.price : '' %>" />
+        </div>
+        <div>
+          <label>Image URL</label>
+          <input name="image_url" value="<%= item ? item.image_url : '' %>" placeholder="https://" />
+        </div>
+        <div style="grid-column: 1 / -1;">
+          <label>Description</label>
+          <textarea name="description"><%= item ? item.description : '' %></textarea>
+        </div>
+        <div>
+          <label>Status</label>
+          <select name="is_active">
+            <option value="1" <%= !item || item.is_active ? 'selected' : '' %>>Active</option>
+            <option value="0" <%= item && !item.is_active ? 'selected' : '' %>>Inactive</option>
+          </select>
+        </div>
+        <div style="grid-column: 1 / -1;" class="actions">
+          <button class="btn btn-primary" type="submit">Save</button>
+          <a class="btn btn-outline" href="/cms/tour-packages">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>
+

@@ -1,0 +1,23 @@
+<%- include('partials/head', { title: 'CMS Login' }) %>
+<div class="auth-shell">
+  <div class="auth-card">
+    <h1>CMS Admin Login</h1>
+    <p class="muted">Sign in to manage catalog data.</p>
+    <% if (typeof error !== 'undefined') { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+    <form method="post" class="form-grid">
+      <div style="grid-column: 1 / -1;">
+        <label>Username</label>
+        <input name="username" required />
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <label>Password</label>
+        <input name="password" type="password" required />
+      </div>
+      <button class="btn btn-primary" type="submit">Sign in</button>
+    </form>
+  </div>
+</div>
+<%- include('partials/foot') %>
+

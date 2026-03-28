@@ -1,0 +1,62 @@
+<%- include('partials/head', { title: 'Astrologers' }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'astrologers' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>Astrologers</h1>
+        <p>Add, update, or remove astrologer profiles.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="/cms/astrologers/new">New astrologer</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Astrologer list</h2>
+      <p>Manage pricing, languages, and visibility.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Specialization</th>
+            <th>Experience</th>
+            <th>Rating</th>
+            <th>Price/Min</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (!astrologers.length) { %>
+            <tr>
+              <td colspan="7" class="muted">No astrologers yet.</td>
+            </tr>
+          <% } %>
+          <% astrologers.forEach((astro) => { %>
+            <tr>
+              <td><%= astro.name %></td>
+              <td><%= astro.specialization || '-' %></td>
+              <td><%= astro.years_experience != null ? astro.years_experience + ' yrs' : '-' %></td>
+              <td><%= astro.rating != null ? astro.rating.toFixed(1) : '-' %></td>
+              <td><%= astro.price_per_minute != null ? 'INR ' + astro.price_per_minute : '-' %></td>
+              <td>
+                <span class="badge <%= astro.is_active ? 'active' : 'inactive' %>">
+                  <%= astro.is_active ? 'Active' : 'Inactive' %>
+                </span>
+              </td>
+              <td class="actions">
+                <a class="btn btn-outline" href="/cms/astrologers/<%= astro.id %>/edit">Edit</a>
+                <form method="post" action="/cms/astrologers/<%= astro.id %>/delete" style="display:inline;" onsubmit="return confirm('Delete this astrologer?');">
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>
+

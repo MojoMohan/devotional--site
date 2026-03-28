@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %> | Admin</title>
+  <style>
+    :root {
+      --bg: #0f0d0b;
+      --card: #15110d;
+      --text: #f2e9dd;
+      --muted: #b9a992;
+      --border: #2b241c;
+      --accent: #d1a954;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    .nav { display: flex; gap: 16px; padding: 16px 24px; border-bottom: 1px solid var(--border); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    .card { background: var(--card); padding: 24px; border-radius: 12px; border: 1px solid var(--border); }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #120f0c;
+      color: var(--text);
+      font-size: 14px;
+    }
+    textarea { min-height: 420px; font-family: Consolas, monospace; }
+    label { display: block; margin: 12px 0 6px; color: var(--muted); }
+    button { cursor: pointer; background: var(--accent); color: #1a140f; font-weight: 600; }
+    .muted { color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 12px; border-bottom: 1px solid var(--border); text-align: left; }
+    .actions { display: flex; gap: 10px; }
+    .error { background: #3a1b1b; color: #ffd5d5; padding: 10px 12px; border-radius: 8px; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <div class="container">

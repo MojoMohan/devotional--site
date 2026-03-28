@@ -1,0 +1,79 @@
+<%- include('partials/head', { title }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'astrologers' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1><%= title %></h1>
+        <p>Update astrologer profile and pricing.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-outline" href="/cms/astrologers">Back to list</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Astrologer details</h2>
+      <p>Only name is required.</p>
+      <form method="post" action="<%= action %>" class="form-grid">
+        <div>
+          <label>Name</label>
+          <input name="name" value="<%= astrologer ? astrologer.name : '' %>" required />
+        </div>
+        <div>
+          <label>Profile photo URL</label>
+          <input name="photo_url" value="<%= astrologer ? astrologer.photo_url : '' %>" placeholder="https://" />
+        </div>
+        <div>
+          <label>Specialization</label>
+          <select name="specialization">
+            <option value="">Select specialization</option>
+            <option <%= astrologer && astrologer.specialization === 'Vedic Astrology' ? 'selected' : '' %>>Vedic Astrology</option>
+            <option <%= astrologer && astrologer.specialization === 'Tarot Reading' ? 'selected' : '' %>>Tarot Reading</option>
+            <option <%= astrologer && astrologer.specialization === 'Numerology' ? 'selected' : '' %>>Numerology</option>
+            <option <%= astrologer && astrologer.specialization === 'Palmistry' ? 'selected' : '' %>>Palmistry</option>
+            <option <%= astrologer && astrologer.specialization === 'KP Astrology' ? 'selected' : '' %>>KP Astrology</option>
+            <option <%= astrologer && astrologer.specialization === 'Vastu Shastra' ? 'selected' : '' %>>Vastu Shastra</option>
+          </select>
+        </div>
+        <div>
+          <label>Years of experience</label>
+          <input name="years_experience" type="number" min="0" value="<%= astrologer && astrologer.years_experience != null ? astrologer.years_experience : '' %>" />
+        </div>
+        <div>
+          <label>Languages</label>
+          <select name="languages">
+            <option value="">Select language</option>
+            <option <%= astrologer && astrologer.languages === 'Hindi' ? 'selected' : '' %>>Hindi</option>
+            <option <%= astrologer && astrologer.languages === 'English' ? 'selected' : '' %>>English</option>
+            <option <%= astrologer && astrologer.languages === 'Tamil' ? 'selected' : '' %>>Tamil</option>
+            <option <%= astrologer && astrologer.languages === 'Telugu' ? 'selected' : '' %>>Telugu</option>
+            <option <%= astrologer && astrologer.languages === 'Marathi' ? 'selected' : '' %>>Marathi</option>
+            <option <%= astrologer && astrologer.languages === 'Bengali' ? 'selected' : '' %>>Bengali</option>
+          </select>
+        </div>
+        <div>
+          <label>Rating (0-5)</label>
+          <input name="rating" type="number" min="0" max="5" step="0.1" value="<%= astrologer && astrologer.rating != null ? astrologer.rating : '' %>" />
+        </div>
+        <div>
+          <label>Price per minute (INR)</label>
+          <input name="price_per_minute" type="number" min="0" step="1" value="<%= astrologer && astrologer.price_per_minute != null ? astrologer.price_per_minute : '' %>" />
+        </div>
+        <div>
+          <label>Status</label>
+          <select name="is_active">
+            <option value="1" <%= !astrologer || astrologer.is_active ? 'selected' : '' %>>Active</option>
+            <option value="0" <%= astrologer && !astrologer.is_active ? 'selected' : '' %>>Inactive</option>
+          </select>
+        </div>
+        <div style="grid-column: 1 / -1;" class="actions">
+          <button class="btn btn-primary" type="submit">Save</button>
+          <a class="btn btn-outline" href="/cms/astrologers">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>
+

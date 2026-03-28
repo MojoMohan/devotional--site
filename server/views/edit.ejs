@@ -1,0 +1,17 @@
+<%- include('partials/head', { title: 'Edit ' + page.slug }) %>
+  <div class="nav">
+    <a href="/admin">Pages</a>
+    <a href="/admin/astrologers">Astrologers</a>
+    <a href="/admin/logout">Logout</a>
+  </div>
+  <div class="card">
+    <h1>Edit <%= page.slug %></h1>
+    <form method="post" action="/admin/pages/<%= page.slug %>">
+      <label>Title</label>
+      <input name="title" value="<%= page.title %>" />
+      <label>HTML</label>
+      <textarea name="html"><%= page.html %></textarea>
+      <button type="submit" style="margin-top:16px;">Save</button>
+    </form>
+  </div>
+<%- include('partials/foot') %>

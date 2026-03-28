@@ -1,0 +1,63 @@
+<%- include('partials/head', { title: 'CMS Dashboard' }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'dashboard' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>CMS Admin Portal</h1>
+        <p>Manage catalog content without touching the frontend design.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-outline" href="/cms/astrologers">Manage astrologers</a>
+        <a class="btn btn-primary" href="/cms/store-items/new">Add store item</a>
+      </div>
+    </div>
+
+    <section class="stats">
+      <div class="stat">
+        <h3>Astrologers</h3>
+        <strong><%= counts.astrologers %></strong>
+      </div>
+      <div class="stat">
+        <h3>Store items</h3>
+        <strong><%= counts.store_items %></strong>
+      </div>
+      <div class="stat">
+        <h3>Meditation items</h3>
+        <strong><%= counts.meditation_items %></strong>
+      </div>
+      <div class="stat">
+        <h3>Books</h3>
+        <strong><%= counts.book_items %></strong>
+      </div>
+      <div class="stat">
+        <h3>Tour packages</h3>
+        <strong><%= counts.tour_packages %></strong>
+      </div>
+      <div class="stat">
+        <h3>Bookings</h3>
+        <strong><%= counts.bookings %></strong>
+      </div>
+      <div class="stat">
+        <h3>Payments</h3>
+        <strong><%= counts.payments %></strong>
+      </div>
+    </section>
+
+    <div class="card">
+      <h2>Quick actions</h2>
+      <p>Jump into each catalog area to add, edit, or remove items.</p>
+      <div class="actions">
+        <a class="btn btn-outline" href="/cms/astrologers">Astrologers</a>
+        <a class="btn btn-outline" href="/cms/store-items">Store items</a>
+        <a class="btn btn-outline" href="/cms/meditation-items">Meditation items</a>
+        <a class="btn btn-outline" href="/cms/book-items">Books</a>
+        <a class="btn btn-outline" href="/cms/tour-packages">Tour packages</a>
+        <a class="btn btn-outline" href="/cms/bookings">Bookings</a>
+        <a class="btn btn-outline" href="/cms/payments">Payments</a>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>
+

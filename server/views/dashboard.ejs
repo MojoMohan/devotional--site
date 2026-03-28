@@ -1,0 +1,31 @@
+<%- include('partials/head', { title: 'Pages' }) %>
+  <div class="nav">
+    <a href="/admin">Pages</a>
+    <a href="/admin/astrologers">Astrologers</a>
+    <a href="/admin/logout">Logout</a>
+  </div>
+  <div class="card">
+    <h1>Pages</h1>
+    <p class="muted">All HTML pages in the site root are editable.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Last Updated</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% pages.forEach((page) => { %>
+          <tr>
+            <td><%= page.slug %></td>
+            <td><%= page.updated_at %></td>
+            <td class="actions">
+              <a href="/admin/pages/<%= page.slug %>">Edit</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<%- include('partials/foot') %>

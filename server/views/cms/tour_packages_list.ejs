@@ -1,0 +1,60 @@
+<%- include('partials/head', { title: 'Tour Packages' }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'tours' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>Tour Packages</h1>
+        <p>Manage devotional tourism offerings.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="/cms/tour-packages/new">New package</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Catalog</h2>
+      <p>Add, edit, or remove tour packages.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Destination</th>
+            <th>Duration</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (!items.length) { %>
+            <tr>
+              <td colspan="6" class="muted">No tour packages yet.</td>
+            </tr>
+          <% } %>
+          <% items.forEach((item) => { %>
+            <tr>
+              <td><%= item.title %></td>
+              <td><%= item.destination || '-' %></td>
+              <td><%= item.duration_days != null ? item.duration_days + ' days' : '-' %></td>
+              <td><%= item.price != null ? 'INR ' + item.price : '-' %></td>
+              <td>
+                <span class="badge <%= item.is_active ? 'active' : 'inactive' %>">
+                  <%= item.is_active ? 'Active' : 'Inactive' %>
+                </span>
+              </td>
+              <td class="actions">
+                <a class="btn btn-outline" href="/cms/tour-packages/<%= item.id %>/edit">Edit</a>
+                <form method="post" action="/cms/tour-packages/<%= item.id %>/delete" style="display:inline;" onsubmit="return confirm('Delete this package?');">
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>
+

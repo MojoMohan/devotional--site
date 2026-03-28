@@ -1,0 +1,59 @@
+<%- include('partials/head', { title: 'Bookings' }) %>
+<div class="cms-shell">
+  <%- include('partials/sidebar', { active: 'bookings' }) %>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>Bookings</h1>
+        <p>All booking requests and payment statuses.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Recent Bookings</h2>
+      <p>Sorted by newest first.</p>
+      <div style="overflow:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Platform</th>
+              <th>Service</th>
+              <th>Total</th>
+              <th>Pay Amount</th>
+              <th>Option</th>
+              <th>Gateway</th>
+              <th>Status</th>
+              <th>EMI</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (!bookings.length) { %>
+              <tr>
+                <td colspan="11" class="muted">No bookings yet.</td>
+              </tr>
+            <% } %>
+            <% bookings.forEach((b) => { %>
+              <tr>
+                <td><%= b.id %></td>
+                <td><%= b.full_name %></td>
+                <td><%= b.platform || '-' %></td>
+                <td><%= b.service_details || '-' %></td>
+                <td><%= b.total_amount %></td>
+                <td><%= b.payment_amount %></td>
+                <td><%= b.payment_option %></td>
+                <td><%= b.payment_gateway %></td>
+                <td><%= b.status %></td>
+                <td><%= b.emi_tenure || '-' %></td>
+                <td><%= b.created_at %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+<%- include('partials/foot') %>

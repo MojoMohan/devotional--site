@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCourseTabs();
   initStoreFilters();
   initBookingForm();
+  initBookingCatalog();
   initStickyNav();
 });
 
@@ -50,15 +51,27 @@ function initMobileMenu() {
 
   if (!menuBtn || !mobileNav) return;
 
-  menuBtn.addEventListener('click', () => {
+  const openMobileNav = () => {
     mobileNav.classList.add('open');
+    menuBtn.classList.add('open');
+    menuBtn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
-  });
+  };
 
   const closeMobileNav = () => {
     mobileNav.classList.remove('open');
+    menuBtn.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   };
+
+  menuBtn.addEventListener('click', () => {
+    if (mobileNav.classList.contains('open')) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
+  });
 
   if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
 
@@ -222,6 +235,208 @@ function initBookingForm() {
   form.addEventListener('submit', handleBookingSubmit);
 }
 
+function initBookingCatalog() {
+  const form = document.getElementById('booking-form');
+  if (!form) return;
+
+  const serviceSelect = form.querySelector('.service-select');
+  const serviceLabelInput = form.querySelector('input[name="serviceDetails"]');
+  const amountInput = form.querySelector('input[name="amount"]');
+  if (!serviceSelect || !amountInput) return;
+
+  const platformSelect = form.querySelector('select[name="platform"]');
+  const platformRadios = form.querySelectorAll('input[name="platform"]');
+
+  const getSelectedPlatform = () => {
+    if (platformSelect) return platformSelect.value;
+    const checked = Array.from(platformRadios).find((r) => r.checked);
+    return checked ? checked.value : '';
+  };
+
+  const setAmount = (price) => {
+    if (!amountInput) return;
+    amountInput.value = price > 0 ? price : '';
+  };
+
+  const buildOptions = (catalog, platform) => {
+    const opts = [];
+    const pushOption = (value, label, price) => {
+      opts.push({ value, label, price: Number(price || 0) });
+    };
+
+    if (platform === 'astrotalks') {
+      (catalog.astrologers || []).forEach((a) => {
+        const rate = Number(a.price_per_minute || 0);
+        const total = rate > 0 ? rate * 10 : 0;
+        const label = rate > 0 ? `${a.name} (₹${rate}/min, 10 min)` : a.name;
+        pushOption(`astro:${a.id}`, label, total);
+      });
+    } else if (platform === 'merchandise' || platform === 'store') {
+      (catalog.storeItems || []).forEach((i) => {
+        const price = Number(i.price || 0);
+        const label = price > 0 ? `${i.name} (₹${price})` : i.name;
+        pushOption(`store:${i.id}`, label, price);
+      });
+    } else if (platform === 'meditation') {
+      (catalog.meditationItems || []).forEach((i) => {
+        const price = Number(i.price || 0);
+        const label = price > 0 ? `${i.name} (₹${price})` : i.name;
+        pushOption(`meditation:${i.id}`, label, price);
+      });
+    } else if (platform === 'content') {
+      (catalog.bookItems || []).forEach((i) => {
+        const price = Number(i.price || 0);
+        const label = price > 0 ? `${i.name} (₹${price})` : i.name;
+        pushOption(`content:${i.id}`, label, price);
+      });
+    } else if (platform === 'tourism') {
+      (catalog.tourItems || []).forEach((i) => {
+        const price = Number(i.price || 0);
+        const label = price > 0 ? `${i.name} (₹${price})` : i.name;
+        pushOption(`tour:${i.id}`, label, price);
+      });
+    }
+
+    return opts;
+  };
+
+  const fillOptions = (options) => {
+    serviceSelect.innerHTML = '<option value="">Select a service</option>';
+    options.forEach((opt) => {
+      const optionEl = document.createElement('option');
+      optionEl.value = opt.value;
+      optionEl.textContent = opt.label;
+      optionEl.dataset.price = String(opt.price || 0);
+      serviceSelect.appendChild(optionEl);
+    });
+    setAmount(0);
+    if (serviceLabelInput) serviceLabelInput.value = '';
+  };
+
+  const updateServiceLabel = () => {
+    const selected = serviceSelect.selectedOptions[0];
+    if (!selected) return;
+    const price = Number(selected.dataset.price || 0);
+    setAmount(price);
+    if (serviceLabelInput) serviceLabelInput.value = selected.textContent || '';
+  };
+
+  fetch('/api/catalog')
+    .then((res) => res.json())
+    .then((catalog) => {
+      const updateFromPlatform = () => {
+        const platform = getSelectedPlatform();
+        fillOptions(buildOptions(catalog, platform));
+      };
+
+      if (platformSelect) {
+        platformSelect.addEventListener('change', updateFromPlatform);
+      }
+      platformRadios.forEach((radio) => {
+        radio.addEventListener('change', updateFromPlatform);
+      });
+      serviceSelect.addEventListener('change', updateServiceLabel);
+
+      updateFromPlatform();
+    })
+    .catch(() => {
+      // ignore catalog load failures
+    });
+}
+
+// --- PAYMENTS (STRIPE + RAZORPAY) ---
+let paymentConfigCache = null;
+
+async function getPaymentConfig() {
+  if (paymentConfigCache) return paymentConfigCache;
+  try {
+    const res = await fetch('/api/payments/config');
+    if (!res.ok) return {};
+    paymentConfigCache = await res.json();
+    return paymentConfigCache || {};
+  } catch (err) {
+    return {};
+  }
+}
+
+async function startStripeCheckout(amount) {
+  const payload = {
+    amount,
+    currency: 'INR',
+    description: 'Divya Darshan Booking',
+    success_url: window.location.href.split('#')[0] + '?payment=success',
+    cancel_url: window.location.href.split('#')[0] + '?payment=cancelled',
+  };
+
+  try {
+    const res = await fetch('/api/payments/stripe/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      showToast(data.error || 'Stripe checkout failed.');
+      return;
+    }
+    if (data.checkoutUrl) {
+      window.location.href = data.checkoutUrl;
+    } else {
+      showToast('Stripe checkout URL not available.');
+    }
+  } catch (err) {
+    showToast('Stripe checkout failed.');
+  }
+}
+
+async function startRazorpayCheckout(amount) {
+  const config = await getPaymentConfig();
+  if (!config.razorpayKeyId) {
+    showToast('Razorpay is not configured.');
+    return;
+  }
+
+  if (typeof Razorpay === 'undefined') {
+    showToast('Razorpay SDK not loaded.');
+    return;
+  }
+
+  try {
+    const res = await fetch('/api/payments/razorpay/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount,
+        currency: 'INR',
+        receipt: `dd_${Date.now()}`,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.order) {
+      showToast(data.error || 'Razorpay order failed.');
+      return;
+    }
+
+    const options = {
+      key: config.razorpayKeyId,
+      amount: data.order.amount,
+      currency: data.order.currency,
+      name: 'Divya Darshan',
+      description: 'Booking payment',
+      order_id: data.order.id,
+      handler: function () {
+        showToast('Payment successful!');
+      },
+      theme: { color: '#D4AF37' },
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+  } catch (err) {
+    showToast('Razorpay payment failed.');
+  }
+}
+
 // --- TOAST NOTIFICATION ---
 function showToast(message, type = 'default') {
   let container = document.getElementById('toast-container');
@@ -271,7 +486,7 @@ window.handleBookTour = function (name) {
   showToast(`✈️ Booking "${name}" tour...`);
 };
 
-function handleBookingSubmit(event) {
+async function handleBookingSubmit(event) {
   event.preventDefault();
   const form = event.target;
   if (!form.checkValidity()) {
@@ -287,19 +502,104 @@ function handleBookingSubmit(event) {
     meditation: 'Meditation / Yoga Platform',
     content: 'Devotional Books & Podcasts',
     tourism: 'Devotional Tourism',
-  };
-  const payments = {
-    full: 'Pay full amount',
-    advance: 'Pay advance',
-    emi: 'EMI option',
+    store: 'Spiritual Merchandise Store',
   };
 
-  const platform = platformLabels[data.get('platform')] || 'Divya Darshan platform';
-  const payment = payments[data.get('paymentOption')] || 'Pay full amount';
+  const platform = platformLabels[data.get('platform')] || data.get('platform') || 'Divya Darshan platform';
   const service = data.get('serviceDetails');
   const serviceText = service ? ` (${service})` : '';
-  showToast(`🙏 ${name}, we received your ${platform}${serviceText} booking request with ${payment}.`);
-  form.reset();
+  const amount = Number(data.get('amount') || 0);
+  const emiTenure = data.get('emiTenure') || null;
+  const paymentGateway = data.get('paymentGateway') || 'stripe';
+
+  if (!Number.isFinite(amount) || amount <= 0) {
+    showToast('Please enter a valid amount.');
+    return;
+  }
+
+  const payload = {
+    fullName: data.get('fullName'),
+    email: data.get('email'),
+    phone: data.get('phone'),
+    preferredDate: data.get('preferredDate'),
+    platform: data.get('platform'),
+    serviceId: data.get('serviceId'),
+    serviceDetails: data.get('serviceDetails'),
+    notes: data.get('notes'),
+    paymentOption: data.get('paymentOption'),
+    paymentGateway,
+    amount,
+    emiTenure,
+    returnUrl: window.location.href.split('#')[0],
+  };
+
+  try {
+    const res = await fetch('/api/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const result = await res.json();
+    if (!res.ok) {
+      showToast(result.error || 'Unable to start payment.');
+      return;
+    }
+
+    if (result.gateway === 'stripe' && result.checkoutUrl) {
+      showToast(`Redirecting to Stripe for ${platform}${serviceText}...`);
+      window.location.href = result.checkoutUrl;
+      return;
+    }
+
+    if (result.gateway === 'razorpay' && result.order) {
+      if (typeof Razorpay === 'undefined') {
+        showToast('Razorpay SDK not loaded.');
+        return;
+      }
+
+      const config = await getPaymentConfig();
+      if (!config.razorpayKeyId) {
+        showToast('Razorpay is not configured.');
+        return;
+      }
+
+      const options = {
+        key: config.razorpayKeyId,
+        amount: result.order.amount,
+        currency: result.order.currency,
+        name: 'Divya Darshan',
+        description: `Booking #${result.bookingId}`,
+        order_id: result.order.id,
+        handler: async function (response) {
+          try {
+            await fetch('/api/payments/razorpay/complete', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                bookingId: result.bookingId,
+                paymentId: result.paymentId,
+                providerPaymentId: response.razorpay_payment_id,
+              }),
+            });
+          } catch (err) {
+            // ignore
+          }
+          showToast('Payment successful!');
+          form.reset();
+        },
+        theme: { color: '#D4AF37' },
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.open();
+      return;
+    }
+
+    showToast(`?? ${name}, we received your ${platform}${serviceText} booking request.`);
+    form.reset();
+  } catch (err) {
+    showToast('Unable to start payment.');
+  }
 }
 
 window.handleBookingSubmit = handleBookingSubmit;
@@ -314,3 +614,4 @@ window.handleNewsletterSubmit = function (e) {
     showToast('Please enter a valid email address');
   }
 };
+

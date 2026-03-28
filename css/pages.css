@@ -1824,3 +1824,38 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* --- BLACK & GOLD THEME OVERRIDES --- */
+.page-hero {
+  background: linear-gradient(135deg, #0B0A08 0%, #15110C 55%, #241A10 100%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.filter-sidebar {
+  background: #15110C;
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+  background: #120E0A;
+  border-color: rgba(212, 175, 55, 0.35);
+}
+
+.filter-option .option-count {
+  background: rgba(212, 175, 55, 0.12);
+}
+
+.page-btn {
+  background: #15110C;
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.content-cover.ebook-bg,
+.content-cover.audio-bg,
+.content-cover.podcast-bg,
+.content-cover.chant-bg,
+.content-cover.mantra-bg,
+.content-cover.meditation-bg {
+  background: linear-gradient(135deg, #1A140C, #D4AF37);
+}

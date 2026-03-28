@@ -12,6 +12,15 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <style>
+.hero-main-card { overflow: hidden; }
+.astrologer-avatar { overflow: hidden; }
+.product-image { position: relative; overflow: hidden; }
+.course-thumbnail { position: relative; overflow: hidden; }
+.tour-image { position: relative; overflow: hidden; }
+</style>
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕉</text></svg>" />
@@ -33,84 +42,69 @@
       </a>
 
       <!-- Desktop Navigation -->
+      <!-- Desktop Navigation -->
       <nav class="navbar-menu" role="navigation" aria-label="Main navigation">
 
         <div class="nav-item">
-          <a href="#astrotalks" class="nav-link">
+          <a href="astrotalks.html" class="nav-link ">
             Astrotalks Platform <span class="nav-arrow">▾</span>
           </a>
           <div class="nav-dropdown" role="menu">
-            <a href="#astrotalks" class="dropdown-item" role="menuitem">
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
               <span class="item-icon">🔭</span> Astrology Consultation
             </a>
-            <a href="#astrotalks" class="dropdown-item" role="menuitem">
-              <span class="item-icon">📹</span> Video & Audio Calls
-            </a>
-          
+            <a href="astrotalks.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">📹</span> Video &amp; Audio Calls
             </a>
           </div>
         </div>
 
         <div class="nav-item">
-          <a href="#store" class="nav-link">
+          <a href="store.html" class="nav-link ">
             Spiritual Merchandise Store <span class="nav-arrow">▾</span>
           </a>
           <div class="nav-dropdown" role="menu">
-            <a href="#store" class="dropdown-item" role="menuitem">
+            <a href="store.html" class="dropdown-item" role="menuitem">
               <span class="item-icon">🪔</span> Brass Idols
             </a>
-            <a href="#store" class="dropdown-item" role="menuitem">
+            <a href="store.html" class="dropdown-item" role="menuitem">
               <span class="item-icon">📿</span> Rudraksha
             </a>
-            <a href="#store" class="dropdown-item" role="menuitem">
-              <span class="item-icon">🕯️</span> Incense & Rituals
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🕯️</span> Incense &amp; Rituals
             </a>
-            <a href="#store" class="dropdown-item" role="menuitem">
-              <span class="item-icon">💎</span> Jewelry & Copper
+            <a href="store.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">💎</span> Jewelry &amp; Copper
             </a>
           </div>
         </div>
 
         <div class="nav-item">
-          <a href="#meditation" class="nav-link">
-            Meditation/Yoga<span class="nav-arrow">▾</span>
+          <a href="meditation.html" class="nav-link ">
+            Meditation / Yoga <span class="nav-arrow">▾</span>
           </a>
           <div class="nav-dropdown" role="menu">
-            <a href="#meditation" class="dropdown-item" role="menuitem">
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
               <span class="item-icon">🆓</span> Free Courses
             </a>
-            <a href="#meditation" class="dropdown-item" role="menuitem">
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
               <span class="item-icon">💰</span> Paid Courses
             </a>
-            <a href="#meditation" class="dropdown-item" role="menuitem">
-              <span class="item-icon">🎥</span> Live & Recorded
+            <a href="meditation.html" class="dropdown-item" role="menuitem">
+              <span class="item-icon">🎥</span> Live &amp; Recorded
             </a>
           </div>
         </div>
 
-        <a href="#content" class="nav-link">Books & Podcasts</a>
-        <a href="#tours" class="nav-link">Devotional Tourism</a>
+        <a href="content.html" class="nav-link ">Books &amp; Podcasts</a>
+        <a href="tourism.html" class="nav-link ">Devotional Tourism</a>
 
       </nav>
 
-      <!-- Search Bar 
-      <div class="nav-search" role="search">
-        <span class="search-icon" aria-hidden="true">🔍</span>
-        <input
-          type="search"
-          class="search-input"
-          placeholder="Search astrologers, products..."
-          aria-label="Search"
-        />
-      </div> -->
-
       <!-- Action Buttons -->
       <div class="navbar-actions">
-        <button id="theme-toggle" class="nav-action-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
-          🌙
-        </button>
-
-      
+        <a href="booking.html" class="btn btn-primary btn-sm">Book Now</a>
+      </div>
 
       <!-- Mobile Menu Button -->
       <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
@@ -130,14 +124,12 @@
     </div>
     <button id="mobile-nav-close" class="nav-action-btn" aria-label="Close menu" style="font-size:22px">✕</button>
   </div>
-  <a href="#astrotalks">Astrotalks Platform</a>
-  <a href="#store">Spiritual Merchandise Store</a>
-  <a href="#meditation">Meditation / Yoga</a>
-  <a href="#content">Devotional Books & Audio Podcasts</a>
-  <a href="#tourism">Devotional Tourism</a>
-  <!--<div style="padding-top:16px">
-    <a href="#" class="btn btn-primary" style="display:inline-flex; width:100%; justify-content:center;">Sign In</a>
-  </div>-->
+  <a href="astrotalks.html">Astrotalks Platform</a>
+  <a href="store.html">Spiritual Merchandise Store</a>
+  <a href="meditation.html">Meditation / Yoga</a>
+  <a href="content.html">Books &amp; Podcasts</a>
+  <a href="tourism.html">Devotional Tourism</a>
+  <a href="booking.html">Book Now</a>
 </nav>
 
 <!-- Toast Container -->
@@ -233,7 +225,7 @@
       <div class="hero-visual" aria-hidden="true">
         <div class="hero-image-container">
           <div class="hero-main-card">
-            <div class="hero-illustration">🕉</div>
+            <img src="images/deepen-your-spiritual-path.webp" alt="Deepen your spiritual path" style="width:100%;height:100%;object-fit:cover;border-radius:16px;" />
           </div>
 
           <div class="hero-floating-card">
@@ -499,7 +491,6 @@
         </p>
       </div>
       <div style="display:flex; gap:12px; align-items:center;">
-        <span class="badge" style="display:inline-flex; padding:4px 10px; font-size:12px;">Pay per minute</span>
         <a href="#" class="btn btn-secondary">View All Astrologers →</a>
       </div>
     </div>
@@ -527,7 +518,7 @@
 
       <div class="astrologer-card fade-up">
         <div class="astrologer-avatar">
-          🧙
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=160&q=80" alt="Pandit Sharma Ji" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
           <div class="astrologer-status" title="Online"></div>
         </div>
         <h4>Pandit Sharma Ji</h4>
@@ -550,7 +541,7 @@
 
       <div class="astrologer-card fade-up">
         <div class="astrologer-avatar">
-          🌙
+          <img src="https://images.unsplash.com/photo-1531746020798-e6db3574935d?auto=format&fit=crop&w=160&q=80" alt="Devi Meera Ji" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
           <div class="astrologer-status" title="Online"></div>
         </div>
         <h4>Devi Meera Ji</h4>
@@ -573,7 +564,7 @@
 
       <div class="astrologer-card fade-up">
         <div class="astrologer-avatar">
-          ⭐
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&q=80" alt="Guru Raghav Das" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
           <div class="astrologer-status" title="Online"></div>
         </div>
         <h4>Guru Raghav Das</h4>
@@ -596,7 +587,7 @@
 
       <div class="astrologer-card fade-up">
         <div class="astrologer-avatar">
-          🌸
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=160&q=80" alt="Aacharya Priya" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
           <div class="astrologer-status offline" title="Busy"></div>
         </div>
         <h4>Aacharya Priya</h4>
@@ -650,7 +641,7 @@
       <!-- Product 1 -->
       <div class="product-card fade-up" data-category="brass">
         <div class="product-image">
-          🙏
+          <img src="https://images.unsplash.com/photo-1609619385102-f12b6a174ce5?auto=format&fit=crop&w=600&q=80" alt="Brass Ganesha Idol" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           <div class="product-badge">-23% OFF</div>
           <button
             class="product-wishlist"
@@ -684,7 +675,7 @@
       <!-- Product 2 -->
       <div class="product-card fade-up" data-category="rudraksha">
         <div class="product-image">
-          📿
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd6?auto=format&fit=crop&w=600&q=80" alt="5-Mukhi Rudraksha Mala" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           <div class="product-badge">-33% OFF</div>
           <button
             class="product-wishlist"
@@ -718,7 +709,7 @@
       <!-- Product 3 -->
       <div class="product-card fade-up" data-category="incense">
         <div class="product-image">
-          🕯️
+          <img src="https://images.unsplash.com/photo-1603827457577-609e6f42a45e?auto=format&fit=crop&w=600&q=80" alt="Sandalwood Incense" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           <div class="product-badge new">NEW</div>
           <button
             class="product-wishlist"
@@ -752,7 +743,7 @@
       <!-- Product 4 -->
       <div class="product-card fade-up" data-category="pooja">
         <div class="product-image">
-          🔔
+          <img src="https://images.unsplash.com/photo-1574270981993-52a6b7e1fce7?auto=format&fit=crop&w=600&q=80" alt="Brass Pooja Bell Set" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           <div class="product-badge">-20% OFF</div>
           <button
             class="product-wishlist"
@@ -813,7 +804,7 @@
       <!-- Course 1 -->
       <div class="course-card fade-up" data-type="free">
         <div class="course-thumbnail">
-          🧘
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80" alt="Meditation course" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           <div class="course-level">Beginner</div>
           <div class="course-play-btn">▶</div>
         </div>
@@ -843,7 +834,7 @@
       <!-- Course 2 -->
       <div class="course-card fade-up" data-type="paid">
         <div class="course-thumbnail green">
-          🌿
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80" alt="Yoga course" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           <div class="course-level">Intermediate</div>
           <div class="course-play-btn">▶</div>
         </div>
@@ -873,7 +864,7 @@
       <!-- Course 3 -->
       <div class="course-card fade-up" data-type="recorded">
         <div class="course-thumbnail saffron">
-          📜
+          <img src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=600&q=80" alt="Vedic studies course" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           <div class="course-level">All Levels</div>
           <div class="course-play-btn">▶</div>
         </div>
@@ -912,7 +903,7 @@
       <p>Stream, download, and build playlists from our vast collection of sacred content</p>
     </div>
 
-    <div class="content-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+    <div class="content-library-grid">
 
       <div class="content-card fade-up" onclick="showToast('🎵 Opening Devotional Chants...')">
         <span class="content-icon">🎶</span>
@@ -934,10 +925,6 @@
         <p>Expert-led sessions for stress relief, sleep, focus, and spiritual awakening</p>
         <span class="content-count">450+ Sessions</span>
       </div>
-
-    </div>
-
-    <div class="content-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 64px; margin-top: 32px;">
 
       <div class="content-card fade-up" onclick="showToast('📖 Opening Ebooks...')">
         <span class="content-icon">📖</span>
@@ -975,7 +962,7 @@
       <!-- Tour 1 -->
       <div class="tour-card fade-up">
         <div class="tour-image varanasi">
-          🛕
+          <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=600&q=80" alt="Tour destination" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           <div class="tour-badge">🔥 Best Seller</div>
         </div>
         <div class="tour-info">
@@ -1027,7 +1014,7 @@
       <!-- Tour 2 -->
       <div class="tour-card fade-up">
         <div class="tour-image kedarnath">
-          🏔️
+          <img src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=600&q=80" alt="Tour destination" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           <div class="tour-badge">❄️ Limited Slots</div>
         </div>
         <div class="tour-info">
@@ -1079,7 +1066,7 @@
       <!-- Tour 3 -->
       <div class="tour-card fade-up">
         <div class="tour-image tirupati">
-          🌺
+          <img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?auto=format&fit=crop&w=600&q=80" alt="Tour destination" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           <div class="tour-badge">🌟 Premium</div>
         </div>
         <div class="tour-info">
@@ -1169,28 +1156,50 @@
             <option value="tourism">Devotional Tourism</option>
           </select>
         </label>
-        <label class="form-field">
-          <span>Service / Package</span>
-          <input type="text" name="serviceDetails" placeholder="e.g., Varanasi Package, Tarot Call" />
-        </label>
-        <label class="form-field form-field-full">
-          <span>Additional Notes</span>
-          <textarea name="notes" rows="3" placeholder="Tell us about your intention, questions, or special requests"></textarea>
-        </label>
-      </div>
-      <div class="booking-payment">
-        <strong>Booking Options</strong>
-        <p>Choose how you would like to pay:</p>
-        <div class="payment-options" role="radiogroup" aria-label="Booking payment options">
-          <label><input type="radio" name="paymentOption" value="full" checked /> Pay full amount</label>
-          <label><input type="radio" name="paymentOption" value="advance" /> Pay advance</label>
-          <label><input type="radio" name="paymentOption" value="emi" /> EMI option</label>
+          <label class="form-field">
+            <span>Service / Package</span>
+            <select name="serviceId" class="service-select" required>
+              <option value="">Select a service</option>
+            </select>
+            <input type="hidden" name="serviceDetails" />
+          </label>
+          <label class="form-field">
+            <span>Amount (INR)</span>
+            <input type="number" name="amount" min="1" step="1" placeholder="e.g., 1100" required readonly />
+          </label>
+          <label class="form-field form-field-full">
+            <span>Additional Notes</span>
+            <textarea name="notes" rows="3" placeholder="Tell us about your intention, questions, or special requests"></textarea>
+          </label>
         </div>
-      </div>
-      <div class="form-footer">
-        <button type="submit" class="btn btn-primary">Submit Booking Request</button>
-      </div>
-    </form>
+        <div class="booking-payment">
+          <strong>Booking Options</strong>
+          <p>Choose how you would like to pay:</p>
+            <div class="payment-options" role="radiogroup" aria-label="Booking payment options">
+              <label><input type="radio" name="paymentOption" value="full" checked /> Pay full amount</label>
+              <label><input type="radio" name="paymentOption" value="advance" /> Pay advance</label>
+              <label><input type="radio" name="paymentOption" value="emi" /> EMI option</label>
+            </div>
+            <label class="form-field" style="margin-top:12px;">
+              <span>EMI Tenure</span>
+              <select name="emiTenure">
+                <option value="3">3 Months</option>
+                <option value="6">6 Months</option>
+                <option value="12">12 Months</option>
+              </select>
+            </label>
+            <label class="form-field" style="margin-top:12px;">
+              <span>Payment Gateway</span>
+              <select name="paymentGateway" required>
+                <option value="stripe">Stripe</option>
+                <option value="razorpay">Razorpay</option>
+              </select>
+            </label>
+          </div>
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+        </div>
+      </form>
   </div>
 </section>
 
@@ -1300,11 +1309,12 @@
       <div class="footer-col">
         <h4>Platform</h4>
         <ul>
-          <li><a href="#astrotalks">✨ Astrology</a></li>
-          <li><a href="#store">🛒 Spiritual Shop</a></li>
-          <li><a href="#meditation">📚 Online Courses</a></li>
-          <li><a href="#content">🎵 Content Library</a></li>
-          <li><a href="#tourism">✈️ Devotional Tours</a></li>
+          <li><a href="astrotalks.html">✨ Astrology</a></li>
+          <li><a href="store.html">🛒 Spiritual Shop</a></li>
+          <li><a href="meditation.html">📚 Online Courses</a></li>
+          <li><a href="content.html">🎵 Content Library</a></li>
+          <li><a href="tourism.html">✈️ Devotional Tours</a></li>
+          <li><a href="booking.html">📅 Book Now</a></li>
         </ul>
       </div>
 
@@ -1337,7 +1347,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2024 Divya Darshan. All rights reserved. 🕉 Made with ❤️ in India</p>
+      <p>Copyrights &#169; 2026 All rights reserved. &#128497; Made by Mohan</p>
       <div class="footer-bottom-links">
         <a href="#">Privacy</a>
         <a href="#">Terms</a>
@@ -1353,3 +1363,4 @@
 
 </body>
 </html>
+
