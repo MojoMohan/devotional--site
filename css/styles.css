@@ -2312,14 +2312,14 @@ body {
 }
 
 .module-card {
-  background: linear-gradient(135deg, #D4AF37, #B8860B);
-  border-color: rgba(255, 215, 128, 0.45);
+  background: #0B0A08;
+  border-color: rgba(212, 175, 55, 0.55);
 }
 
 .module-card h3,
 .module-card p,
 .module-card .module-link {
-  color: #1A1208;
+  color: #D4AF37;
 }
 
 .module-card .module-link {

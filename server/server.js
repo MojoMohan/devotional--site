@@ -214,6 +214,34 @@ function seedPages() {
   });
 }
 
+function syncPagesFromRepo() {
+  const pageFiles = listHtmlFiles();
+  const upsert = db.prepare(
+    `INSERT INTO pages (slug, title, html, updated_at)
+     VALUES (@slug, @title, @html, @updated_at)
+     ON CONFLICT(slug) DO UPDATE SET
+       title = excluded.title,
+       html = excluded.html,
+       updated_at = excluded.updated_at`
+  );
+  let count = 0;
+
+  pageFiles.forEach((file) => {
+    const filePath = path.join(ROOT_DIR, file);
+    const html = fs.readFileSync(filePath, 'utf8');
+    const slug = file.replace('.html', '');
+    upsert.run({
+      slug,
+      title: slug.charAt(0).toUpperCase() + slug.slice(1),
+      html,
+      updated_at: new Date().toISOString(),
+    });
+    count += 1;
+  });
+
+  return count;
+}
+
 function hasAdmin() {
   const row = db.prepare('SELECT id FROM admins LIMIT 1').get();
   return Boolean(row);
@@ -1330,7 +1358,14 @@ app.get('/cms', requireCmsAuth, (req, res) => {
     bookings: db.prepare('SELECT COUNT(*) as c FROM bookings').get().c,
     payments: db.prepare('SELECT COUNT(*) as c FROM payments').get().c,
   };
-  res.render('cms/dashboard', { counts });
+  const resynced = req.query.resynced === '1';
+  const pages = Number.parseInt(req.query.pages, 10);
+  res.render('cms/dashboard', { counts, resynced, pages: Number.isFinite(pages) ? pages : null });
+});
+
+app.post('/cms/resync-pages', requireCmsAuth, (req, res) => {
+  const count = syncPagesFromRepo();
+  res.redirect(`/cms?resynced=1&pages=${count}`);
 });
 
 app.get('/cms/bookings', requireCmsAuth, (req, res) => {
@@ -2118,7 +2153,7 @@ app.get('/:slug.html', (req, res) => {
   res.type('html').send(html);
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Admin server running on port ${PORT}`);
   console.log(`Database path: ${DB_PATH}`);
 });

@@ -10,8 +10,20 @@
       <div class="actions">
         <a class="btn btn-outline" href="/cms/astrologers">Manage astrologers</a>
         <a class="btn btn-primary" href="/cms/store-items/new">Add store item</a>
+        <form action="/cms/resync-pages" method="post" style="display:inline;">
+          <button class="btn btn-outline" type="submit">Resync pages</button>
+        </form>
       </div>
     </div>
+
+    <% if (resynced) { %>
+      <div class="card" style="margin-bottom:18px;">
+        <strong>Pages resynced.</strong>
+        <% if (pages != null) { %>
+          <span>Updated <%= pages %> page templates from the repo.</span>
+        <% } %>
+      </div>
+    <% } %>
 
     <section class="stats">
       <div class="stat">
