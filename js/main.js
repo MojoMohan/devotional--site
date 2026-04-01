@@ -44,26 +44,36 @@ function updateThemeIcon(btn, theme) {
 }
 
 // --- MOBILE MENU ---
-function initMobileMenu() {
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileNav = document.getElementById('mobile-nav');
-  const closeBtn = document.getElementById('mobile-nav-close');
+  function initMobileMenu() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const closeBtn = document.getElementById('mobile-nav-close');
+    const themeToggle = document.getElementById('theme-toggle');
 
-  if (!menuBtn || !mobileNav) return;
+    if (!menuBtn || !mobileNav) return;
 
-  const openMobileNav = () => {
-    mobileNav.classList.add('open');
-    menuBtn.classList.add('open');
-    menuBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  };
+    // Use the hamburger button as the single toggle (remove separate close button)
+    if (closeBtn) {
+      closeBtn.remove();
+    }
 
-  const closeMobileNav = () => {
-    mobileNav.classList.remove('open');
-    menuBtn.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  };
+    const openMobileNav = () => {
+      mobileNav.classList.add('open');
+      mobileNav.style.display = 'flex';
+      menuBtn.classList.add('open');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      menuBtn.setAttribute('aria-label', 'Close menu');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeMobileNav = () => {
+      mobileNav.classList.remove('open');
+      mobileNav.style.display = 'none';
+      menuBtn.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+    };
 
   menuBtn.addEventListener('click', () => {
     if (mobileNav.classList.contains('open')) {
@@ -73,16 +83,28 @@ function initMobileMenu() {
     }
   });
 
-  if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
-
-  // Close on outside click
-  mobileNav.addEventListener('click', (e) => {
-    if (e.target === mobileNav) closeMobileNav();
-  });
+    // Close on outside click
+    mobileNav.addEventListener('click', (e) => {
+      if (e.target === mobileNav) closeMobileNav();
+    });
 
   // Close nav links on click
   mobileNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeMobileNav);
+  });
+
+    // Keep theme toggle visible in the main navbar on all breakpoints
+    if (themeToggle) {
+      themeToggle.style.display = 'inline-flex';
+    }
+
+    // Hide mobile nav until explicitly opened
+    mobileNav.classList.remove('open');
+    mobileNav.style.display = 'none';
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMobileNav();
   });
 }
 
