@@ -175,6 +175,58 @@
       outline-offset: 2px;
     }
 
+    .selected-item-note {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      background: #0B0A08;
+      color: var(--color-primary-saffron);
+      font-size: 14px;
+      display: none;
+    }
+
+    .platform-options {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .platform-options label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      background: #0B0A08;
+      color: var(--color-primary-saffron);
+      cursor: pointer;
+      font-size: 14px;
+      min-height: 56px;
+      transition: all var(--transition-fast);
+    }
+
+    @media (max-width: 768px) {
+      .platform-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .platform-options label:hover,
+    .platform-options input:checked + label {
+      background: linear-gradient(135deg, var(--color-primary-saffron), var(--color-primary-gold));
+      color: #0B0A08;
+      border-color: rgba(212, 175, 55, 0.75);
+    }
+
+    .platform-options input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .platform-card-icon {
       font-size: 22px;
     }
@@ -740,6 +792,7 @@
 
       <!-- Action Buttons -->
       <div class="navbar-actions">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme"></button>
         <a href="booking.html" class="btn btn-primary btn-sm">Book Now</a>
       </div>
 
@@ -871,6 +924,9 @@
             </div>
 
           </div>
+
+          <div id="selected-item-note" class="selected-item-note" aria-live="polite"></div>
+          <div id="platform-options" class="platform-options" aria-label="Available options"></div>
         </div>
         <!-- /STEP 1 -->
 
@@ -1282,6 +1338,7 @@
 
 </body>
 </html>
+
 
 
 

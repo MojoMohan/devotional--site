@@ -59,6 +59,11 @@ app.get('/health', (req, res) => {
   });
 });
 
+function containsText(value, query) {
+  if (!value) return false;
+  return String(value).toLowerCase().includes(query);
+}
+
 function initDb() {
   db.exec(`
     CREATE TABLE IF NOT EXISTS pages (
@@ -302,7 +307,7 @@ function renderAstrologerCards(astrologers) {
                 <div class="rating-row">
                   <span class="rating-badge">${rating}</span>
                   <span>★★★★★</span>
-                  <span class="review-cnt">(— reviews)</span>
+                  <span class="review-cnt">(0 reviews)</span>
                 </div>
               </div>
             </div>
@@ -312,18 +317,34 @@ function renderAstrologerCards(astrologers) {
               <div class="detail-item">Sessions<strong>—</strong></div>
               <div class="detail-item">Joined<strong>—</strong></div>
             </div>
-            <div class="price-per-min">${price} <span>/minute</span></div>
-            <div class="consult-actions">
-              <button class="consult-btn" onclick="handleBookSession('${jsName}', 'chat')">
-                <span class="cb-icon">💬</span> Chat
+            <div class="price-per-min">${price} <span>/minute</span></div>            <div class="consult-actions" data-astro="${astro.id}">
+              <button class="consult-btn consult-option" type="button" data-method="chat" onclick="selectConsultOption(this)">
+                <span class="cb-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="img" focusable="false">
+                    <path d="M4 5h16a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  </svg>
+                </span> Chat
               </button>
-              <button class="consult-btn" onclick="handleBookSession('${jsName}', 'audio')">
-                <span class="cb-icon">📞</span> Audio
+              <button class="consult-btn consult-option" type="button" data-method="audio" onclick="selectConsultOption(this)">
+                <span class="cb-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="img" focusable="false">
+                    <path d="M6 7a2 2 0 0 1 2-2h2a8 8 0 0 1 8 8v3a2 2 0 0 1-2 2h-2a8 8 0 0 1-8-8V7z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M6 11h-2v4h2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                </span> Audio
               </button>
-              <button class="consult-btn" onclick="handleBookSession('${jsName}', 'video')">
-                <span class="cb-icon">📹</span> Video
+              <button class="consult-btn consult-option" type="button" data-method="video" onclick="selectConsultOption(this)">
+                <span class="cb-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="img" focusable="false">
+                    <rect x="3" y="7" width="12" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M15 10l6-3v10l-6-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  </svg>
+                </span> Video
               </button>
             </div>
+            <button class="btn btn-primary" style="width:100%;margin-top:12px;" onclick="bookAstrologer('${astro.id}', '${jsName}')">
+              Book Now
+            </button>
           </article>`;
   }).join('\n');
 }
@@ -385,9 +406,10 @@ function renderStoreCards(items) {
               <div class="product-price">
                 <span class="price-current">${priceLabel}</span>
               </div>
-              <button class="btn btn-primary" style="width:100%;" onclick="handleAddToCart('${jsName}', ${price})">
-                🛒 Add to Cart
-              </button>
+              <a class="btn btn-primary" style="width:100%;display:inline-flex;justify-content:center;"
+                 href="/booking.html?platform=store&serviceId=store:${item.id}">
+                Buy Now
+              </a>
             </div>
           </article>`;
   }).join('\n');
@@ -433,7 +455,7 @@ function renderMeditationCards(items) {
               </div>
               <div class="course-footer">
                 <span class="${priceClass}">${priceLabel}</span>
-                <button class="btn btn-primary btn-sm" onclick="handleEnroll('${jsTitle}')">Enroll Now</button>
+                <a class="btn btn-primary btn-sm" href="/booking.html?platform=meditation&serviceId=meditation:${item.id}&serviceLabel=${encodeURIComponent(title)}">Enroll Now</a>
               </div>
             </div>
           </article>`;
@@ -514,7 +536,7 @@ function renderTourCards(items) {
               </div>
               <div class="tour-rating">
                 <span class="rating-val">★4.8</span>
-                <span class="review-cnt">(— reviews)</span>
+                <span class="review-cnt">(0 reviews)</span>
               </div>
               <div class="tour-price-row">
                 <span class="tour-price">${priceLabel}</span>
@@ -529,7 +551,7 @@ function renderTourCards(items) {
               </div>
             </div>
             <div class="tour-card-footer">
-              <button class="tour-book-btn" onclick="bookTour('${jsTitle}')">Book Now</button>
+              <a class="tour-book-btn" href="/booking.html?platform=tourism&serviceId=tour:${item.id}&serviceLabel=${encodeURIComponent(title)}">Book Now</a>
             </div>
           </article>`;
   }).join('\n');
@@ -598,7 +620,7 @@ function renderHomeStoreCards(items) {
             <div class="product-badge">${badge}</div>
             <button class="product-wishlist" data-id="prod-${item.id || categorySlug}" onclick="handleWishlist(this, 'prod-${item.id || categorySlug}', '${jsName}')" aria-label="Add to wishlist">ðŸ¤</button>
             <div class="product-overlay">
-              <button class="btn btn-primary btn-sm" onclick="handleAddToCart('${jsName}', ${price}, '&#128722;')">Enquiry Now</button>
+              <a class="btn btn-primary btn-sm" href="/booking.html?platform=store&serviceId=store:${item.id}">Buy Now</a>
             </div>
           </div>
           <div class="product-info">
@@ -613,9 +635,10 @@ function renderHomeStoreCards(items) {
               <span class="price-current">${priceLabel}</span>
               ${originalPrice ? `<span class="price-original">${originalLabel}</span><span class="price-discount">-${discount}%</span>` : ''}
             </div>
-            <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });">
-              &#128722; Enquiry Now
-            </button>
+            <a class="btn btn-primary" style="width:100%; justify-content:center;"
+               href="/booking.html?platform=store&serviceId=store:${item.id}">
+              Buy Now
+            </a>
           </div>
         </div>`;
   }).join('\n');
@@ -867,6 +890,7 @@ initDb();
 ensureColumn('bookings', 'emi_tenure', 'INTEGER');
 ensureColumn('bookings', 'service_id', 'TEXT');
 ensureColumn('payments', 'emi_tenure', 'INTEGER');
+ensureColumn('tour_packages', 'is_featured', 'INTEGER DEFAULT 0');
 seedPages();
 
 app.get('/admin/setup', (req, res) => {
@@ -1383,6 +1407,108 @@ app.get('/cms/payments', requireCmsAuth, (req, res) => {
   res.render('cms/payments_list', { payments });
 });
 
+app.get('/search', (req, res) => {
+  const query = String(req.query.q || '').trim();
+  if (!query) return res.redirect('/index.html');
+  const q = query.toLowerCase();
+
+  const includeAstro = /(astro|astrologer|astrotalk)/.test(q);
+  const includeStore = /(store|product|merch|pooja|idol|rudraksha|incense|jewelry|copper)/.test(q);
+  const includeMeditation = /(yoga|meditation|course|class|pranayama|breath)/.test(q);
+  const includeBooks = /(book|podcast|content|audio|ebook)/.test(q);
+  const includeTours = /(tour|tourism|yatra|pilgrimage|trip|travel)/.test(q);
+
+  const astrologersAll = db.prepare('SELECT * FROM astrologers WHERE is_active = 1 ORDER BY created_at DESC').all();
+  const storeAll = db.prepare('SELECT * FROM store_items WHERE is_active = 1 ORDER BY created_at DESC').all();
+  const meditationAll = db.prepare('SELECT * FROM meditation_items WHERE is_active = 1 ORDER BY created_at DESC').all();
+  const booksAll = db.prepare('SELECT * FROM book_items WHERE is_active = 1 ORDER BY created_at DESC').all();
+  const toursAll = db.prepare('SELECT * FROM tour_packages WHERE is_active = 1 ORDER BY created_at DESC').all();
+
+  const astrologers = includeAstro
+    ? astrologersAll
+    : astrologersAll.filter((a) => (
+      containsText(a.name, q)
+      || containsText(a.specialization, q)
+      || containsText(a.languages, q)
+    ));
+
+  const storeItems = includeStore
+    ? storeAll
+    : storeAll.filter((i) => (
+      containsText(i.name, q)
+      || containsText(i.category, q)
+      || containsText(i.description, q)
+    ));
+
+  const meditationItems = includeMeditation
+    ? meditationAll
+    : meditationAll.filter((i) => (
+      containsText(i.title, q)
+      || containsText(i.category, q)
+      || containsText(i.level, q)
+      || containsText(i.description, q)
+    ));
+
+  const bookItems = includeBooks
+    ? booksAll
+    : booksAll.filter((i) => (
+      containsText(i.title, q)
+      || containsText(i.author, q)
+      || containsText(i.format, q)
+      || containsText(i.description, q)
+    ));
+
+  const tourItems = includeTours
+    ? toursAll
+    : toursAll.filter((i) => (
+      containsText(i.title, q)
+      || containsText(i.destination, q)
+      || containsText(i.description, q)
+    ));
+
+  const astroSlice = astrologers.slice(0, 6);
+  const storeSlice = storeItems.slice(0, 8);
+  const meditationSlice = meditationItems.slice(0, 6);
+  const bookSlice = bookItems.slice(0, 8);
+  const tourSlice = tourItems.slice(0, 6);
+
+  const astrologerCards = astroSlice.length ? renderAstrologerCards(astroSlice) : '';
+  const storeCards = storeSlice.length ? renderStoreCards(storeSlice) : '';
+  const meditationCards = meditationSlice.length ? renderMeditationCards(meditationSlice) : '';
+  const bookCards = bookSlice.length ? renderBookCards(bookSlice, 'releases') : '';
+  const tourCards = tourSlice.length ? renderTourCards(tourSlice) : '';
+
+  const hasResults = Boolean(
+    astrologerCards
+    || storeCards
+    || meditationCards
+    || bookCards
+    || tourCards
+  );
+
+  res.render('search', {
+    query,
+    hasResults,
+    astrologerCards: astrologerCards || null,
+    storeCards: storeCards || null,
+    meditationCards: meditationCards || null,
+    bookCards: bookCards || null,
+    tourCards: tourCards || null,
+    counts: {
+      astrologersShown: astroSlice.length,
+      astrologersTotal: astrologers.length,
+      storeShown: storeSlice.length,
+      storeTotal: storeItems.length,
+      meditationShown: meditationSlice.length,
+      meditationTotal: meditationItems.length,
+      bookShown: bookSlice.length,
+      bookTotal: bookItems.length,
+      tourShown: tourSlice.length,
+      tourTotal: tourItems.length,
+    },
+  });
+});
+
 // CMS Astrologers
 app.get('/cms/astrologers', requireCmsAuth, (req, res) => {
   const astrologers = db.prepare('SELECT * FROM astrologers ORDER BY created_at DESC').all();
@@ -1699,14 +1825,18 @@ app.get('/cms/tour-packages/new', requireCmsAuth, (req, res) => {
 });
 
 app.post('/cms/tour-packages/new', requireCmsAuth, (req, res) => {
-  const { title, destination, duration_days, price, image_url, description, is_active } = req.body;
+  const { title, destination, duration_days, price, image_url, description, is_active, is_featured } = req.body;
   if (!title || !title.trim()) return res.status(400).send('Title is required');
   const now = new Date().toISOString();
   const active = String(is_active) === '1' || is_active === 'on';
+  const featured = String(is_featured) === '1' || is_featured === 'on';
+  if (featured) {
+    db.prepare('UPDATE tour_packages SET is_featured = 0').run();
+  }
   db.prepare(
     `INSERT INTO tour_packages
-     (title, destination, duration_days, price, image_url, description, is_active, created_at, updated_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+     (title, destination, duration_days, price, image_url, description, is_active, is_featured, created_at, updated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   ).run(
     title,
     destination || '',
@@ -1715,6 +1845,7 @@ app.post('/cms/tour-packages/new', requireCmsAuth, (req, res) => {
     image_url || '',
     description || '',
     active ? 1 : 0,
+    featured ? 1 : 0,
     now,
     now
   );
@@ -1730,13 +1861,17 @@ app.get('/cms/tour-packages/:id/edit', requireCmsAuth, (req, res) => {
 app.post('/cms/tour-packages/:id/edit', requireCmsAuth, (req, res) => {
   const item = db.prepare('SELECT * FROM tour_packages WHERE id = ?').get(req.params.id);
   if (!item) return res.status(404).send('Item not found');
-  const { title, destination, duration_days, price, image_url, description, is_active } = req.body;
+  const { title, destination, duration_days, price, image_url, description, is_active, is_featured } = req.body;
   if (!title || !title.trim()) return res.status(400).send('Title is required');
   const now = new Date().toISOString();
   const active = String(is_active) === '1' || is_active === 'on';
+  const featured = String(is_featured) === '1' || is_featured === 'on';
+  if (featured) {
+    db.prepare('UPDATE tour_packages SET is_featured = 0').run();
+  }
   db.prepare(
     `UPDATE tour_packages
-     SET title = ?, destination = ?, duration_days = ?, price = ?, image_url = ?, description = ?, is_active = ?, updated_at = ?
+     SET title = ?, destination = ?, duration_days = ?, price = ?, image_url = ?, description = ?, is_active = ?, is_featured = ?, updated_at = ?
      WHERE id = ?`
   ).run(
     title,
@@ -1746,6 +1881,7 @@ app.post('/cms/tour-packages/:id/edit', requireCmsAuth, (req, res) => {
     image_url || '',
     description || '',
     active ? 1 : 0,
+    featured ? 1 : 0,
     now,
     item.id
   );
@@ -2131,6 +2267,77 @@ app.get('/:slug.html', (req, res) => {
     const items = db.prepare(
       'SELECT * FROM tour_packages WHERE is_active = 1 ORDER BY created_at DESC'
     ).all();
+    const featured = db.prepare(
+      'SELECT * FROM tour_packages WHERE is_active = 1 ORDER BY is_featured DESC, created_at DESC LIMIT 1'
+    ).get();
+    if (featured) {
+      const title = escapeHtml(featured.title);
+      const destination = escapeHtml(featured.destination || 'India');
+      const duration = featured.duration_days != null ? `${featured.duration_days} Days` : '—';
+      const price = featured.price != null ? Number(featured.price) : 0;
+      const image = escapeHtml(
+        featured.image_url || 'https://images.unsplash.com/photo-1609619385102-f12b6a174ce5?auto=format&fit=crop&w=700&q=80'
+      );
+      const desc = escapeHtml(featured.description || 'Curated spiritual journey with expert guides and seamless stays.');
+      const emi = price > 0 ? Math.max(0, Math.round(price / 12)).toLocaleString('en-IN') : '—';
+      const priceLabel = price > 0 ? formatRupee(price) : '—';
+      const featuredHtml = `
+<!-- =================== FEATURED PACKAGE BANNER =================== -->
+<section class="section" style="padding-top:28px;" aria-label="Featured package">
+  <div class="container">
+    <article class="featured-banner" aria-label="Featured: ${title}">
+      <div class="featured-banner-img">
+        <img src="${image}" alt="${title}" loading="lazy" />
+        <div class="featured-banner-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="featured-banner-content">
+        <span class="featured-tag">⭐ Featured Package</span>
+        <h2>${title}</h2>
+        <p class="featured-subtitle">${destination}</p>
+        <div class="featured-meta-row">
+          <span class="featured-meta-item">⏱️ <strong>${duration}</strong></span>
+          <span class="featured-meta-item">👥 Group &amp; Private</span>
+        </div>
+        <div>
+          <p style="font-size:12px;font-weight:700;color:var(--color-text-light);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;">Includes</p>
+          <div class="featured-includes">
+            <span class="include-pill">✈️ Flights</span>
+            <span class="include-pill">🏨 Hotels</span>
+            <span class="include-pill">🍽️ Meals</span>
+            <span class="include-pill">🧑‍✈️ Guide</span>
+          </div>
+        </div>
+        <div class="featured-price-block">
+          <span class="price-current">${priceLabel}</span>
+          <span class="emi-note">EMI from ₹${emi}/month</span>
+        </div>
+        <div class="featured-actions">
+          <a class="btn btn-primary" href="/booking.html?platform=tourism&serviceId=tour:${featured.id}&serviceLabel=${encodeURIComponent(featured.title)}">Book Now</a>
+          <button class="btn btn-outline" onclick="showToast('📋 Itinerary details coming soon!')">View Itinerary</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+`;
+      const start = '<!-- =================== FEATURED PACKAGE BANNER =================== -->';
+      const end = '<!-- =================== FILTER SIDEBAR + TOUR CARDS =================== -->';
+      if (html.includes(start) && html.includes(end)) {
+        const pattern = new RegExp(
+          `${start.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}[\\s\\S]*?${end.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}`
+        );
+        html = html.replace(pattern, `${featuredHtml}\n\n${end}`);
+      } else {
+        const sectionPattern = new RegExp(
+          '<section class="section" style="padding-top:28px;" aria-label="Featured package">[\\s\\S]*?<\\/section>'
+        );
+        if (sectionPattern.test(html)) {
+          html = html.replace(sectionPattern, featuredHtml);
+        } else if (html.includes(end)) {
+          html = html.replace(end, `${featuredHtml}\n\n${end}`);
+        }
+      }
+    }
     if (items.length) {
       const { slice, total, totalPages, page: current } = paginate(items, pageNum, 8);
       const start = '<div class="tour-cards-grid" id="tours-grid">';

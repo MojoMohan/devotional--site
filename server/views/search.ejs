@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results | Divya Darshan</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/pages.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar" role="banner">
+      <div class="container">
+        <div class="navbar-inner">
+          <a href="/index.html" class="navbar-logo" aria-label="Divya Darshan Home">
+            <div class="logo-icon" aria-hidden="true">🕉</div>
+            <div class="logo-text">
+              Divya Darshan
+              <span>Spiritual Ecosystem</span>
+            </div>
+          </a>
+          <nav class="navbar-menu" role="navigation" aria-label="Main navigation">
+            <div class="nav-item">
+              <a href="/astrotalks.html" class="nav-link">
+                Astrotalks Platform <span class="nav-arrow">▾</span>
+              </a>
+              <div class="nav-dropdown" role="menu">
+                <a href="/astrotalks.html" class="dropdown-item" role="menuitem">
+                  <span class="item-icon">🔭</span> Astrology Consultation
+                </a>
+                <a href="/astrotalks.html" class="dropdown-item" role="menuitem">
+                  <span class="item-icon">📹</span> Video &amp; Audio Calls
+                </a>
+              </div>
+            </div>
+            <div class="nav-item">
+              <a href="/store.html" class="nav-link">
+                Spiritual Merchandise Store <span class="nav-arrow">▾</span>
+              </a>
+              <div class="nav-dropdown" role="menu">
+                <a href="/store.html" class="dropdown-item" role="menuitem">
+                  <span class="item-icon">🪔</span> Brass Idols
+                </a>
+                <a href="/store.html" class="dropdown-item" role="menuitem">
+                  <span class="item-icon">📿</span> Rudraksha
+                </a>
+                <a href="/store.html" class="dropdown-item" role="menuitem">
+                  <span class="item-icon">🕯️</span> Incense &amp; Rituals
+                </a>
+                <a href="/store.html" class="dropdown-item" role="menuitem">
+                  <span class="item-icon">💎</span> Jewelry &amp; Copper
+                </a>
+              </div>
+            </div>
+            <div class="nav-item">
+              <a href="/meditation.html" class="nav-link">
+                Meditation / Yoga <span class="nav-arrow">▾</span>
+              </a>
+              <div class="nav-dropdown" role="menu">
+                <a href="/meditation.html" class="dropdown-item" role="menuitem">
+                  <span class="item-icon">🆓</span> Free Courses
+                </a>
+                <a href="/meditation.html" class="dropdown-item" role="menuitem">
+                  <span class="item-icon">💰</span> Paid Courses
+                </a>
+                <a href="/meditation.html" class="dropdown-item" role="menuitem">
+                  <span class="item-icon">🎥</span> Live &amp; Recorded
+                </a>
+              </div>
+            </div>
+            <a href="/content.html" class="nav-link">Books &amp; Podcasts</a>
+            <a href="/tourism.html" class="nav-link">Devotional Tourism</a>
+          </nav>
+          <div class="navbar-actions">
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+            <a href="/booking.html" class="btn btn-primary btn-sm">Book Now</a>
+          </div>
+          <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container page-hero-inner">
+          <div class="page-hero-text">
+            <div class="breadcrumb">
+              <a href="/index.html">Home</a>
+              <span>›</span>
+              <span>Search</span>
+            </div>
+            <h1>Search Results</h1>
+            <p>Showing results for "<%= query %>"</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <% if (!hasResults) { %>
+            <p class="results-count">No results found. Try a different search.</p>
+          <% } %>
+
+          <% if (astrologerCards) { %>
+            <div class="section-actions">
+              <h2>Astrologers</h2>
+              <span class="results-count">Showing <strong><%= counts.astrologersShown %></strong> of <strong><%= counts.astrologersTotal %></strong></span>
+            </div>
+            <div class="astrologers-full-grid" style="margin-bottom:32px;">
+              <%- astrologerCards %>
+            </div>
+          <% } %>
+
+          <% if (storeCards) { %>
+            <div class="section-actions">
+              <h2>Store Products</h2>
+              <span class="results-count">Showing <strong><%= counts.storeShown %></strong> of <strong><%= counts.storeTotal %></strong></span>
+            </div>
+            <div class="store-products-grid" role="list" aria-label="Store products" style="margin-bottom:32px;">
+              <%- storeCards %>
+            </div>
+          <% } %>
+
+          <% if (meditationCards) { %>
+            <div class="section-actions">
+              <h2>Meditation &amp; Yoga</h2>
+              <span class="results-count">Showing <strong><%= counts.meditationShown %></strong> of <strong><%= counts.meditationTotal %></strong></span>
+            </div>
+            <div class="courses-grid" style="margin-bottom:32px;">
+              <%- meditationCards %>
+            </div>
+          <% } %>
+
+          <% if (bookCards) { %>
+            <div class="section-actions">
+              <h2>Books &amp; Podcasts</h2>
+              <span class="results-count">Showing <strong><%= counts.bookShown %></strong> of <strong><%= counts.bookTotal %></strong></span>
+            </div>
+            <div class="content-library-grid" style="margin-bottom:32px;">
+              <%- bookCards %>
+            </div>
+          <% } %>
+
+          <% if (tourCards) { %>
+            <div class="section-actions">
+              <h2>Devotional Tours</h2>
+              <span class="results-count">Showing <strong><%= counts.tourShown %></strong> of <strong><%= counts.tourTotal %></strong></span>
+            </div>
+            <div class="tour-cards-grid" style="margin-bottom:32px;">
+              <%- tourCards %>
+            </div>
+          <% } %>
+        </div>
+      </section>
+    </main>
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>

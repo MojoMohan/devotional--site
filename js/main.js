@@ -246,6 +246,13 @@ function initBookingCatalog() {
 
   const platformSelect = form.querySelector('select[name="platform"]');
   const platformRadios = form.querySelectorAll('input[name="platform"]');
+  const params = new URLSearchParams(window.location.search);
+  const prePlatform = params.get('platform');
+  const preServiceId = params.get('serviceId');
+  const preAmount = params.get('amount');
+  const preLabel = params.get('serviceLabel');
+  const selectedNote = document.getElementById('selected-item-note');
+  const optionsWrap = document.getElementById('platform-options');
 
   const getSelectedPlatform = () => {
     if (platformSelect) return platformSelect.value;
@@ -319,6 +326,21 @@ function initBookingCatalog() {
     const price = Number(selected.dataset.price || 0);
     setAmount(price);
     if (serviceLabelInput) serviceLabelInput.value = selected.textContent || '';
+    if (selectedNote) {
+      const label = selected.textContent || '—';
+      selectedNote.textContent = `Selected item: ${label}`;
+      selectedNote.style.display = label ? 'block' : 'none';
+    }
+  };
+
+  const setPlatform = (value) => {
+    if (!value) return;
+    if (platformSelect) {
+      platformSelect.value = value;
+    }
+    platformRadios.forEach((radio) => {
+      radio.checked = radio.value === value;
+    });
   };
 
   fetch('/api/catalog')
@@ -326,7 +348,37 @@ function initBookingCatalog() {
     .then((catalog) => {
       const updateFromPlatform = () => {
         const platform = getSelectedPlatform();
-        fillOptions(buildOptions(catalog, platform));
+        const options = buildOptions(catalog, platform);
+        fillOptions(options);
+        if (selectedNote) {
+          if (options.length) {
+            selectedNote.textContent = 'Available options:';
+            selectedNote.style.display = 'block';
+          } else {
+            selectedNote.textContent = '';
+            selectedNote.style.display = 'none';
+          }
+        }
+        if (optionsWrap) {
+          optionsWrap.innerHTML = '';
+          options.forEach((opt, idx) => {
+            const id = `opt-${platform}-${idx}`;
+            const input = document.createElement('input');
+            input.type = 'radio';
+            input.name = 'platform-option';
+            input.id = id;
+            input.value = opt.value;
+            const label = document.createElement('label');
+            label.setAttribute('for', id);
+            label.textContent = opt.label;
+            input.addEventListener('change', () => {
+              serviceSelect.value = opt.value;
+              updateServiceLabel();
+            });
+            optionsWrap.appendChild(input);
+            optionsWrap.appendChild(label);
+          });
+        }
       };
 
       if (platformSelect) {
@@ -337,7 +389,24 @@ function initBookingCatalog() {
       });
       serviceSelect.addEventListener('change', updateServiceLabel);
 
+      if (prePlatform) {
+        setPlatform(prePlatform);
+      }
       updateFromPlatform();
+
+      if (preServiceId) {
+        serviceSelect.value = preServiceId;
+        updateServiceLabel();
+      } else if (preLabel) {
+        if (serviceLabelInput) serviceLabelInput.value = preLabel;
+        if (selectedNote) {
+          selectedNote.textContent = `Selected item: ${preLabel}`;
+          selectedNote.style.display = preLabel ? 'block' : 'none';
+        }
+      }
+      if (preAmount) {
+        setAmount(Number(preAmount));
+      }
     })
     .catch(() => {
       // ignore catalog load failures
@@ -484,6 +553,22 @@ window.handleEnrollCourse = function (name) {
 
 window.handleBookTour = function (name) {
   showToast(`✈️ Booking "${name}" tour...`);
+};
+
+window.selectConsultOption = function (btn) {
+  const wrap = btn.closest('.consult-actions');
+  if (!wrap) return;
+  wrap.querySelectorAll('.consult-option').forEach((b) => b.classList.remove('active'));
+  btn.classList.add('active');
+  wrap.dataset.selectedMethod = btn.dataset.method || 'chat';
+};
+
+window.bookAstrologer = function (astroId, name) {
+  const wrap = document.querySelector(`.consult-actions[data-astro="${astroId}"]`);
+  const method = wrap?.dataset.selectedMethod || 'chat';
+  const label = `${name} (${method})`;
+  const url = `/booking.html?platform=astrotalks&serviceId=astro:${astroId}&serviceLabel=${encodeURIComponent(label)}`;
+  window.location.href = url;
 };
 
 async function handleBookingSubmit(event) {

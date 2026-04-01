@@ -22,6 +22,7 @@
             <th>Destination</th>
             <th>Duration</th>
             <th>Price</th>
+            <th>Featured</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>
@@ -29,7 +30,7 @@
         <tbody>
           <% if (!items.length) { %>
             <tr>
-              <td colspan="6" class="muted">No tour packages yet.</td>
+              <td colspan="7" class="muted">No tour packages yet.</td>
             </tr>
           <% } %>
           <% items.forEach((item) => { %>
@@ -38,6 +39,7 @@
               <td><%= item.destination || '-' %></td>
               <td><%= item.duration_days != null ? item.duration_days + ' days' : '-' %></td>
               <td><%= item.price != null ? 'INR ' + item.price : '-' %></td>
+              <td><%= item.is_featured ? 'Yes' : 'No' %></td>
               <td>
                 <span class="badge <%= item.is_active ? 'active' : 'inactive' %>">
                   <%= item.is_active ? 'Active' : 'Inactive' %>

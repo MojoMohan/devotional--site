@@ -4,7 +4,8 @@
 
 /* --- PAGE HERO BANNER --- */
 .page-hero {
-  background: linear-gradient(135deg, #FFF8EE 0%, #FFF3E0 50%, #FDEBD0 100%);
+  background: radial-gradient(circle at top, rgba(247, 242, 230, 0.12) 0%, transparent 55%),
+    linear-gradient(135deg, #0B0A08 0%, #14100D 50%, #0B0A08 100%);
   padding: 52px 0 44px;
   border-bottom: 1px solid rgba(184, 134, 11, 0.1);
 }
@@ -334,6 +335,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--color-primary-saffron);
 }
 
 .spec-tag {
@@ -434,12 +436,25 @@
   font-size: 20px;
 }
 
+.consult-btn .cb-icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
 .consult-btn:hover {
   background: linear-gradient(135deg, var(--color-primary-saffron), var(--color-primary-gold));
   color: #fff;
   border-color: transparent;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
+}
+
+.consult-btn.active {
+  background: linear-gradient(135deg, var(--color-primary-saffron), var(--color-primary-gold));
+  color: #0B0A08;
+  border-color: rgba(212, 175, 55, 0.85);
+  box-shadow: 0 8px 18px rgba(212, 175, 55, 0.2);
 }
 
 /* Floating Chatbot */
@@ -1858,4 +1873,113 @@
 .content-cover.mantra-bg,
 .content-cover.meditation-bg {
   background: linear-gradient(135deg, #1A140C, #D4AF37);
+}
+
+/* ============================================================
+   BLACK-GOLD-WHITE THEME OVERRIDES (INNER PAGES)
+   ============================================================ */
+.page-hero {
+  color: var(--color-text-dark);
+}
+
+.filter-sidebar,
+.results-card,
+.list-card,
+.booking-panel,
+.tour-filters,
+.store-filters,
+.content-filters,
+.meditation-filters {
+  background: #F7F2E6;
+  border-color: rgba(212, 175, 55, 0.28);
+}
+
+.filter-sidebar-header,
+.filters-section {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+.filter-option label,
+.filter-option span,
+.results-count,
+.results-count strong {
+  color: #1A1208;
+}
+
+.filter-option .option-count {
+  color: #7B560E;
+}
+
+.page-btn,
+.pagination button,
+.pagination a {
+  background: #F7F2E6;
+  border-color: rgba(212, 175, 55, 0.3);
+  color: #1A1208;
+}
+
+.page-btn.active,
+.pagination .active {
+  background: linear-gradient(135deg, var(--color-primary-saffron), var(--color-primary-gold));
+  color: #0B0A08;
+}
+
+.search-input,
+.filters select,
+.filters input {
+  background: #F7F2E6;
+  color: #1A1208;
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* ============================================================
+   FILTER OPTIONS: IVORY / GOLD THEME
+   ============================================================ */
+.filter-option {
+  background: #F7F2E6;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 12px;
+  padding: 8px 10px;
+  color: var(--color-primary-gold);
+  transition: all var(--transition-fast);
+}
+
+.filter-option:hover,
+.filter-option:has(input:checked) {
+  background: linear-gradient(135deg, var(--color-primary-saffron), var(--color-primary-gold));
+  color: #0B0A08;
+  border-color: rgba(212, 175, 55, 0.75);
+}
+
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+  background: #F7F2E6;
+  border: 2px solid rgba(212, 175, 55, 0.6);
+}
+
+.filter-option input[type="checkbox"]:checked,
+.filter-option input[type="radio"]:checked {
+  background: linear-gradient(135deg, var(--color-primary-saffron), var(--color-primary-gold));
+  border-color: rgba(212, 175, 55, 0.9);
+}
+
+.filter-option input[type="checkbox"]:checked::after {
+  color: #0B0A08;
+}
+
+.filter-option input[type="radio"]:checked::after {
+  background: #0B0A08;
+}
+
+.filter-option .option-count {
+  background: #F7F2E6;
+  color: var(--color-primary-gold);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.filter-option:hover .option-count,
+.filter-option:has(input:checked) .option-count {
+  background: #0B0A08;
+  color: var(--color-primary-saffron);
+  border-color: rgba(212, 175, 55, 0.6);
 }
