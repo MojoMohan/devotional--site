@@ -25,6 +25,8 @@ fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
 
 const app = express();
 const db = new Database(DB_PATH);
+db.pragma('journal_mode = WAL');
+db.pragma('busy_timeout = 5000');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -49,6 +51,17 @@ app.use(
 app.use('/css', express.static(path.join(ROOT_DIR, 'css')));
 app.use('/js', express.static(path.join(ROOT_DIR, 'js')));
 app.use('/images', express.static(path.join(ROOT_DIR, 'images')));
+
+// Always serve fresh HTML/CMS content (avoid stale cache in deployment)
+app.use((req, res, next) => {
+  if (req.path.endsWith('.html') || req.path.startsWith('/cms') || req.path.startsWith('/admin')) {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    res.setHeader('Surrogate-Control', 'no-store');
+  }
+  next();
+});
 
 app.get('/health', (req, res) => {
   res.json({
